@@ -10,7 +10,7 @@ tags={
 	"National Focuses"
 	"Technologies"
 }
-name="TLC Traiasca Legiunea si Comandantul"
+name="TLC Traiasca Legiunea si Comandantul -dev"
 picture="thumbnail.png"
 replace_path="gfx/loadingscreens"
 replace_path="history/states"
