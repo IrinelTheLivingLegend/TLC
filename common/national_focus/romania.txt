@@ -6098,7 +6098,7 @@ focus_tree = {
 
 	}
 	focus = { 
-		id = propagandaor's_dictatorship
+		id = propagandaor's_dictatorship_i
 		icon = GFX_goal_CAN_uranium_mining
 		prerequisite = { focus = arming_P}
 		x=0
@@ -6107,6 +6107,47 @@ focus_tree = {
 		cost = 10
 
 	}	
+	focus = { 
+		id = industrie
+		icon = GFX_goal_CAN_uranium_mining
+		prerequisite = { focus = propagandaor's_dictatorship_i}
+		x=0
+		y=1
+		relative_position_id = propagandaor's_dictatorship_i
+		cost = 10
+
+	}	
+	focus = { 
+		id = industrie_i
+		icon = GFX_goal_CAN_uranium_mining
+		prerequisite = { focus = propagandaor's_dictatorship}
+		x=0
+		y=1
+		relative_position_id = propagandaor's_dictatorship
+		cost = 10
+
+	}	
+	focus = { 
+		id = optimization_i
+		icon = GFX_goal_CAN_uranium_mining
+		prerequisite = { focus = industrie_i}
+		x=0
+		y=1
+		relative_position_id = industrie_i
+		cost = 10
+
+	}	
+	focus = { 
+		id = optimization_p
+		icon = GFX_goal_CAN_uranium_mining
+		prerequisite = { focus = industrie}
+		x=0
+		y=1
+		relative_position_id = industrie
+		cost = 10
+
+	}	
+
 
 
 
