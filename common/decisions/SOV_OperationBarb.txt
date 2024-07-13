@@ -1,0 +1,2631 @@
+SOV_great_patriotic_war = {
+
+	#195 "Leningrad"
+	SOV_hold_leningrad = {
+
+		icon = GFX_decision_SOV_lenin
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 195 }
+		}
+
+		visible = {
+			has_war = yes
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 195 #Leningrad
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
+			195 = {
+				is_controlled_by = ROOT
+				OR = {
+					any_neighbor_state = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+						OWNER = { tag = ROOT }
+					}
+					NOT = { is_fully_controlled_by = ROOT }
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			195 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.3
+		}
+		#Fail
+		complete_effect = {
+			195 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.4
+		}
+	}
+
+	#219 "Moscow"
+	SOV_hold_moscow = {
+
+		icon = GFX_decision_SOV_moscow
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 219 }
+		}
+
+		visible = {
+			has_war = yes
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 219 #Moscow
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			219 = {
+				is_controlled_by = ROOT
+				OR = {
+					any_neighbor_state = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+						OWNER = { tag = ROOT }
+					}
+					NOT = { is_fully_controlled_by = ROOT }
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			219 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.5
+		}
+		#Fail
+		complete_effect = {
+			219 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.6
+		}
+	}
+
+	#217 "Stalingrad"
+	SOV_hold_stalingrad = {
+
+		icon = GFX_decision_SOV_stalin
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 217 }
+		}
+
+		visible = {
+			has_war = yes
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 217 #Stalingrad
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_war = yes
+			has_civil_war = no
+			217 = {
+				is_controlled_by = ROOT
+				OR = {
+					any_neighbor_state = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+						OWNER = { tag = ROOT }
+					}
+					NOT = { is_fully_controlled_by = ROOT }
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.05
+			add_war_support = 0.05
+			217 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.1
+		}
+		#Fail
+		complete_effect = {
+			217 = { save_event_target_as = state }
+			country_event = wtt_soviet_hold_city.2
+		}
+	}
+
+	SOV_operation_iskra_ongoing = {
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		fire_only_once = yes
+
+		days_mission_timeout = 30
+
+		is_good = no
+
+		activation = {
+			always = no
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				has_war = no
+			}
+		}
+
+		cancel_effect = {
+			hidden_effect = {
+				SOV_clean_military_offensive_effect = yes
+			}
+		}
+
+		visible = {
+			has_country_flag = SOV_order_227_flag
+			has_war = yes
+			has_country_flag = SOV_military_offensive_in_progress_flag
+		}
+
+		available = { #You succeed by having Leningrad being connected to the rest of the country at the end of the mission
+			custom_trigger_tooltip = {
+				tooltip = SOV_operation_iskra_ongoing_objective_tt
+				195 = { is_in_home_area = yes }
+			}
+		}
+
+		timeout_effect = {  #FAIL
+			custom_effect_tooltip = SOV_operation_iskra_ongoing_success_effects_tt
+			effect_tooltip = {
+				add_war_support = 0.1
+				add_political_power = 50
+			}
+			custom_effect_tooltip = SOV_operation_iskra_ongoing_failure_effects_tt
+			effect_tooltip = {
+				add_war_support = -0.1
+				add_political_power = -75
+			}
+
+			if = {
+				limit = {
+					195 = { is_in_home_area = yes }
+				}
+				custom_effect_tooltip = SOV_operation_iskra_ongoing_success_tt
+				hidden_effect = {
+					add_war_support = 0.1
+					add_political_power = 50
+				}
+			}
+			else = {
+				custom_effect_tooltip = SOV_operation_iskra_ongoing_failure_tt
+				hidden_effect = {
+					add_war_support = -0.1
+					add_political_power = -75
+				}
+			}
+			SOV_clean_military_offensive_effect = yes
+			add_to_variable = {
+				var = SOV_failures
+				value = 1
+			}
+			GER = {
+				add_to_variable = {
+					var = GER_success
+					value = 1
+				}
+			}
+		}
+
+		complete_effect = {
+			SOV_clean_military_offensive_effect = yes
+			add_to_variable = {
+				var = SOV_success
+				value = 1
+			}
+			GER = {
+				add_to_variable = {
+					var = GER_failures
+					value = 1
+				}
+			}
+		}
+	}
+
+	SOV_military_offensive_ongoing = {
+
+		icon = hol_draw_up_staff_plans
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		fire_only_once = yes
+
+		days_mission_timeout = 30
+
+		is_good = no
+
+		activation = {
+			always = no
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				has_war = no
+			}
+		}
+
+		cancel_effect = {
+			#log = "Mission cancelled"
+			hidden_effect = {
+				SOV_clean_military_offensive_effect = yes
+			}
+		}
+
+		visible = {
+			has_country_flag = SOV_order_227_flag
+			has_war = yes
+			has_country_flag = SOV_military_offensive_in_progress_flag
+		}
+
+		available = { #Conditions to succeed in the offensive
+			custom_trigger_tooltip = {
+				tooltip = SOV_military_offensive_ongoing_trigger_tt
+				all_of_scopes = {
+					array = SOV_military_offensive_states
+					is_controlled_by = ROOT
+				}
+			}
+		}
+
+		timeout_effect = { #FAIL
+			#log = "Var = [?SOV_offensive_main_objective.GetName] // Array = [?SOV_military_offensive_states^0.GetName]" #Debug
+			if = {
+				limit = {
+					#var:SOV.SOV_military_offensive_states^0 = {
+					var:SOV_offensive_main_objective = {
+						is_controlled_by = ROOT
+					}
+				}
+				custom_effect_tooltip = SOV_military_offensive_ongoing_holding_main_objective_tt
+			}
+			else = {
+				custom_effect_tooltip = SOV_military_offensive_ongoing_not_holding_main_objective_tt
+				hidden_effect = {
+					add_war_support = -0.1
+					add_political_power = -75
+				}
+			}
+
+			custom_effect_tooltip = SOV_military_offensive_ongoing_failing_main_objective_tt
+			effect_tooltip = {
+				add_war_support = -0.1
+				add_political_power = -75
+			}
+
+			SOV_clean_military_offensive_effect = yes
+			add_to_variable = {
+				var = SOV_failures
+				value = 1
+			}
+			GER = {
+				add_to_variable = {
+					var = GER_success
+					value = 1
+				}
+			}
+		}
+
+		complete_effect = { #SUCCESS
+			SOV_clean_military_offensive_effect = yes
+			add_to_variable = {
+				var = SOV_success
+				value = 1
+			}
+			GER = {
+				add_to_variable = {
+					var = GER_failures
+					value = 1
+				}
+			}
+
+			add_war_support = 0.1
+			add_political_power = 50
+		}
+	}
+
+}
+
+SOV_great_patriotic_war_Orders = {
+
+	SOV_the_rush_for_berlin = {
+		priority = 100
+
+		icon = GFX_decision_generic_nationalism
+
+		ai_will_do = {
+			base = 1
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			any_controlled_state = {
+				is_core_of = GER
+				NOT = { state = 763 }
+				NOT = { state = 5 }
+				NOT = { state = 85 }
+			}
+			any_other_country = {
+				is_major = yes
+				NOT = { is_in_faction_with = ROOT }
+				has_war_with = GER
+				any_controlled_state = {
+					is_core_of = GER
+				}
+			}
+			has_completed_focus = SOV_lessons_of_war
+			has_country_flag = SOV_great_patriotic_war_flag
+		}
+
+		visible = {
+			has_war_with = GER
+			any_controlled_state = {
+				is_core_of = GER
+			}
+			any_other_country = {
+				is_major = yes
+				NOT = { is_in_faction_with = ROOT }
+				has_war_with = GER
+			}
+		}
+
+		fire_only_once = yes
+
+		ai_hint_pp_cost = 15
+		custom_cost_trigger = {
+			command_power > 19
+			has_political_power > 14
+		}
+		custom_cost_text = decision_cost_CP_20_pp_15
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+				add_political_power = -50
+			}
+			add_timed_idea = {
+				idea = SOV_the_rush_for_berlin
+				days = 365
+			}
+		}
+	}
+
+	SOV_staggered_retreat = {
+		priority = 90
+
+		icon = GFX_decision_generic_military
+
+		ai_will_do = {
+			base = 0.5
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			surrender_progress > 0.15
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			any_enemy_country = { SOV_is_major_not_original_sov = yes }
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+
+		ai_hint_pp_cost = 15
+		custom_cost_trigger = {
+			command_power > 14
+		}
+		custom_cost_text = decision_cost_CP_15
+
+		days_remove = 90
+
+		cancel_trigger = {
+			surrender_progress < 0.05
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -15
+			}
+		}
+
+		modifier = {
+			army_speed_factor = -0.1
+			army_defence_factor = 0.05
+			org_loss_when_moving = -0.1
+		}
+	}
+
+	SOV_order_227 = {
+		priority = 95
+
+		icon = generic_army_support
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				surrender_progress > 0.25
+				factor = 10
+			}
+		}
+
+		available = {
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+			has_completed_focus = SOV_lessons_of_war
+			surrender_progress > 0.15
+		}
+
+		custom_cost_trigger = {
+			command_power > 19
+		}
+		custom_cost_text = decision_cost_CP_20
+
+		fire_only_once = yes
+		visible = {
+			has_war = yes
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+			has_civil_war = no
+		}
+
+		days_remove = 720
+
+		modifier = {
+			army_core_defence_factor = 0.25
+			mobilization_speed = 0.15
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_political_power = -20
+				play_song = "GR_Not_One_Step_Back"
+			}
+			set_country_flag = SOV_order_227_flag
+			custom_effect_tooltip = SOV_order_227_decisions_tt
+			if = {
+				limit = {
+					NOT = { has_dlc = "No Step Back" }
+				}
+				custom_effect_tooltip = SOV_order_227_scorched_earth_decisions_tt
+			}
+		}
+	}
+
+	SOV_German_offensive_targets = {
+		icon = GFX_decision_FIN_stop_motti_tactics
+		days_mission_timeout = 7
+		selectable_mission = no
+		fire_only_once = no
+		is_good = yes
+		priority = 100
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			always = no
+		}
+
+		activation = {
+			always = no
+		}
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+		}
+
+		complete_effect = {
+		}
+	}	
+
+	SOV_Allied_Invasion_of_Germany = {
+		icon = GFX_decision_revolt
+		days_mission_timeout = 14
+		selectable_mission = no
+		fire_only_once = yes
+		is_good = no
+		priority = 100
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			always = no
+		}
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+		}
+
+		complete_effect = {
+		}
+	}
+
+	SOV_Allied_Invasion_of_Italy = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		days_mission_timeout = 14
+		selectable_mission = no
+		fire_only_once = yes
+		is_good = no
+		priority = 100
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			always = no
+		}
+
+		activation = {
+			ITA = {
+				has_civil_war = no
+				any_owned_state = {
+					is_core_of = ITA
+					has_state_flag = ITA_main_land
+					NOT = { is_controlled_by = ITA }
+				}
+			}
+		}
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+		}
+
+		complete_effect = {
+		}
+	}
+
+	SOV_Allied_Invasion_of_Italy_2 = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		days_mission_timeout = 14
+		selectable_mission = no
+		fire_only_once = yes
+		is_good = no
+		priority = 100
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			always = no
+		}
+
+		activation = {
+			ITA = { has_civil_war = no }
+			2 = {
+				is_owned_by = ITA
+				NOT = { is_controlled_by = ITA }
+			}
+		}
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+		}
+
+		complete_effect = {
+		}
+	}
+
+}
+
+SOV_Development_and_Deployment = {
+
+	# Tanks --->
+
+	SOV_tank_development_t34_85 = { # Develop Tanks Against German Tank/s
+		icon = GFX_decision_generic_merge_plant_tank
+		priority = 100
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			has_completed_focus = SOV_found_the_pcdi #
+			has_war = yes
+			has_war_with = GER
+			surrender_progress > 0.1
+		}
+
+		days_mission_timeout = SOV_TANK_DEVELOP_TIME
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_completed_focus = SOV_found_the_pcdi #
+			has_tech = improved_medium_tank_chassis
+			has_war = yes
+			has_war_with = GER
+			surrender_progress > 0.1
+			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
+
+		timeout_effect = {
+			set_country_flag = USSR_T34_85_DEPLOYED # REQ For SU-85
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				create_equipment_variant = {
+					name = "T-34-85"
+					type = medium_tank_chassis_2
+					parent_version = 0
+					design_team = mio:SOV_morozov_design_bureau_organization
+					allow_without_tech = yes
+					modules = {
+						main_armament_slot = tank_medium_cannon_2
+						turret_type_slot = tank_medium_three_man_tank_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_diesel_engine
+						special_type_slot_1 = tank_radio_2
+					}
+					upgrades = {
+						tank_nsb_engine_upgrade = 9
+						tank_nsb_armor_upgrade = 9
+					}
+				}
+			}
+			else = {
+				set_technology = { improved_medium_tank = 1 popup = yes }
+			}
+		}
+
+		complete_effect = {
+		}
+	}
+
+	SOV_tank_development_IS_1 = { # Develop Tanks Against German Tank/s
+		icon = GFX_decision_generic_merge_plant_tank
+		priority = 98
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			has_completed_focus = SOV_found_the_pcdi #
+			has_war = yes
+			has_war_with = GER
+			surrender_progress > 0.1
+		}
+
+		days_mission_timeout = 180 #
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			NOT = { has_completed_focus = SOV_they_will_know_fear }
+			has_completed_focus = SOV_found_the_pcdi #
+			has_tech = improved_heavy_tank_chassis
+			has_war = yes
+			has_war_with = GER
+			surrender_progress > 0.1
+			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
+
+		timeout_effect = {
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				create_equipment_variant = { #Same as T-34 VER. Just Cost More
+					name = "IS-1"
+					type = heavy_tank_chassis_2
+					parent_version = 0
+					allow_without_tech = yes
+					modules = {
+						main_armament_slot = tank_medium_cannon_2
+						turret_type_slot = tank_heavy_three_man_tank_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_diesel_engine
+						special_type_slot_1 = tank_radio_2
+					}
+					upgrades = {
+						tank_nsb_engine_upgrade = 9
+						tank_nsb_armor_upgrade = 9
+					}
+				}
+			}
+			else = {
+				set_technology = { improved_heavy_tank = 1 popup = yes }
+			}
+		}
+
+		complete_effect = {
+		}
+	}
+
+	SOV_tank_development_su_85 = {  # Develop Anti-Tank Against German Tank/s
+		icon = GFX_decision_generic_merge_plant_tank
+		priority = 97
+
+		allowed = {
+			tag = SOV
+		}
+
+		available = {
+			always = no
+		}
+
+		visible = {
+			has_completed_focus = SOV_found_the_pcdi #
+			has_war = yes
+			has_war_with = GER
+			surrender_progress > 0.15
+		}
+
+		days_mission_timeout = 90
+
+		fire_only_once = yes
+
+		is_good = yes
+
+		activation = {
+			has_completed_focus = SOV_found_the_pcdi #
+			has_country_flag = USSR_T34_85_DEPLOYED
+			has_war = yes
+			has_war_with = GER
+			surrender_progress > 0.15
+			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
+
+		timeout_effect = {
+			if = {
+				limit = {
+					has_dlc = "No Step Back"
+				}
+				create_equipment_variant = {
+					name = "SU-85M"
+					type = medium_tank_destroyer_chassis_2
+					parent_version = 0
+					allow_without_tech = yes
+					modules = {
+						main_armament_slot = tank_heavy_cannon_2
+						turret_type_slot = tank_medium_fixed_superstructure_turret
+						suspension_type_slot = tank_christie_suspension
+						armor_type_slot = tank_welded_armor
+						engine_type_slot = tank_diesel_engine
+						special_type_slot_1 = sloped_armor
+					}
+					upgrades = {
+						tank_nsb_engine_upgrade = 10
+						tank_nsb_armor_upgrade = 9
+					}
+				}
+			}
+			else = {
+				set_technology = { improved_medium_td = 1 popup = yes }
+			}
+		}
+
+		complete_effect = {
+		}
+	}
+
+	# Heavy Artilery --->
+
+	Deploy_Heavy_Artilery_sub_leningrad = {
+		icon = GFX_decision_setup_artillery
+		priority = 78
+		days_re_enable = 180
+		cost = 25
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available =  {
+			195 = { is_controlled_by = ROOT }
+		}
+
+		visible = {
+			NOT = { has_country_flag = SOV_DEPLOYED_HEAVY_ARTILLERY_HIDE }
+			has_completed_focus = SOV_desperate_measures
+			has_war = yes
+			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = SOV_DEPLOYED_HEAVY_ARTILLERY_HIDE
+				195 = { set_state_flag = HEAVY_DEPLOYED_HERE }
+				every_state = {
+					limit = {
+						OR = {
+							state = 208
+							state = 263
+							state = 209
+							state = 244
+						}
+					}
+					set_state_flag = SOV_HEAVY_STATE
+				}
+			}
+		}
+	}
+
+	Deploy_Heavy_Artilery_sub_moscow = {
+		icon = GFX_decision_setup_artillery
+		priority = 75
+		days_re_enable = 180
+		cost = 25
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available =  {
+			219 = { is_controlled_by = ROOT }
+		}
+
+		visible = {
+			NOT = { has_country_flag = SOV_DEPLOYED_HEAVY_ARTILLERY_HIDE }
+			has_completed_focus = SOV_desperate_measures
+			has_war = yes
+			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = SOV_DEPLOYED_HEAVY_ARTILLERY_HIDE
+				219 = { set_state_flag = HEAVY_DEPLOYED_HERE }
+				every_state = {
+					limit = {
+						OR = {
+							state = 242
+							state = 246
+							state = 247
+							state = 205
+							state = 223
+						}
+					}
+					set_state_flag = SOV_HEAVY_STATE
+				}
+			}
+		}
+	}
+
+	Deploy_Heavy_Artilery_sub_stalingrad = {
+		icon = GFX_decision_setup_artillery
+		priority = 70
+		days_re_enable = 180
+		cost = 25
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		ai_will_do = {
+			factor = 100 # Small Chance for AI
+		}
+
+		available =  {
+			217 = { is_controlled_by = ROOT }
+		}
+
+		visible = {
+			NOT = { has_country_flag = SOV_DEPLOYED_HEAVY_ARTILLERY_HIDE }
+			has_completed_focus = SOV_desperate_measures
+			has_war = yes
+			has_civil_war = no
+			any_enemy_country = {
+				is_major = yes
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				set_country_flag = SOV_DEPLOYED_HEAVY_ARTILLERY_HIDE
+				217 = { set_state_flag = HEAVY_DEPLOYED_HERE }
+				every_state = {
+					limit = {
+						OR = {
+							state = 265
+							state = 245
+							state = 238
+							state = 218
+						}
+					}
+					set_state_flag = SOV_HEAVY_STATE
+				}
+			}
+		}
+	}
+
+	SOV_bomb_state = {
+		icon = GFX_decision_generic_ignite_civil_war
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+		ai_hint_pp_cost = 19
+		custom_cost_text = decision_cost_CP_20
+		custom_cost_trigger = {
+			command_power > 19
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					is_core_of = ROOT
+					NOT = { is_controlled_by = ROOT }
+				}
+			}
+		}
+
+		target_trigger = {
+			FROM = {
+				has_state_flag = SOV_HEAVY_STATE
+			}
+		}
+
+		target_root_trigger = {
+			has_completed_focus = SOV_desperate_measures
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			any_controlled_state = {
+				has_state_flag = HEAVY_DEPLOYED_HERE
+			}
+			FROM = {
+				NOT = { has_dynamic_modifier = { modifier = SOV_state_bombed_modifier } }
+			}
+		}
+
+		complete_effect = {
+			FROM = {
+				add_dynamic_modifier = { modifier = SOV_state_bombed_modifier days = 14 }
+			}
+			hidden_effect = { # Cost
+				add_command_power = -20
+			}
+		}
+	}
+
+}
+
+SOV_Local_offensive = {
+	
+	SOV_operation_iskra = { #SPECIAL OFFENSIVE - LENINGRAD HAS NOT FALLEN BUT IT IS SURROUNDED
+		priority = 85
+
+		icon = GFX_decision_generic_operation
+
+		ai_will_do = {
+			base = 1
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 208 #LUGA
+				state = 244 #VOLKHOV
+			}
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			NOT = { has_country_flag = SOV_military_offensive_in_progress_flag }
+			command_power > 49
+			OR = {
+				controls_state = 263 #NOVGOROD
+				controls_state = 264 #TIKHVIN
+			}
+		}
+
+		visible = {
+			has_war = yes
+			has_country_flag = SOV_order_227_flag
+			244 = {
+				controller = { has_war_with = ROOT }
+			}
+			208 = {
+				controller = { has_war_with = ROOT }
+			}
+			195 = { is_controlled_by = ROOT }
+		}
+
+		ai_hint_pp_cost = 15
+		custom_cost_trigger = {
+			command_power > 49
+			has_political_power > 14
+		}
+		custom_cost_text = decision_cost_CP_50_pp_15
+
+		fire_only_once = yes
+
+		days_remove = 14
+
+		modifier = {
+			command_power_gain_mult = -0.5
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+				add_political_power = -15
+			}
+			set_country_flag = SOV_military_offensive_in_progress_flag
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = SOV_operation_iskra_tt
+			hidden_effect = {
+				195 = {
+					ROOT = { add_to_array = { SOV_military_offensive_states = PREV } }
+				}
+				208 = {
+					ROOT = { add_to_array = { SOV_military_offensive_states = PREV } }
+				}
+				244 = {
+					ROOT = { add_to_array = { SOV_military_offensive_states = PREV } }
+				}
+				SOV_set_military_offensive_effect = yes
+
+				activate_mission = SOV_operation_iskra_ongoing
+			}
+			custom_effect_tooltip = SOV_operation_iskra_activate_decision_tt
+		}
+	}
+
+	SOV_military_offensive = {
+		priority = 30
+
+		icon = GFX_decision_generic_operation
+
+		ai_will_do = {
+			base = 0.5
+		}
+
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				SOV_is_military_offensive_main_objective = yes
+			}
+		}
+
+		target_root_trigger = {
+			has_war = yes
+			has_country_flag = SOV_order_227_flag
+		}
+
+		on_map_mode = map_and_decisions_view
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			NOT = { has_country_flag = SOV_military_offensive_in_progress_flag }
+			command_power > 49
+		}
+
+		visible = {
+			FROM = {
+				controller = {
+					has_war_with = ROOT
+				}
+				any_neighbor_state = {
+					is_controlled_by = ROOT
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+
+		cancel_effect = {
+			#log = "Preparations cancelled"
+			hidden_effect = {
+				SOV_clean_military_offensive_effect = yes
+			}
+		}
+
+		ai_hint_pp_cost = 15
+		custom_cost_trigger = {
+			command_power > 49
+			has_political_power > 14
+		}
+		custom_cost_text = decision_cost_CP_50_pp_15
+
+		days_remove = 14
+
+		modifier = {
+			command_power_gain_mult = -0.5
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				add_command_power = -50
+				add_political_power = -15
+			}
+			set_country_flag = SOV_military_offensive_in_progress_flag
+		}
+
+		remove_effect = {
+			custom_effect_tooltip = SOV_military_offensive_scope_tt
+			custom_effect_tooltip = SOV_military_offensive_current_scope_main_objective_tt
+			effect_tooltip = {
+				FROM = { #RZHEV
+					custom_effect_tooltip = SOV_military_offensive_current_scope_negihbors_tt
+					every_neighbor_state = { #NEIGHBOR STATES
+						limit = {
+							controller = { has_war_with = ROOT }
+						}
+					}
+				}
+			}
+
+			hidden_effect = {
+				set_variable = { SOV_offensive_main_objective = FROM } #This variable exists because trying to scope to the element 0 of an array causes an error :D (!)
+				FROM = {
+					ROOT = { add_to_array = { SOV_military_offensive_states = PREV } }
+					every_neighbor_state = { #NEIGHBOR STATES
+						limit = {
+							controller = { has_war_with = ROOT }
+						}
+						ROOT = { add_to_array = { SOV_military_offensive_states = PREV } }
+					}
+				}
+				SOV_set_military_offensive_effect = yes
+
+				activate_mission = SOV_military_offensive_ongoing
+			}
+			custom_effect_tooltip = SOV_military_offensive_activate_decision_tt
+		}
+	}
+}
+
+SOV_Local_Defense = {
+
+	# Build Trench --->
+
+	SOV_build_trech_leningrad = {
+		icon = GFX_decision_setup_forts
+		fire_only_once = yes
+		days_remove = 3
+		cost = 10
+
+		on_map_mode = map_and_decisions_view
+		highlight_states = {
+			highlight_state_targets = {
+				state = 195
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		available = {
+			has_war = yes
+			controls_state = 195
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			NOT = { has_country_flag = SOV_order_227_flag }
+			has_active_mission = SOV_hold_leningrad
+			has_war = yes
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			195 = {
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 3151
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 149
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 6174
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 79
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 11068
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	SOV_build_trech_moscow = {
+		icon = GFX_decision_setup_forts
+		fire_only_once = yes
+		days_remove = 3
+		cost = 10
+
+		on_map_mode = map_and_decisions_view
+		highlight_states = {
+			highlight_state_targets = {
+				state = 219
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		available = {
+			has_war = yes
+			controls_state = 219
+			controls_state = 242
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			NOT = { has_country_flag = SOV_order_227_flag }
+			has_active_mission = SOV_hold_moscow
+			has_war = yes
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			219 = {
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 366
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 9302
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 11282
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 301
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 3290
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 11330
+				}
+			}
+			242 = {
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 3279
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 11384
+				}
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	SOV_build_trech_Stalingrad = {
+		icon = GFX_decision_setup_forts
+		fire_only_once = yes
+		days_remove = 3
+		cost = 10
+
+		on_map_mode = map_and_decisions_view
+		highlight_states = {
+			highlight_state_targets = {
+				state = 217
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		available = {
+			has_war = yes
+			controls_state = 217
+			controls_state = 265
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			NOT = { has_country_flag = SOV_order_227_flag }
+			has_active_mission = SOV_hold_stalingrad
+			has_war = yes
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			265 = {
+				add_building_construction = {
+					type = trench_building
+					level = 3
+					instant_build = yes
+					province = 3582
+				}
+			}
+			217 = {
+				add_building_construction = {
+					type = trench_building
+					level = 3
+					instant_build = yes
+					province = 9504
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 3
+					instant_build = yes
+					province = 6527
+				}
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	# Initial Versions
+
+	SOV_build_trech_minsk = {
+		icon = GFX_decision_setup_forts
+		fire_only_once = yes
+		days_remove = 7
+		cost = 10
+
+		on_map_mode = map_and_decisions_view
+		highlight_states = {
+			highlight_state_targets = {
+				state = 206
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		available = {
+			has_war = yes
+			AND = {
+				controls_state = 96
+				controls_state = 206
+			}
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			NOT = { has_country_flag = SOV_order_227_flag }
+			has_war = yes
+			AND = {
+				controls_state = 96
+				controls_state = 206
+			}
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			206 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 11370
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 11216
+				}
+			}
+			96 = {
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 277
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	SOV_build_trech_vitebsk= {
+		icon = GFX_decision_setup_forts
+		fire_only_once = yes
+		days_remove = 7
+		cost = 10
+
+		on_map_mode = map_and_decisions_view
+		highlight_states = {
+			highlight_state_targets = {
+				state = 207
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		available = {
+			has_war = yes
+			controls_state = 207
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			NOT = { has_country_flag = SOV_order_227_flag }
+			has_war = yes
+			controls_state = 207
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			207 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 11241
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 9241
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 11220
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	SOV_build_trech_kiev = {
+		icon = GFX_decision_setup_forts
+		fire_only_once = yes
+		days_remove = 7
+		cost = 10
+
+		on_map_mode = map_and_decisions_view
+		highlight_states = {
+			highlight_state_targets = {
+				state = 202
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		available = {
+			has_war = yes
+			controls_state = 202
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			NOT = { has_country_flag = SOV_order_227_flag }
+			has_war = yes
+			controls_state = 202
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			202 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 525
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 504
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 2
+					instant_build = yes
+					province = 3543
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	SOV_build_trech_Dniprropetrovsk = {
+		icon = GFX_decision_setup_forts
+		fire_only_once = yes
+		days_remove = 7
+		cost = 10
+
+		on_map_mode = map_and_decisions_view
+		highlight_states = {
+			highlight_state_targets = {
+				state = 226
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		available = {
+			has_war = yes
+			controls_state = 226
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			NOT = { has_country_flag = SOV_order_227_flag }
+			has_war = yes
+			controls_state = 226
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			226 = {
+				add_building_construction = {
+					type = bunker
+					level = 3
+					instant_build = yes
+					province = 11437
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 3
+					instant_build = yes
+					province = 9419
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 1
+					instant_build = yes
+					province = 6423
+				}
+				add_building_construction = {
+					type = trench_building
+					level = 1
+					instant_build = yes
+					province = 9433
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	# Vanilla Versions --->
+
+	SOV_raise_penal_units = {
+		priority = 21
+
+		icon = GFX_decision_generic_arrest
+
+		ai_will_do = {
+			base = 5
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			has_country_flag = { flag = SOV_penal_units_raised_flag days > 365 }
+			custom_trigger_tooltip = {
+				tooltip = SOV_raise_penal_units_days_tt
+				has_country_flag = {
+					flag = SOV_penal_units_raised_flag
+					days > 365
+				}
+			}
+			any_enemy_country = { SOV_is_major_not_original_sov = yes }
+		}
+
+		visible = {
+			has_completed_focus = SOV_penal_battalions
+			any_enemy_country = { SOV_is_major_not_original_sov = yes }
+		}
+
+		cost = 50
+
+		days_remove = 35
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			clr_country_flag = SOV_penal_units_raised_flag
+			SOV_spawn_penal_divisions_effect = yes
+		}
+	}
+
+	SOV_factory_worker_militias = {
+		priority = 20
+
+		icon = generic_prepare_civil_war
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 219 #MOSCOW
+						state = 195 #LENINGRAD
+						state = 217 #STALINGRAD
+						state = 137 #SEVASTOPOL
+						state = 206 #MINSK
+						state = 202 #KIEV
+					}
+				}
+				#ROOT = { manpower_per_military_factory > 15000 } #Don't waste if we need better manpower laws
+			}
+		}
+
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				is_core_of = ROOT
+				OR = {
+					industrial_complex > 0
+					arms_factory > 0
+					dockyard > 0
+				}
+			}
+		}
+
+		target_root_trigger = {
+			has_completed_focus = SOV_desperate_measures
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			FROM = {
+				NOT = { has_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense_mod } }
+			}
+		}
+
+		visible = {
+			any_enemy_country = { SOV_is_major_not_original_sov = yes }
+			NOT = { has_country_flag = SOV_order_227_flag }
+			FROM = {
+				is_controlled_by = ROOT
+				any_neighbor_state = {
+					controller = { has_war_with = ROOT }
+				}
+			}
+		}
+
+		ai_hint_pp_cost = 25
+		custom_cost_trigger = {
+			command_power > 24
+			has_political_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		days_remove = 90
+
+		cancel_if_not_visible = yes
+
+		cancel_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SOV_factory_worker_militias_raised }
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				#Cost
+				add_command_power = -25
+				add_political_power = -25
+
+				FROM = {
+					add_dynamic_modifier = {
+						modifier = SOV_factory_worker_militias_raised
+						scope = SOV
+					}
+				}
+			}
+			custom_effect_tooltip = SOV_factory_worker_militias_state_modifier_tt
+		}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SOV_factory_worker_militias_raised }
+			}
+		}
+	}
+
+	SOV_civilian_labor_in_defense = {
+		priority = 10
+
+		icon = POL_organize_strike_two
+
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				is_core_of = ROOT
+				OR = {
+					has_state_category = city
+					has_state_category = large_city
+					has_state_category = megalopolis
+					has_state_category = metropolis
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 219 #MOSCOW
+						state = 195 #LENINGRAD
+						state = 217 #STALINGRAD
+						state = 137 #SEVASTOPOL
+						state = 206 #MINSK
+						state = 202 #KIEV
+					}
+				}
+				#ROOT = { manpower_per_military_factory > 15000 } #Don't waste if we need better manpower laws
+			}
+		}
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			FROM = {
+				NOT = { has_dynamic_modifier = { modifier = SOV_factory_worker_militias_raised } }
+			}
+		}
+
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			any_enemy_country = { SOV_is_major_not_original_sov = yes }
+			NOT = { has_country_flag = SOV_order_227_flag }
+			FROM = {
+				is_controlled_by = ROOT
+				any_neighbor_state = {
+					controller = { has_war_with = ROOT }
+				}
+			}
+		}
+
+		ai_hint_pp_cost = 25
+		custom_cost_trigger = {
+			command_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25
+
+		days_remove = 90
+
+		cancel_if_not_visible = yes
+
+		cancel_trigger = {
+			FROM = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
+					NOT = {
+						any_neighbor_state = {
+							controller = { has_war_with = ROOT }
+						}
+					}
+				}
+			}
+		}
+
+		cancel_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense_mod }
+			}
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				#Cost
+				add_command_power = -25
+
+				FROM = {
+					add_dynamic_modifier = {
+						modifier = SOV_civilian_labor_in_defense_mod
+						scope = SOV
+					}
+					set_state_flag = SOV_civilian_labor_in_defense_flag
+				}
+			}
+			custom_effect_tooltip = SOV_civilian_labor_in_defense_state_modifier_tt
+		}
+
+		remove_effect = {
+			FROM = {
+				remove_dynamic_modifier = { modifier = SOV_civilian_labor_in_defense_mod }
+			}
+		}
+	}
+
+	# Non-DLC --->
+
+	SOV_scorched_earth = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		available = {
+			has_war = yes
+			any_enemy_country = {
+				SOV_is_major_not_original_sov = yes
+			}
+			surrender_progress > 0
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			has_completed_focus = SOV_desperate_measures
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+
+		complete_effect = {
+			set_country_flag = SOV_scorched_earth
+			unlock_decision_tooltip = SOV_scorched_earth_baltics
+			unlock_decision_tooltip = SOV_scorched_earth_byelorussia
+			unlock_decision_tooltip = SOV_scorched_earth_ukraine
+			unlock_decision_tooltip = SOV_scorched_earth_stalingrad
+			unlock_decision_tooltip = SOV_scorched_earth_caucasus
+			unlock_decision_tooltip = SOV_scorched_earth_moscow
+		}
+
+		ai_will_do = {
+			factor = 1
+
+			modifier = {
+				factor = 0
+				SOV_save_pp_for_manpower_trouble = yes
+			}
+		}
+	}
+
+	SOV_scorched_earth_baltics = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		available = {
+			has_war = yes
+			has_country_flag = SOV_scorched_earth
+			has_equipment = {
+				support_equipment > 24
+			}
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+
+		cost = 50
+		fire_only_once = yes
+		visible = {
+			has_country_flag = SOV_scorched_earth
+			NOT = { has_country_flag = SOV_order_227_flag }
+			OR = {
+				#LIT
+				controls_state = 188
+				controls_state = 814
+				controls_state = 189
+				controls_state = 11
+				controls_state = 815
+				#LAT
+				controls_state = 190
+				controls_state = 12
+				controls_state = 809
+				controls_state = 810
+				controls_state = 808
+				#EST
+				controls_state = 191
+				controls_state = 13
+				controls_state = 811
+				controls_state = 812
+				controls_state = 813
+			}
+
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = -25
+			}
+			every_controlled_state = {
+				limit = {
+					OR = {
+						#LIT
+						state = 188
+						state = 814
+						state = 189
+						state = 11
+						state = 815
+						#LAT
+						state = 190
+						state = 12
+						state = 809
+						state = 810
+						state = 808
+						#EST
+						state = 191
+						state = 13
+						state = 811
+						state = 812
+						state = 813
+					}
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	SOV_scorched_earth_moscow = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		available = {
+			has_war = yes
+			has_country_flag = SOV_scorched_earth
+			has_equipment = {
+				support_equipment > 49
+			}
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			has_country_flag = SOV_scorched_earth
+			NOT = { has_country_flag = SOV_order_227_flag }
+			OR = {
+				controls_state = 220
+				controls_state = 222
+				controls_state = 224
+				controls_state = 243
+				controls_state = 205
+				controls_state = 242
+				controls_state = 246
+				controls_state = 219
+			}
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = -50
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 220
+						state = 222
+						state = 224
+						state = 243
+						state = 205
+						state = 242
+						state = 246
+						state = 219
+					}
+					is_controlled_by = SOV
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+			}
+
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	SOV_scorched_earth_byelorussia = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		available = {
+			has_war = yes
+			has_country_flag = SOV_scorched_earth
+			has_equipment = {
+				support_equipment > 49
+			}
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			has_country_flag = SOV_scorched_earth
+			NOT = { has_country_flag = SOV_order_227_flag }
+			any_of = {
+				array = BLR.core_states
+				var:v = { is_controlled_by = SOV }
+			}
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = -50
+			}
+			every_state = {
+				limit = {
+					is_core_of = BLR
+					is_controlled_by = SOV
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	SOV_scorched_earth_ukraine = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		available = {
+			has_war = yes
+			has_country_flag = SOV_scorched_earth
+			has_equipment = {
+				support_equipment > 74
+			}
+		}
+
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			has_country_flag = SOV_scorched_earth
+			any_of = {
+				array = UKR.core_states
+				var:v = { is_controlled_by = SOV }
+			}
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = -75
+			}
+			every_state = {
+				limit = {
+					is_core_of = UKR
+					is_controlled_by = SOV
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	SOV_scorched_earth_caucasus = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		available = {
+			has_war = yes
+			has_country_flag = SOV_scorched_earth
+			has_equipment = {
+				support_equipment > 49
+			}
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			has_country_flag = SOV_scorched_earth
+			NOT = { has_country_flag = SOV_order_227_flag }
+			OR = {
+				controls_state = 229
+				controls_state = 230
+				controls_state = 231
+				controls_state = 232
+				controls_state = 233
+				controls_state = 234
+				controls_state = 235
+				controls_state = 821
+				controls_state = 826
+				controls_state = 827
+				controls_state = 828
+			}
+
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = -50
+			}
+			every_controlled_state = {
+				limit = {
+					OR ={
+						state = 229
+						state = 230
+						state = 231
+						state = 232
+						state = 233
+						state = 234
+						state = 235
+						state = 821
+						state = 826
+						state = 827
+						state = 828
+					}
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	SOV_scorched_earth_stalingrad = {
+
+		icon = generic_scorched_earth
+		allowed = {
+			NOT = {
+				has_dlc = "No Step Back"
+			}
+		}
+		available = {
+			has_war = yes
+			has_country_flag = SOV_scorched_earth
+			has_equipment = {
+				support_equipment > 49
+			}
+			NOT = { has_country_flag = SOV_order_227_flag }
+		}
+
+		cost = 75
+		fire_only_once = yes
+		visible = {
+			has_country_flag = SOV_scorched_earth
+			NOT = { has_country_flag = SOV_order_227_flag }
+			OR = {
+				controls_state = 245
+				controls_state = 217
+				controls_state = 218
+				controls_state = 238
+				controls_state = 237
+				controls_state = 236
+				controls_state = 265
+				controls_state = 829
+			}
+		}
+
+		complete_effect = {
+			add_equipment_to_stockpile = {
+				type = support_equipment_1
+				amount = -50
+			}
+			every_controlled_state = {
+				limit = {
+					OR ={
+						state = 245
+						state = 217
+						state = 218
+						state = 238
+						state = 237
+						state = 236
+						state = 265
+						state = 829
+					}
+				}
+				damage_building = {
+					type = infrastructure
+					damage = 3
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}
+
+SOV_export_guns = {
+
+	SOV_lend_lease_coming = {
+		icon = GFX_decision_SWE_set_navy_budget
+		days_mission_timeout = 60
+		is_good = yes
+
+		allowed = {
+			original_tag = SOV
+		}
+
+		available = {
+			always = no
+		}
+
+		activation = {
+			always = no
+		}
+
+		timeout_effect = {
+			if = {
+				limit = {
+					has_country_flag = SOV_LEND_LEASE_EQUIPMENT
+				}
+				add_equipment_to_stockpile = {
+					type = infantry_equipment
+					amount = 1500
+					producer = event_target:SOV_LEND_LEASE_SENDER
+				}
+				add_equipment_to_stockpile = {
+					type = support_equipment
+					amount = 200
+					producer = event_target:SOV_LEND_LEASE_SENDER
+				}
+				add_equipment_to_stockpile = {
+					type = artillery_equipment
+					amount = 200
+					producer = event_target:SOV_LEND_LEASE_SENDER
+				}
+				clr_country_flag = SOV_LEND_LEASE_EQUIPMENT
+			}
+			if = {
+				limit = {
+					has_country_flag = SOV_LEND_LEASE_SUPPLY_FOOD
+				}
+				add_timed_idea = {
+					idea = lend_lease_supply
+					days = 120
+				}
+				clr_country_flag = SOV_LEND_LEASE_SUPPLY_FOOD
+			}
+			if = {
+				limit = {
+					has_country_flag = SOV_LEND_LEASE_TRANSPORT
+				}
+				add_equipment_to_stockpile = {
+					type = train_equipment_1
+					amount = 100
+				}
+				add_equipment_to_stockpile = {
+					type = motorized_equipment_1
+					amount = 250
+				}
+				clr_country_flag = SOV_LEND_LEASE_TRANSPORT
+			}
+			clr_country_flag = SOV_LEND_LEASE_REQ
+		}
+
+		complete_effect = {
+		}
+	}
+
+	SOV_ask_for_lend_lease_usa = {
+		icon = GFX_decision_ger_military_buildup
+		days_remove = 2
+		cost = 15
+
+		available = {
+			NOT = { has_country_flag = SOV_LEND_LEASE_REQ }
+			USA = {
+				has_capitulated = no
+				OR = {
+					has_war_with = GER
+					has_completed_focus = USA_lend_lease_act
+				}
+				NOT = {
+					has_war_with = SOV
+					is_in_faction_with = SOV
+					has_government = fascism
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			USA = { country_event = sov_req_arms_event.1 }
+		}
+
+		ai_will_do = {
+			factor = 1.5
+		}
+	}
+
+	SOV_ask_for_lend_lease_eng = {
+		icon = GFX_decision_ger_military_buildup
+		days_remove = 2
+		cost = 15
+
+		available = {
+			NOT = { has_country_flag = SOV_LEND_LEASE_REQ }
+			ENG = {
+				has_capitulated = no
+				has_war_with = GER
+				NOT = {
+					has_war_with = SOV
+					is_in_faction_with = SOV
+					has_government = fascism
+				}
+			}
+		}
+
+		complete_effect = {
+			ENG = { country_event = sov_req_arms_event.1 }
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+	SOV_ask_for_lend_lease_fra = {
+		icon = GFX_decision_ger_military_buildup
+		days_remove = 2
+		cost = 15
+
+		available = {
+			NOT = { has_country_flag = SOV_LEND_LEASE_REQ }
+			FRA = {
+				has_capitulated = no
+				has_war_with = GER
+				NOT = {
+					has_war_with = SOV
+					is_in_faction_with = SOV
+					has_government = fascism
+				}
+			}
+		}
+
+		complete_effect = {
+			FRA = { country_event = sov_req_arms_event.1 }
+		}
+
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+}

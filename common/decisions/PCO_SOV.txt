@@ -1,0 +1,163 @@
+####### NO STEP BACK! #######
+@DAYS_DETERMINED = 180 #Used for propaganda campaign SOV_heroes_forward -> Value should be the same as SOV_default_propaganda_campaign_duration
+
+#POLAND INVASION DECISIONS
+
+SOV_coinvasion_of_poland_decision_category = {
+
+	SOV_poland_invasion_preparations = { # Mission for SOV to prepare the invasion of POL along with germany as part of the m-r pact
+		priority = 203
+
+		icon = hol_draw_up_staff_plans
+		
+		ai_will_do = {
+			base = 20000
+		}
+		
+		allowed = {
+			original_tag = SOV
+		}
+		
+		available =  {
+			OR = {
+				has_global_flag = SOV_poland_invasion_preparations_flag
+			}
+		}
+		
+		visible = {
+			POL = { 
+				has_war_with = GER
+				has_capitulated = no 
+			}
+			OR = {
+				has_global_flag = SOV_poland_invasion_preparations_flag
+				AND = {
+					NOT = { 
+						has_global_flag = SOV_poland_invasion_preparations_flag 
+						has_war_with = GER
+					}
+					has_global_flag = sov_accepted_mr_pact
+				}
+			}
+		}
+		
+		days_remove = 7
+		war_with_on_timeout = POL
+		fire_only_once = yes
+		
+		cost = 0
+		
+		modifier = {
+			army_speed_factor = 0.4
+			army_org_regain = 0.4
+			mobilization_speed  = 0.15
+		}
+
+		remove_effect = {
+			hidden_effect = {
+				POL = {
+					add_timed_idea = {
+						idea = POL_soviet_surprise_attack
+						days = 90
+					}
+				}
+				if = {
+					limit = {
+						is_historical_focus_on = yes
+						SOV = { is_ai = yes }
+						GER = { is_ai = yes }
+						POL = {
+							NOT = {
+								has_idea = POL_the_ultimate_struggle_3
+							}
+						}
+					}
+					POL = {	
+						add_ideas = POL_the_ultimate_struggle_3
+					}
+				}
+				if = {
+					limit = {
+						OR = {
+							is_historical_focus_on = no
+							SOV = { is_ai = no }
+							GER = { is_ai = no }
+						}
+					}
+					POL = {	
+						swap_ideas = {
+							remove_idea = POL_the_ultimate_struggle
+							add_idea = POL_the_ultimate_struggle_2
+						}
+					}
+				}
+				every_other_country = {
+					limit = {
+						is_in_faction_with = POL
+						NOT = {
+							tag = POL
+						}
+					}
+					add_timed_idea = {
+						idea = POL_passive_to_the_soviet_invasion
+						days = 100
+					}
+				}
+				news_event = { hours = 6 id = pco_news.2 }
+			}
+			declare_war_on = {
+				target = POL
+				type = take_state
+				generator = { 96 95 97 94 92 93 91 89 }
+			}
+			ENG = {
+				country_event = { days = 3 id = poland_invasion.3 }
+			}
+			set_global_flag = SOV_invade_poland
+
+			activate_mission = SOV_live_invasion_of_poland
+		}
+	}
+
+	SOV_live_invasion_of_poland = { # Mission for SOV to end the war before the allies decide to intervene
+		priority = 205
+
+		icon = generic_operation
+		
+		is_good = no 
+
+		allowed = {
+			original_tag = SOV
+			always = no
+		}
+		
+		#cancel_if_not_visible = yes
+		
+		visible = {
+			has_global_flag = SOV_invade_poland
+		}
+		
+		fire_only_once = yes
+
+		available =  {
+			POL = { has_capitulated = yes }
+		}
+
+		days_mission_timeout = 90
+		#days_mission_timeout = 10 #USED FOR TESTING PURPOSES
+
+		timeout_effect = { #FAIL -> Do you want to continue or enter a peace to prevent the allies to declare on you?
+			add_political_power = -50
+			add_command_power = -25
+			country_event = { id = pol_soviet_retrayal.1 hours = 1 }
+		}
+
+		complete_effect = {
+			add_command_power = 50
+			add_war_support = 0.1
+			ROOT = {
+				country_event = { id = pol_par_initial.1 hours = 1 }
+			}
+		}
+	}
+}

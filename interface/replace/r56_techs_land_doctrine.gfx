@@ -1,0 +1,111 @@
+#####
+
+spriteTypes = {
+
+	SpriteType = {
+		name = "GFX_mission_type_tactics_medium"
+		texturefile = "gfx/interface/technologies/werwolf_guerillas.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_force_concentration_medium"
+		texturefile = "gfx/interface/technologies/force_concentration.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tactical_command_medium"
+		texturefile = "gfx/interface/technologies/tactical_command.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_second_guerilla_warfare_medium"
+		texturefile = "gfx/interface/technologies/guerilla_warfare.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_double_envelopment_medium"
+		texturefile = "gfx/interface/technologies/double_envelopement_tech.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_infiltration_assault_medium"
+		texturefile = "gfx/interface/technologies/infiltration_assault.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_second_infiltration_in_depth_medium"
+		texturefile = "gfx/interface/technologies/infiltration_in_depth.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_milita_formation_medium"
+		texturefile = "gfx/interface/technologies/volkssturm.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_peoples_army_medium"
+		texturefile = "gfx/interface/technologies/peoples_army.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tactical_withdrawal_medium"
+		texturefile = "gfx/interface/technologies/tactical_withdrawal_doctrine.dds"
+	}
+
+
+	SpriteType = {
+		name = "GFX_last_stand_medium"
+		texturefile = "gfx/interface/technologies/attritional_containment.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_breakout_medium"
+		texturefile = "gfx/interface/technologies/assault_breakthrough.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_special_forces_shocktroops_medium"
+		texturefile = "gfx/interface/technologies/techs/special_forces_shocktroop.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_shocktroop_level_1_a_medium"
+		texturefile = "gfx/interface/technologies/techs/shocktrooper_urban_clearance_team.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_shocktroop_level_1_b_medium"
+		texturefile = "gfx/interface/technologies/techs/shocktrooper_defensive_infiltration.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_shocktroop_keystone_1_medium"
+		texturefile = "gfx/interface/technologies/techs/shocktrooper_support_shock_army.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_shocktroop_level_2_a_medium"
+		texturefile = "gfx/interface/technologies/techs/shocktrooper_sustained_battle.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_shocktroop_level_2_b_medium"
+		texturefile = "gfx/interface/technologies/techs/shocktrooper_probing_attacks.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_shocktroop_keystone_2_medium"
+		texturefile = "gfx/interface/technologies/techs/shocktrooper_intergrated_engineers.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_shocktroop_level_3_a_medium"
+		texturefile = "gfx/interface/technologies/techs/shocktrooper_shock_army.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_shocktroop_level_3_b_medium"
+		texturefile = "gfx/interface/technologies/techs/shocktrooper_breakthrough_army.dds"
+	}
+
+}

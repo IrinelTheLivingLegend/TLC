@@ -1,0 +1,2625 @@
+# Birmingham Trials ENG - USA
+birmingham_trials_category = {
+	########################################################
+	# First days of the Trials
+	start_the_trials = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		days_remove = 100
+		available = {
+			is_subject = no
+			has_government = fascism
+			NOT = {
+				GER = {
+					has_war_with = ENG
+				}
+			}
+			OR = {
+				hidden_trigger = {
+					has_global_flag = GCE_ENG_Capitulated_to_GER
+				}
+				ENG = {
+					has_capitulated = yes
+				}
+				ENG = {
+					is_subject_of = GER
+				}
+				AND = {
+					GER = {
+						owns_state = 126
+					}
+					GER = {
+						owns_state = 128
+					}
+				}
+			}
+		}
+		visible = {
+			has_global_flag = GCE_london_surrender
+		}
+		remove_effect = {
+			hidden_effect = {
+				country_event = GCE_GER.36
+				set_global_flag = GCE_Birmingham_Trials_Ended
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_Birmingham_Trials.1
+		}
+	}
+	########################################################
+	# Hang Churchill
+	hang_churchill = {
+		icon = GFX_decision_generic_police_action
+		cost = 10
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			ENG = {
+				has_country_flag = chamberlain_resigned
+			}
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.2
+			}
+		}
+		complete_effect = {
+			hidden_effect = {
+				every_country = {
+					news_event = {
+						id = GCE_news.22
+					}
+				}
+			}
+			set_country_flag = GCE_Birmingham_Trials.2
+			ENG = {
+				kill_ideology_leader = democratic
+			}
+		}
+	}
+	########################################################
+	# Question of the Royal Family
+	question_of_the_royal_family = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		cost = 10
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.3
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.23
+			}
+			set_country_flag = GCE_Birmingham_Trials.3
+		}
+	}
+	########################################################
+	# Free Rudolf Hess
+	free_rudolf = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		cost = 5
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			GER = {
+				has_country_flag = flight_of_hess
+			}
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.4
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.37
+			}
+			set_country_flag = GCE_Birmingham_Trials.4
+		}
+	}
+	########################################################
+	# Recruit British Generals
+	recruit_british_generals = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		cost = 25
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			GER = {
+				has_country_flag = GCE_recruit_british_generals
+			}
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.5
+			}
+		}
+		days_remove = 21
+		complete_effect = {
+			### Remove Generals fron the British Army - NSB Fix ###
+			ENG = {
+				retire_character = ENG_alan_brooke
+			}
+			ENG = {
+				retire_character = ENG_bernard_montgomery
+			}
+			ENG = {
+				retire_character = ENG_harold_alexander
+			}
+			ENG = {
+				retire_character = ENG_john_vereker
+			}
+			ENG = {
+				retire_character = ENG_miles_dempsey
+			}
+			### Legacy ###
+			#ENG = { remove_unit_leader = 997 } # Aleen Brooke - Done
+			#ENG = { remove_unit_leader = 996 } # Bernard Montgomery - Done
+			#ENG = { remove_unit_leader = 995 } # Hardold Alexander - Done
+			#ENG = { remove_unit_leader = 994 } # John Vereker Lord Gort - Done
+			#ENG = { remove_unit_leader = 993 } # Miles Dempsey - Done
+			set_country_flag = GCE_Birmingham_Trials.5
+		}
+		remove_effect = {
+			GER = {
+				### Alan Brooke ###
+				create_field_marshal = {
+					name = "Alan Brooke"					# Aristocrat
+					id = 8801
+					picture = "Portrait_GER_Alan_Brooke.tga"
+					traits = {
+						defensive_doctrine
+						trait_cautious
+						career_officer
+					}
+					skill = 5
+					attack_skill = 3
+					defense_skill = 5
+					planning_skill = 5
+					logistics_skill = 3
+				}
+				### Bernhard Montgomery ### 
+				create_field_marshal = {
+					name = "Bernard Montgomery"					# Aristocrat
+					id = 8802
+					picture = "Portrait_GER_Bernard_Montgomery.tga"
+					traits = {
+						logistics_wizard
+						offensive_doctrine
+						media_personality
+						trait_cautious
+						inflexible_strategist
+						organizer
+					}
+					skill = 4
+					attack_skill = 2
+					defense_skill = 4
+					planning_skill = 3
+					logistics_skill = 4
+				}
+				### John Vereker Lord Gort ###
+				create_corps_commander = {
+					name = "John Vereker Lord Gort"					# Aristocrat
+					id = 8803
+					picture = "Portrait_GER_John_Vereker.tga"
+					traits = {
+						politically_connected
+						trait_cautious
+					}
+					skill = 4
+					attack_skill = 3
+					defense_skill = 3
+					planning_skill = 4
+					logistics_skill = 3
+				}
+				### Haraold Alexander ###
+				create_corps_commander = {
+					name = "Harold Alexander"					# Aristocrat
+					id = 8804
+					picture = "Portrait_GER_Harold_Alexander.tga"
+					traits = {
+						politically_connected
+					}
+					skill = 5
+					attack_skill = 4
+					defense_skill = 4
+					planning_skill = 3
+					logistics_skill = 5
+				}
+				### Oliver Leese ###
+				create_corps_commander = {
+					name = "Oliver Leese"					# Aristocrat
+					id = 8805
+					picture = "Portrait_GER_Oliver_Leese.tga"
+					traits = {
+						armor_officer
+						harsh_leader
+						politically_connected
+					}
+					skill = 4
+					attack_skill = 4
+					defense_skill = 2
+					planning_skill = 3
+					logistics_skill = 4
+				}
+			}
+		}
+	}
+	###############################################
+	#Recruit British Admirals
+	recruit_british_admirals = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		cost = 25
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			GER = {
+				has_country_flag = GCE_recruit_british_generals
+			}
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.6
+			}
+		}
+		days_remove = 21
+		complete_effect = {
+			ENG = {
+				retire_character = ENG_james_fownes_somerville
+			}
+			ENG = {
+				retire_character = ENG_henry_harwood
+			}
+			ENG = {
+				retire_character = ENG_bruce_fraser
+			}
+			ENG = {
+				retire_character = ENG_john_tovey
+			}
+			ENG = {
+				retire_character = ENG_bernard_rawlings
+			}
+			### NSB FIX ###
+			#ENG = { remove_unit_leader = 983 } # James Fownes Sommerville - Done
+			#ENG = { remove_unit_leader = 984 } # Henry Harwood - Done
+			#ENG = { remove_unit_leader = 986 } # Bruce Fraser - Done
+			#ENG = { remove_unit_leader = 987 } # John Tovey - Done
+			#ENG = { remove_unit_leader = 988 } # Bernard Rawlings - Done
+			set_country_flag = GCE_Birmingham_Trials.6
+		}
+		remove_effect = {
+			GER = {
+				### James Fownes Sommerville ###
+				create_navy_leader = {
+					name = "James Fownes Somerville"					# Aristocrat
+					id = 88983
+					picture = "portrait_GER_James_Fownes_Somerville.tga"
+					traits = {
+						superior_tactician
+						aviation_enthusiast
+						navy_career_officer
+					}
+					skill = 5
+					attack_skill = 4
+					defense_skill = 3
+					maneuvering_skill = 4
+					coordination_skill = 5
+				}
+				### Henry Harwood ###
+				create_navy_leader = {
+					name = "Henry Harwood"					# Aristocrat
+					id = 8806
+					picture = "portrait_GER_Henry_Harwood.tga"
+					traits = {
+						old_guard_navy
+						bold
+					}
+					skill = 3
+					attack_skill = 3
+					defense_skill = 2
+					maneuvering_skill = 3
+					coordination_skill = 2
+				}
+				### Bruce Fraser ###
+				create_navy_leader = {
+					name = "Bruce Fraser"
+					id = 8807
+					picture = "Portrait_GER_Bruce_Fraser.tga"
+					traits = {
+						aviation_enthusiast
+						naval_lineage
+						blockade_runner
+					}
+					skill = 4
+					attack_skill = 3
+					defense_skill = 2
+					maneuvering_skill = 4
+					coordination_skill = 4
+				}
+				### John Tovey ###
+				create_navy_leader = {
+					name = "John Tovey"					# Aristocrat
+					id = 8809
+					picture = "Portrait_GER_John_Tovey.tga"
+					traits = {
+						gentlemanly
+						naval_lineage
+						superior_tactician
+					}
+					skill = 4
+					attack_skill = 3
+					defense_skill = 3
+					maneuvering_skill = 2
+					coordination_skill = 5
+				}
+				### Bernhard Rawlings ###
+				create_navy_leader = {
+					name = "Bernard Rawlings"					# Aristocrat
+					id = 8810
+					picture = "Portrait_GER_Bernard_Rawlings.tga"
+					traits = {
+						gentlemanly
+					}
+					skill = 3
+					attack_skill = 3
+					defense_skill = 2
+					maneuvering_skill = 3
+					coordination_skill = 2
+				}
+			}
+		}
+	}
+	########################################################
+	# Give Rudolf Hess Field Command
+	give_rudolf_hess_field_command = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		cost = 5
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			has_country_flag = GCE_Birmingham_Trials.4
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.4
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.7
+			}
+		}
+		complete_effect = {
+			GER = {
+				### Rudolf Heß ###
+				create_corps_commander = {
+					name = "Rudolf Heß"
+					id = 8811
+					picture = "Portrait_GER_Rudolf_Hess.tga"
+					traits = {
+						war_hero
+						media_personality
+						politically_connected
+						commando
+						paratrooper
+						trickster
+					}
+					skill = 3
+					attack_skill = 5
+					defense_skill = 2
+					planning_skill = 1
+					logistics_skill = 4
+				}
+			}
+			set_country_flag = GCE_Birmingham_Trials.7
+		}
+	}
+	########################################################
+	# Birmingham Trials - Trail the Highcommand 
+	trial_the_high_command = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.8
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.31
+			}
+			set_country_flag = GCE_Birmingham_Trials.8
+		}
+	}
+	########################################################
+	# Birmingham Trials - Reparations
+	question_of_reparations = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.9
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.32
+			}
+			set_country_flag = GCE_Birmingham_Trials.9
+		}
+	}
+	########################################################
+	# Birmingham Trials - Navy
+	question_of_the_navy = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.10
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.33
+			}
+			set_country_flag = GCE_Birmingham_Trials.10
+		}
+	}
+	########################################################
+	# Birmingham Trials - Army / Treaty of Brighton
+	question_of_the_army = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.11
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.34
+			}
+			set_country_flag = GCE_Birmingham_Trials.11
+		}
+	}
+	########################################################
+	# Grand Italian Claims
+	italian_claims = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			is_in_faction_with = ITA
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.12
+			}
+		}
+		complete_effect = {
+			ITA = {
+				transfer_state = 116
+			}
+			ITA = {
+				transfer_state = 183
+			}
+			ITA = {
+				add_state_core = 116
+			}
+			ITA = {
+				add_state_core = 183
+			}
+			ITA = {
+				release = ETH
+			}
+			ITA = {
+				set_autonomy = {
+					target = ETH
+					autonomy_state = autonomy_reichskommissariat
+					end_wars = yes
+					end_civil_wars = no
+				}
+			}
+			ETH = {
+				add_state_core = 269
+			}
+			ETH = {
+				add_state_core = 547
+			}
+			ETH = {
+				add_state_core = 549
+			}
+			ETH = {
+				add_state_core = 551
+			}
+			ETH = {
+				add_state_core = 767
+			}
+			ETH = {
+				add_state_core = 268
+			}
+			ETH = {
+				add_state_core = 550
+			}
+			ETH = {
+				add_state_core = 559
+			}
+			ETH = {
+				transfer_state = 269
+			}
+			ETH = {
+				transfer_state = 547
+			}
+			ETH = {
+				transfer_state = 549
+			}
+			ETH = {
+				transfer_state = 551
+			}
+			ETH = {
+				transfer_state = 767
+			}
+			ETH = {
+				transfer_state = 268
+			}
+			ETH = {
+				transfer_state = 550
+			}
+			ETH = {
+				transfer_state = 559
+			}
+			ITA = {
+				release = LBA
+			}
+			ITA = {
+				set_autonomy = {
+					target = LBA
+					autonomy_state = autonomy_reichskommissariat
+					end_wars = yes
+					end_civil_wars = no
+				}
+			}
+			LBA = {
+				add_state_core = 452
+			}
+			LBA = {
+				add_state_core = 552
+			}
+			LBA = {
+				add_state_core = 446
+			}
+			LBA = {
+				add_state_core = 456
+			}
+			LBA = {
+				add_state_core = 457
+			}
+			LBA = {
+				add_state_core = 453
+			}
+			LBA = {
+				add_state_core = 447
+			}
+			LBA = {
+				transfer_state = 452
+			}
+			LBA = {
+				transfer_state = 552
+			}
+			LBA = {
+				transfer_state = 446
+			}
+			LBA = {
+				transfer_state = 456
+			}
+			LBA = {
+				transfer_state = 457
+			}
+			LBA = {
+				transfer_state = 453
+			}
+			LBA = {
+				transfer_state = 447
+			}
+			set_country_flag = GCE_Birmingham_Trials.12
+		}
+	}
+	########################################################
+	# Sieze British Colonies
+	annex_remaining_colonies = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.13
+			}
+		}
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = ENG
+					NOT = {
+						is_core_of = ENG
+					}
+				}
+				transfer_state_to = GER
+			}
+			set_country_flag = GCE_Birmingham_Trials.13
+		}
+	}
+	########################################################
+	# Welsh Independence
+	release_welsh_state = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			NOT = {
+				country_exists = WLS
+			}
+			has_country_flag = GCE_Birmingham_Trials.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.14
+			}
+		}
+		complete_effect = {
+			ENG = {
+				release = WLS
+			}
+			GER = {
+				set_autonomy = {
+					target = WLS
+					autonomy_state = autonomy_reichskommissariat
+					end_wars = yes
+					end_civil_wars = no
+				}
+			}
+			hidden_effect = {
+				WLS = {
+					set_cosmetic_tag = NA_WLS
+				}
+				WLS = {
+					kill_ideology_leader = fascism
+					set_party_name = {
+						ideology = fascism
+						name = Welsh_National_Socialist_Party
+						long_name = Welsh_National_Socialist_Party_long
+					}
+					create_country_leader = {
+						name = "Karl Münter"
+						desc = ""
+						picture = "GFX_Portrait_Germany_Generic_land_4"
+						expire = "1985.1.1"
+						ideology = fascism_ideology
+					}
+				}
+				set_global_flag = GCE_wales_uprising
+				set_country_flag = GCE_Birmingham_Trials.14
+			}
+		}
+	}
+	########################################################
+	# Scottish Independence
+	release_scottish_state = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				country_exists = SCO
+			}
+		}
+		visible = {
+			NOT = {
+				has_global_flag = GCE_scottish_uprising
+			}
+			has_country_flag = GCE_Birmingham_Trials.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.15
+			}
+		}
+		complete_effect = {
+			ENG = {
+				release = SCO
+			}
+			GER = {
+				set_autonomy = {
+					target = SCO
+					autonomy_state = autonomy_reichskommissariat
+					end_wars = yes
+					end_civil_wars = no
+				}
+			}
+			hidden_effect = {
+				set_global_flag = ENG_became_england
+				SCO = {
+					set_party_name = {
+						ideology = fascism
+						long_name = GEN_National_Socialist_Party_Scotland
+						name = NSPS
+					}
+					create_country_leader = {
+						name = "William Weir Gilmour"
+						desc = ""
+						picture = "GFX_Portrait_Britain_Generic_land_3"
+						expire = "1985.1.1"
+						ideology = fascism_ideology
+					}
+					set_cosmetic_tag = NA_SCO
+				}
+				set_global_flag = GCE_scottish_uprising
+				ENG = {
+					country_event = {
+						id = GCE_GEN.38
+						days = 7
+					}
+				}
+				set_country_flag = GCE_Birmingham_Trials.15
+			}
+		}
+	}
+}
+
+birmingham_trials_USA_category = {
+	########################################################
+	# Extend the Birmingham Trials
+	start_the_trials_USA = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		days_remove = 100
+		available = {
+			is_subject = no
+			has_government = fascism
+			country_exists = USA
+		}
+		visible = {
+			has_global_flag = GCE_USA_surrender
+			has_global_flag = GCE_Birmingham_Trials_Ended
+		}
+		remove_effect = {
+			hidden_effect = {
+				country_event = GCE_GER.47
+			}
+		}
+		complete_effect = {
+			country_event = {
+				days = 7
+				id = GCE_news.23
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.1
+		}
+	}
+	########################################################
+	# Trail the Royal Family
+	royal_family_trial = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			OR = {
+				CAN = {
+					has_capitulated = yes
+				}
+				has_global_flag = GCE_CAN_Capitulated_to_GER
+			}
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials.3
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.2
+			}
+		}
+		complete_effect = {
+			IF = {
+				LIMIT = {
+					has_global_flag = GCE_GER_Royal_Family_Enemy
+				}
+				country_event = {
+					id = GCE_GER.29
+				}
+			}
+			IF = {
+				LIMIT = {
+					has_global_flag = GCE_GER_Royal_Family_Friend
+				}
+				country_event = {
+					id = GCE_GER.30
+				}
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.2
+		}
+	}
+	########################################################
+	# Question McAthur
+	question_mcauthur = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			country_exists = USA
+		}
+		visible = {
+			has_country_flag = GCE_mcauthur
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.3
+			}
+		}
+		days_remove = 14
+		remove_effect = {
+			set_country_flag = GCE_Birmingham_Trials_USA.3
+			random_list = {
+				50 = {
+					country_event = {
+						id = GCE_GER.42
+					}
+				}
+				50 = {
+					country_event = {
+						id = GCE_GER.43
+					}
+				}
+			}
+		}
+	}
+	########################################################
+	# Recruit American Generals
+	recruit_american_generals = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		cost = 50
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = GCE_USA_government_purged
+				}
+			}
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.4
+			}
+		}
+		days_remove = 21
+		complete_effect = {
+			USA = {
+				retire_character = USA_dwight_d_eisenhower
+			}
+			USA = {
+				retire_character = USA_joseph_stilwell
+			}
+			USA = {
+				retire_character = USA_courtney_hodges
+			}
+			USA = {
+				retire_character = USA_lucian_truscott
+			}
+			USA = {
+				retire_character = USA_mark_clark
+			}
+			USA = {
+				retire_character = USA_geoffrey_keyes
+			}
+			### NSB FIX ###
+			#USA = { remove_unit_leader = 602 } # Dwight D. Eisenhower - Done
+			#USA = { remove_unit_leader = 601 } # Dwight Joseph Stillwell - Done
+		}
+		remove_effect = {
+			GER = {
+				set_country_flag = GCE_Birmingham_Trials.USA.5
+				### Dwight D. Eisenhower ###
+				create_field_marshal = {
+					name = "Dwight D. Eisenhower"
+					picture = "Portrait_GER_Dwight_D_Eisenhower"
+					traits = {
+						logistics_wizard
+						organizer
+						offensive_doctrine
+						trait_cautious
+						armor_officer
+						politically_connected
+					}
+					skill = 5
+					id = 8812
+					attack_skill = 3
+					defense_skill = 3
+					planning_skill = 5
+					logistics_skill = 5
+				}
+				### Joseph Stillwell ###
+				create_corps_commander = {
+					name = "Joseph Stilwell"
+					picture = "Portrait_GER_Joseph_Stilwell"
+					traits = {
+						politically_connected
+						infantry_officer
+						career_officer
+						harsh_leader
+					}
+					skill = 2
+					id = 8813
+					attack_skill = 1
+					defense_skill = 1
+					planning_skill = 1
+					logistics_skill = 1
+				}
+				### Cortney Hoges ###
+				create_corps_commander = {
+					name = "Cortney Hoges"
+					picture = "Portrait_GER_Cortney_Hoges"
+					traits = {
+						career_officer
+						infantry_officer
+						panzer_leader
+					}
+					skill = 4
+					id = 8814
+					attack_skill = 4
+					defense_skill = 3
+					planning_skill = 2
+					logistics_skill = 4
+				}
+				### Lucian Truscott ###
+				create_corps_commander = {
+					name = "Lucian Truscott"
+					picture = "Portrait_GER_Lucian_Truscott"
+					traits = {
+						cavalry_officer
+						engineer_officer
+						commando
+					}
+					skill = 3
+					id = 8815
+					attack_skill = 3
+					defense_skill = 3
+					planning_skill = 2
+					logistics_skill = 2
+				}
+				### Mark W. Clark ###
+				create_corps_commander = {
+					name = "Mark W. Clark"
+					picture = "Portrait_GER_Mark_W_Clark"
+					traits = {
+						trait_reckless
+						infantry_officer
+					}
+					skill = 4
+					id = 8816
+					attack_skill = 5
+					defense_skill = 3
+					planning_skill = 2
+					logistics_skill = 3
+				}
+				### Geoffrey Keyes ###
+				create_corps_commander = {
+					name = "Geoffrey Keyes"
+					picture = "Portrait_GER_Geoffrey_Keyes"
+					traits = {
+						career_officer
+						panzer_leader
+					}
+					skill = 2
+					id = 8817
+					attack_skill = 2
+					defense_skill = 2
+					planning_skill = 2
+					logistics_skill = 1
+				}
+			}
+		}
+	}
+	###############################################
+	#Recruit American Admirals
+	recruit_american_admirals = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		cost = 50
+		available = {
+			hidden_trigger = {
+				NOT = {
+					has_global_flag = GCE_USA_government_purged
+				}
+			}
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials.6
+			}
+		}
+		days_remove = 21
+		complete_effect = {
+			set_country_flag = GCE_Birmingham_Trials.USA.6
+		}
+		remove_effect = {
+			GER = {
+				USA = {
+					retire_character = USA_ernest_king
+				}
+				USA = {
+					retire_character = USA_william_halsey_jr
+				}
+				USA = {
+					retire_character = USA_arleigh_burke
+				}
+				### Ernest King ###
+				create_navy_leader = {
+					name = "Ernest King"
+					id = 8818
+					picture = "GFX_Portrait_GER_Earnest_King"
+					traits = {
+						career_officer
+						aviation_enthusiast
+						blockade_runner
+						superior_tactician
+					}
+					skill = 5
+					attack_skill = 4
+					defense_skill = 3
+					maneuvering_skill = 3
+					coordination_skill = 6
+				}
+				### Arleigh Burke ###
+				create_navy_leader = {
+					name = "Arleigh Burke"
+					id = 8819
+					picture = "GFX_Portrait_GER_Arleigh_Burke"
+					traits = {
+						old_guard_navy
+						bold
+						superior_tactician
+					}
+					skill = 4
+					attack_skill = 3
+					defense_skill = 3
+					maneuvering_skill = 3
+					coordination_skill = 4
+				}
+				### William Halsey Jr ###
+				create_navy_leader = {
+					name = "Willhelm Halsey"
+					id = 8820
+					picture = "GFX_Portrait_GER_William_Halsey_Jr"
+					traits = {
+						bold
+						aviation_enthusiast
+						superior_tactician
+					}
+					skill = 4
+					attack_skill = 5
+					defense_skill = 3
+					maneuvering_skill = 3
+					coordination_skill = 2
+				}
+			}
+		}
+	}
+	########################################################
+	# Rebuild the statue of liberty
+	rebuild_statue_of_liberty = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			country_exists = USA
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			has_global_flag = fall_of_new_york
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.5
+			}
+		}
+		days_remove = 30
+		modifier = {
+			civilian_factory_use = 10
+		}
+		remove_effect = {
+			set_country_flag = GCE_Birmingham_Trials_USA.5
+			GER = {
+				news_event = {
+					id = GCE_news.42
+				}
+			}
+		}
+	}
+	########################################################
+	# Sieze American Colonies
+	USA_annex_remaining_colonies = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.61
+			}
+		}
+		complete_effect = {
+			every_state = {
+				limit = {
+					is_owned_by = USA
+					NOT = {
+						is_core_of = USA
+					}
+				}
+				transfer_state_to = GER
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.61
+		}
+	}
+	########################################################
+	# Birmingham Trials - Trail the Highcommand - USA
+	USA_trial_the_high_command = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.7
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.31
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.38
+		}
+	}
+	########################################################
+	# Birmingham Trials - Repairation - USA
+	USA_repairations = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.8
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.39
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.8
+		}
+	}
+	########################################################
+	# Birmingham Trials - Navy - USA
+	USA_trial_the_navy = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.9
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.40
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.9
+		}
+	}
+	########################################################
+	# Birmingham Trials - Army - USA
+	USA_trial_the_army = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.10
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.41
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.10
+		}
+	}
+	########################################################
+	# Birmingham Trials - Genocide - USA
+	USA_question_of_racial_laws = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.11
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.46
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.11
+		}
+	}
+	########################################################
+	# Birmingham Trials - Japanese Claims - USA
+	USA_japanese_claims = {
+		icon = GFX_decision_generic_police_action
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+		}
+		visible = {
+			has_country_flag = GCE_Birmingham_Trials_USA.1
+			NOT = {
+				has_country_flag = GCE_Birmingham_Trials_USA.12
+			}
+		}
+		complete_effect = {
+			GER = {
+				country_event = GCE_GER.460
+			}
+			set_country_flag = GCE_Birmingham_Trials_USA.12
+		}
+	}
+}
+
+# Operation Weißkopfseeadler
+operation_wksa_category = {
+	############################################################
+	# Operation Weißkopfseeadler
+	wksa = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa.0
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa.0
+		}
+	}
+	############################################################
+	# Operation Schneeblitz
+	wksa_north = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = GCE_wksa.0
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa.1
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa.1
+		}
+	}
+	############################################################
+	# Operation Atlantischer Blitzkrieg
+	wksa_middle = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = GCE_wksa.0
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa.2
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa.2
+		}
+	}
+	############################################################
+	# Operation Südschlag
+	wksa_south = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = GCE_wksa.0
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa.3
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa.3
+		}
+	}
+}
+
+operation_wksa_north_category = {
+	wksa_invade_canada = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.1
+			country_exists = CAN
+			NOT = {
+				GER = {
+					has_war_with = CAN
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_north.1
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_north.1
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = CAN
+				}
+			}
+		}
+	}
+	############################################################
+	# Invest in winter equipment
+	wksa_invest_in_winter_equipment = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = GCE_wksa.1
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_north.2
+			}
+		}
+		days_remove = 90
+		modifier = {
+			industrial_capacity_factory = -0.05
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_north.2
+			add_tech_bonus = {
+				name = nav_bomber_bonus
+				bonus = 0.5
+				uses = 3
+				technology = winter_clothes_gw
+				technology = winter_clothes_1939
+				technology = winter_clothes_1941
+				technology = winter_clothes_1944
+			}
+		}
+	}
+	############################################################
+	# Build suppy lines
+	wksa_build_supply_lines = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = GCE_wksa.1
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_north.3
+			}
+		}
+		days_remove = 180
+		modifier = {
+			civilian_factory_use = 10
+			production_speed_supply_node_factor = 0.15
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_north.3
+		}
+	}
+	############################################################
+	# Build infrastructure
+	wksa_build_infrastructure = {
+		icon = GFX_decision_generic_construction
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = GCE_wksa.1
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_north.4
+			}
+		}
+		days_remove = 360
+		modifier = {
+			civilian_factory_use = 5
+			production_speed_infrastructure_factor  = 0.1
+			production_speed_rail_way_factor = 0.1
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_north.4
+		}
+	}
+}
+
+operation_wksa_south_category = {
+	wksa_invade_cuba = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.4
+			country_exists = CUB
+			NOT = {
+				GER = {
+					has_war_with = CUB
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.1
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.1
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = CUB
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on Haiti
+	wksa_invade_haiti = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.4
+			country_exists = HAI
+			NOT = {
+				GER = {
+					has_war_with = HAI
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.2
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.2
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = HAI
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on Dominican Republic
+	wksa_invade_dominican_republic = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.4
+			country_exists = HAI
+			NOT = {
+				GER = {
+					has_war_with = DOM
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.3
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.3
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = DOM
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on Caribbean countries
+	wksa_invade_caribbean_countries = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = GCE_wksa.3
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.4
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.4
+		}
+	}
+	############################################################
+	# Declear war on Central American countries
+	wksa_invade_central_american_countries = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		visible = {
+			has_country_flag = GCE_wksa.3
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.5
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.5
+		}
+	}
+	############################################################
+	# Declear war on Panama
+	wksa_invade_panama = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.5
+			country_exists = PAN
+			NOT = {
+				GER = {
+					has_war_with = PAN
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.6
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.6
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = PAN
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on Costa Rica
+	wksa_invade_costa_rica = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.5
+			country_exists = COS
+			NOT = {
+				GER = {
+					has_war_with = COS
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.7
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.7
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = COS
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on Nicaragua
+	wksa_invade_nicaragua = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.5
+			country_exists = NIC
+			NOT = {
+				GER = {
+					has_war_with = NIC
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.8
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.8
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = NIC
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on Honduras
+	wksa_invade_honduras = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.5
+			country_exists = HON
+			NOT = {
+				GER = {
+					has_war_with = HON
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.9
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.9
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = HON
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on El Salvador
+	wksa_invade_el_salvador = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.5
+			country_exists = ELS
+			NOT = {
+				GER = {
+					has_war_with = ELS
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.10
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.10
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = ELS
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on Guatemala
+	wksa_invade_guatamala = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.5
+			country_exists = GUA
+			NOT = {
+				GER = {
+					has_war_with = GUA
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.11
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.11
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = GUA
+				}
+			}
+		}
+	}
+	############################################################
+	# Declear war on Mexico
+	wksa_invade_mexico = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		cost = 10
+		visible = {
+			has_country_flag = GCE_wksa.3
+			has_country_flag = GCE_wksa_south.5
+			country_exists = MEX
+			NOT = {
+				GER = {
+					has_war_with = MEX
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.12
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.12
+			GER = {
+				declare_war_on = {
+					type = puppet_wargoal_focus
+					target = MEX
+				}
+			}
+		}
+	}
+	############################################################
+	# Expand the seebattalion
+	wksa_expand_the_seebattalion = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_completed_focus = GER_experts_in_field
+		}
+		custom_cost_trigger = {
+			has_army_experience > 25
+			has_navy_experience > 25
+		}
+		custom_cost_text = army_and_navy_xp_more_than_25
+		visible = {
+			has_country_flag = GCE_wksa.3
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.13
+			}
+		}
+		days_remove = 180
+		modifier = {
+			special_forces_cap = 3
+		}
+		complete_effect = {
+			hidden_effect = {
+				navy_experience = -25
+				army_experience = -25
+			}
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_south.13
+		}
+	}
+	############################################################
+	# Presure Brazil
+	wksa_presure_brazil = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			NOT = {
+				BRA = {
+					is_in_faction_with = GER
+				}
+			}
+			OR = {
+				NOT = {
+					BRA = {
+						is_in_faction_with = ENG
+					}
+				}
+				NOT = {
+					BRA = {
+						is_in_faction_with = USA
+					}
+				}
+			}
+		}
+		cost = 50
+		visible = {
+			has_country_flag = GCE_wksa.3
+			country_exists = BRA
+			NOT = {
+				GER = {
+					has_war_with = BRA
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.16
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.16
+			BRA = {
+				country_event = {
+					id = GCE_GEN.21
+				}
+			}
+		}
+	}
+	############################################################
+	# Presure Brazil
+	wksa_invite_venezuela = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			NOT = {
+				VEN = {
+					is_in_faction_with = GER
+				}
+			}
+			OR = {
+				NOT = {
+					VEN = {
+						is_in_faction_with = ENG
+					}
+				}
+				NOT = {
+					VEN = {
+						is_in_faction_with = USA
+					}
+				}
+			}
+			OR = {
+				VEN = {
+					has_government = fascism
+				}
+				VEN = {
+					has_government = neutrality
+				}
+			}
+		}
+		cost = 50
+		visible = {
+			has_country_flag = GCE_wksa.3
+			country_exists = BRA
+			NOT = {
+				GER = {
+					has_war_with = BRA
+				}
+			}
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_south.17
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_south.17
+			VEN = {
+				country_event = {
+					id = GCE_GEN.25
+				}
+			}
+		}
+	}
+}
+
+operation_wksa_middle_category = {
+	############################################################
+	# Extend Air Range
+	wksa_extend_airforce_range = {
+		icon = GFX_decision_generic_air
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		custom_cost_trigger = {
+			has_air_experience > 50
+		}
+		custom_cost_text = air_xp_more_than_50
+		days_remove = 180
+		visible = {
+			has_country_flag = GCE_wksa.2
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.2
+			}
+		}
+		modifier = {
+			air_fuel_consumption_factor = 0.15
+			air_range_factor = 0.2
+		}
+		complete_effect = {
+			hidden_effect = {
+				air_experience = -50
+			}
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.2
+		}
+	}
+	############################################################
+	# Extend Air Range
+	wksa_naval_bombing_campaign = {
+		icon = GFX_decision_generic_air
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		custom_cost_trigger = {
+			has_air_experience > 50
+		}
+		custom_cost_text = air_xp_more_than_50
+		days_remove = 180
+		visible = {
+			has_country_flag = GCE_wksa.2
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.3
+			}
+		}
+		modifier = {
+			air_fuel_consumption_factor = 0.15
+			air_nav_efficiency = 0.2
+		}
+		complete_effect = {
+			hidden_effect = {
+				air_experience = -50
+			}
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.3
+		}
+	}
+	############################################################
+	# Hunt down the US Navy
+	wksa_hunt_us_navy = {
+		icon = GFX_decision_generic_naval
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		custom_cost_trigger = {
+			has_air_experience > 50
+		}
+		custom_cost_text = air_xp_more_than_50
+		days_remove = 180
+		visible = {
+			has_country_flag = GCE_wksa.2
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.4
+			}
+		}
+		modifier = {
+			navy_fuel_consumption_factor = 0.15
+			naval_detection = 0.2
+		}
+		complete_effect = {
+			hidden_effect = {
+				air_experience = -50
+			}
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.4
+		}
+	}
+	############################################################
+	wksa_reduce_naval_attrition = {
+		icon = GFX_decision_generic_naval
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			always = yes
+		}
+		custom_cost_trigger = {
+			has_navy_experience > 50
+		}
+		custom_cost_text = navy_xp_more_than_50
+		days_remove = 180
+		visible = {
+			has_country_flag = GCE_wksa.2
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.1
+			}
+		}
+		modifier = {
+			navy_fuel_consumption_factor = 0.15
+			naval_attrition = -0.2
+		}
+		complete_effect = {
+			hidden_effect = {
+				navy_experience = -50
+			}
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.1
+		}
+	}
+	############################################################
+	# Build up Bermuda
+	wksa_build_up_bermuda = {
+		icon = GFX_decision_hol_draw_up_staff_plans
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			696 = {
+				is_controlled_by = GER
+			}
+		}
+		visible = {
+			has_country_flag = GCE_wksa.2
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.5
+			}
+		}
+		complete_effect = {
+			set_country_flag = GCE_wksa_middle.5
+		}
+	}
+	############################################################
+	# Build up Bermuda
+	wksa_build_up_bermuda_infrastructure = {
+		icon = GFX_decision_generic_construction
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			696 = {
+				is_controlled_by = GER
+			}
+		}
+		days_remove = 70
+		visible = {
+			has_country_flag = GCE_wksa.2
+			has_country_flag = GCE_wksa_middle.5
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.6
+			}
+		}
+		modifier = {
+			civilian_factory_use = 15
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.6
+			696 = {
+				set_building_level = {
+					type = infrastructure
+					level = 5
+					instant_build = yes
+				}
+			}
+		}
+	}
+	############################################################
+	# Build up Bermuda
+	wksa_build_up_bermuda_airport = {
+		icon = GFX_decision_generic_construction
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			696 = {
+				is_controlled_by = GER
+			}
+		}
+		days_remove = 35
+		visible = {
+			has_country_flag = GCE_wksa.2
+			has_country_flag = GCE_wksa_middle.5
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.7
+			}
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.7
+			696 = {
+				set_building_level = {
+					type = air_base
+					level = 10
+					instant_build = yes
+				}
+			}
+		}
+	}
+	############################################################
+	# Build up Bermuda
+	wksa_build_up_bermuda_anti_air = {
+		icon = GFX_decision_generic_construction
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			696 = {
+				is_controlled_by = GER
+			}
+		}
+		days_remove = 35
+		visible = {
+			has_country_flag = GCE_wksa.2
+			has_country_flag = GCE_wksa_middle.5
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.8
+			}
+		}
+		modifier = {
+			civilian_factory_use = 10
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.8
+			696 = {
+				set_building_level = {
+					type = anti_air_building
+					level = 5
+					instant_build = yes
+				}
+			}
+		}
+	}
+	############################################################
+	# Build up Bermuda
+	wksa_build_up_bermuda_bunker = {
+		icon = GFX_decision_generic_fortification
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			696 = {
+				is_controlled_by = GER
+			}
+		}
+		days_remove = 35
+		visible = {
+			has_country_flag = GCE_wksa.2
+			has_country_flag = GCE_wksa_middle.5
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.9
+			}
+		}
+		modifier = {
+			civilian_factory_use = 20
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.9
+			696 = {
+				set_building_level = {
+					type = bunker
+					level = 10
+					instant_build = yes
+					province = 13010
+				}
+				set_building_level = {
+					type = coastal_bunker
+					level = 10
+					instant_build = yes
+					province = 13010
+				}
+			}
+		}
+	}
+	############################################################
+	# Build up Bermuda
+	wksa_build_up_bermuda_port = {
+		icon = GFX_decision_generic_fortification
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			696 = {
+				is_controlled_by = GER
+			}
+		}
+		days_remove = 35
+		visible = {
+			has_country_flag = GCE_wksa.2
+			has_country_flag = GCE_wksa_middle.5
+			GER = {
+				has_war_with = USA
+			}
+			NOT = {
+				has_country_flag = GCE_wksa_middle.10
+			}
+		}
+		modifier = {
+			civilian_factory_use = 20
+		}
+		remove_effect = {
+			set_country_flag = GCE_wksa_middle.10
+			696 = {
+				set_building_level = {
+					type = naval_base
+					level = 10
+					instant_build = yes
+					province = 13010
+				}
+			}
+		}
+	}
+}
+
+operation_wksa_secret_category = {
+	wksa_secret_kill_the_president = {
+		icon = GFX_decision_generic_assassination
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			network_strength = {
+				target = USA
+				state = 361
+				value > 75
+			}
+			361 = {
+				is_controlled_by = USA
+			}
+		}
+		days_remove = 5
+		visible = {
+			has_country_flag = GCE_wksa.0
+			GER = {
+				has_war_with = USA
+			}
+			has_intelligence_agency = yes
+			NOT = {
+				has_country_flag = GCE_wksa_secret.1
+			}
+		}
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			hidden_effect = {
+				set_country_flag = GCE_wksa_secret.1
+				set_global_flag = GCE_USA_president_assassinated
+				USA = {
+					kill_country_leader = yes
+				}
+			}
+		}
+	}
+	wksa_secret_nuke_dc = {
+		icon = GFX_decision_recruit_operative
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_tech = nukes
+			361 = {
+				is_controlled_by = USA
+			}
+		}
+		visible = {
+			has_country_flag = GCE_wksa.0
+			GER = {
+				has_war_with = USA
+			}
+			has_intelligence_agency = yes
+			NOT = {
+				has_country_flag = GCE_wksa_secret.2
+			}
+			NOT = {
+				has_global_flag = GCE_default_washington_nuked
+			}
+		}
+		complete_effect = {
+			launch_nuke = {
+				province = 3957
+				state = 361
+				controller = USA
+				use_nuke = yes
+			}
+			hidden_effect = {
+				set_country_flag = GCE_wksa_secret.2
+				set_global_flag = GCE_washington_nuked
+				set_global_flag = fall_of_washington
+				set_province_name = {
+					id = 3957
+					name = "Washington Ruins"
+				}
+				set_province_name = {
+					id = 6984
+					name = "New Washington"
+				}
+				USA = {
+					set_capital = {
+						state = 358
+					}
+				}
+				361 = {
+					set_state_name = "Washington Wasteland"
+				}
+				every_country = {
+					news_event = {
+						days = 1
+						id = GCE_news.29
+					}
+				}
+			}
+		}
+	}
+}

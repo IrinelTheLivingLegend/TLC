@@ -1,0 +1,139 @@
+ideas = {
+
+    wp_benefits_policy = {
+        law = yes
+        use_list_view = yes
+
+        generous_state_welfare = {
+
+            available = {
+                NOT = {
+                    has_idea = laisezz_faire
+                }
+            }
+
+            level = 4
+
+            modifier = {
+                political_power_factor = 0.10
+                monthly_population = 0.10
+                consumer_goods_factor = 0.05
+                stability_factor = 0.05
+                line_change_production_efficiency_factor = 0.10
+                drift_defence_factor = 0.20
+            }
+
+            ai_will_do = {
+                base = 30
+
+                modifier = {
+                    has_idea = welfare_capitalism
+                    add = 20
+                }
+
+                modifier = {
+                    has_government = communism
+                    add = 50
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        moderate_state_welfare = {
+
+            available = {
+                
+            }
+
+            level = 3
+
+            modifier = {
+                political_power_factor = 0.05
+                monthly_population = 0.05
+                consumer_goods_factor = 0.03
+                stability_factor = 0.025
+                line_change_production_efficiency_factor = 0.05
+                drift_defence_factor = 0.10
+            }
+
+            ai_will_do = {
+                base = 40
+
+                modifier = {
+                    has_idea = welfare_capitalism
+                    add = 40
+                }
+
+                modifier = {
+                    has_government = communism
+                    add = 10
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        basic_state_welfare = {
+
+            available = {
+
+            }
+
+            level = 2
+
+            modifier = {
+                political_power_factor = 0.02
+                monthly_population = 0.025
+                stability_factor = 0.01
+                line_change_production_efficiency_factor = 0.025
+            }
+            
+            ai_will_do = {
+                base = 40
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        no_state_welfare = {
+
+            available = {
+
+                NOT = {
+                    has_government = communism
+                    has_idea = welfare_capitalism
+                    has_idea = planned_economy
+                }
+            }
+
+            level = 1
+
+            modifier = {
+                political_power_factor = -0.05
+                monthly_population = -0.05
+                consumer_goods_factor = -0.10
+                stability_factor = -0.05
+                line_change_production_efficiency_factor = -0.10
+                drift_defence_factor = -0.20
+            }
+
+            ai_will_do = {
+                base = 10
+
+                modifier = {
+                    has_idea = laisezz_faire
+                    add = 60
+                }
+
+                modifier = {
+                    has_government = democratic
+                    add = -10
+                }
+    
+            }
+
+            cancel_if_invalid = yes
+        }
+    }
+}

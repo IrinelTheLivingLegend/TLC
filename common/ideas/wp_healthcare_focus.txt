@@ -1,0 +1,107 @@
+ideas = {
+
+    wp_healthcare_focus = {
+        law = yes
+        use_list_view = yes
+
+        military_hospitals = {
+
+            available = {
+                
+            }
+
+            cost = 70
+            removal_cost = 10
+
+            modifier = {
+                 experience_loss_factor = -0.10
+                 research_speed_factor = 0.01
+                 attrition = -0.05
+                 army_morale_factor = 0.05
+            }
+
+             research_bonus = { hospital_tech = 0.50 }
+
+            ai_will_do = {
+                base = 40
+
+                modifier = {
+
+                    has_idea = military_head
+                    add = 40
+                }
+
+                modifier = {
+                    has_government = fascism
+                    add = 20
+                }
+                
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        research_focus = {
+
+            available = {
+                
+            }
+
+            cost = 70
+            removal_cost = 10
+
+            modifier = {
+                research_speed_factor = 0.07
+            }
+
+            ai_will_do = {
+                base = 40
+
+                modifier = {
+                    has_government = communism
+                    add = 40
+                }
+
+                modifier = {
+                    has_government = democratic
+                    add = 20
+                }   
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        health_focus = {
+
+            available = {
+
+            }
+            
+            cost = 70
+            removal_cost = 10
+
+            modifier = {
+                monthly_population = 0.10
+                research_speed_factor = 0.01
+                experience_loss_factor = -0.05
+                stability_factor = 0.025
+            }
+
+            ai_will_do = {
+                base = 40
+
+                modifier = {
+                    has_government = democratic
+                    add = 10
+                }
+
+                modifier = {
+                    has_government = communism
+                    add = 20
+                }
+            }
+            
+            cancel_if_invalid =yes
+        }
+    }
+}

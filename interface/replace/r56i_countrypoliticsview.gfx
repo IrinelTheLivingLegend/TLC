@@ -1,0 +1,28 @@
+#####---------------------------------------------------------------------> Original RT56 Mod by Sig "GreatExperiment" Altre
+##### RT56 Better Laws Submod by SassyCrissy
+
+
+spriteTypes = {
+
+	spriteType = {
+		name = "GFX_idea_categories"
+		texturefile = "gfx/interface/idea_categories.dds"
+		noOfFrames = 23
+	}
+	spriteType = {
+		name = "GFX_autonomy_mandate_city_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_mandate_city_icon.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_autonomy_free_city_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_free_city_icon.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_autonomy_protectorate_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_protectorate_icon.dds"
+	}
+}
+
+#####---------------------------------------------------------------------> End

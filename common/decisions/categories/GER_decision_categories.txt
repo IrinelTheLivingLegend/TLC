@@ -1,0 +1,416 @@
+#################
+#### GERMANY ####
+#################
+
+GER_vanilla_look = {
+	icon = GFX_decision_category_generic_propaganda
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 199
+
+	visible_when_empty = no
+	
+	visible = {
+		NOT = { has_global_flag = GER_END_OF_VANILLA_LOOK }
+	}
+}
+
+GER_last_stand_of_germany = {
+
+	icon = GFX_decision_generic_intelligence_operation
+	picture = GFX_decision_TheodorMorell
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 110
+
+	visible_when_empty = no
+	
+	visible = {
+	}
+}
+
+health_of_adolf_category = {
+
+	icon = GFX_decision_category_GER_mission
+	picture = GFX_decision_TheodorMorell
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 109
+
+	visible_when_empty = no
+	
+	visible = {
+		has_completed_focus = GER_Fuhrer
+		has_power_balance = {
+			id = GER_power_balance
+		}
+	}
+
+}
+
+GER_Rhineland_demilitarized = {
+
+	icon = GFX_decision_category_GER_mission
+
+	picture = GFX_decision_rhineland
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 100
+
+	visible_when_empty = no
+	
+	visible = {
+		NOT = {
+			has_completed_focus = GER_rhineland_demilitarized
+			has_completed_focus = GER_rhineland
+		}
+	}
+
+}
+
+GER_expand_support = {
+
+	icon = GFX_decision_eng_propaganda_campaigns
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 100
+
+	visible_when_empty = no
+	
+	visible = {
+		has_completed_focus = GER_oppose_hitler
+		has_global_flag = GER_civil_war_need_support
+	}
+
+}
+
+New_Laws_fuhrer_category = {
+
+	icon = GFX_decision_category_GER_mission
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 80
+
+	visible_when_empty = no
+	
+	visible = {
+		has_completed_focus = GER_New_Laws
+	}
+
+}
+
+New_Laws_wilhelm_category = {
+
+	icon = GFX_decision_category_GER_wilhelm_mission
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 79
+
+	visible_when_empty = no
+	
+	visible = {
+		has_completed_focus = GER_New_Laws
+	}
+
+}
+
+Holy_Roman_Empire_mng_category = {
+
+	icon = GFX_decision_category_generic_monarchism
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 75
+
+	visible_when_empty = no
+	
+	visible = {
+		has_completed_focus = GER_shadow_of_empire
+	}
+
+}
+
+GER_raise_penal_battalions = {
+
+	icon = GFX_decision_generic_independence
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 70
+
+	visible_when_empty = no
+	
+	visible = {
+		has_global_flag = GER_CAN_RISE_PENAL_BATTALIONS
+	}
+
+}
+
+eva_braun_category = {
+	icon = GFX_decision_category_GER_eva_braun
+
+	priority = 90
+	
+	allowed = {
+		original_tag = GER
+	}
+
+	visible = {
+		has_idea = eva_braun
+	}
+	
+}
+
+GER_Operation_Sealion_ph_2 = {
+
+	icon = GFX_decision_category_GER_mission
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 100
+
+	visible_when_empty = no
+	
+	visible = {
+		has_completed_focus = GER_operation_sealion
+		has_war_with = ENG
+		NOT = { has_global_flag = GER_Operation_Sealion_ph1_running }
+		has_global_flag = GER_Operation_Sealion_ph2_running
+	}
+
+}
+
+GER_Operation_Sealion_ph_1 = {
+
+	icon = GFX_decision_category_GER_mission
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 100
+
+	visible_when_empty = no
+	
+	visible = {
+		has_completed_focus = GER_operation_sealion
+		has_war_with = ENG
+		has_idea = Operation_Sea_Lion
+		has_global_flag = GER_Operation_Sealion_ph1_running
+	}
+
+}
+
+GER_Africa_Operations = {
+	icon = GFX_decision_category_GER_colonial_management
+	picture = GFX_decision_cat_picture_ITA_colonial_management
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 98
+
+	visible_when_empty = no
+	
+	visible = {
+		has_completed_focus = GER_Set_HQ_in_Libya
+		NOT = { has_global_flag = GER_Africa_Operations_end }
+	}
+
+}
+
+GER_colonial_management_category = {
+	icon = GFX_decision_category_GER_colonial_management
+	picture = GFX_decision_cat_picture_ITA_colonial_management
+
+	priority = 88
+	
+	allowed = {
+		original_tag = GER
+	}
+
+	visible = {
+		OR = {
+			has_completed_focus = GER_form_colonial_police
+			has_completed_focus = GER_Military_Police
+		}
+		MLA = {
+			exists = yes
+		}
+	}
+	
+}
+
+GER_mefo_bills_category_r = {
+	icon = ger_mefo_bills
+
+	picture = GFX_decision_cat_generic_mefo_bills
+	visible_when_empty = no
+
+	allowed = {
+		original_tag = GER
+	}
+
+	visible = {
+	}
+	
+	priority = 91
+}
+
+GER_training_program = {
+
+	icon = GFX_decision_category_army_reform
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 90
+
+	visible_when_empty = no
+	
+	visible = {
+	}
+
+}
+
+GER_Volkssturm_category = {
+	icon = GFX_decision_category_SOV_propaganda
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	priority = 90
+
+	visible_when_empty = no
+	
+	visible = {
+		has_country_flag = GER_CAN_RISE_VOLKSSTURM
+		has_government = fascism
+	}
+}
+
+GER_case_anton_category = {
+	icon = military_operation
+
+	picture = GFX_decision_cat_picture_ger_case_anton
+
+	allowed = {
+		original_tag = GER
+	}
+
+	visible = {
+		has_government = fascism
+		any_country_with_original_tag = {
+			original_tag_to_check = FRA
+			has_government = fascism
+			OR = {
+				is_subject_of = GER
+				has_focus_tree = vichy_french_focus
+			}
+			NOT = { has_country_flag = case_anton }
+		}
+	}
+}
+
+GER_september_plan_category = {
+	priority = 2
+
+	allowed = {
+		original_tag = GER
+	}
+
+	visible = {
+		has_completed_focus = GER_revive_september_plan
+	}
+}
+
+GER_plan_z_category = {
+	icon = GFX_decision_category_MTG_naval_treaties
+	picture = GFX_decision_cat_picture_generic_shipbuilding
+	priority = 80
+
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_completed_focus = GER_plan_z_a
+	}
+}	 
+
+GER_rebuild_the_high_seas_fleet_project = {
+	icon = GFX_decision_category_ITA_cooperation_programs
+	priority = 78
+	
+	allowed = {
+		original_tag = GER
+	}
+
+	visible = {
+		has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+	}
+}
+
+GER_military_buildup = {
+	icon = GFX_decision_category_ger_military_buildup
+	priority = 76
+
+	allowed = {
+		original_tag = GER
+	}
+	
+	visible = {
+	}
+
+}
+
+GER_aid_hun_rom_democratic_civil_war = {
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		has_government = democratic
+	}
+}
+
+GER_austro_hungarian_empire = {
+	allowed = {
+		OR = {
+			original_tag = AUS
+			original_tag = HUN
+			original_tag = CZE
+		}
+	}
+	visible = {
+		GER = { has_completed_focus = GER_rekindle_imperial_sentiment }
+	}
+}

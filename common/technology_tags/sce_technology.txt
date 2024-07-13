@@ -1,0 +1,13 @@
+# Do not change tags in here without changing every other reference to them.
+# If adding new technology, make sure they are uniquely named.
+
+technology_categories = {
+
+	sniper_tech
+	flamethrower_sppt_tech
+	mortar_tech
+	wardog_tech
+	command_tech
+	gunner_tech
+	raider_tech
+}

@@ -1,0 +1,15 @@
+characters={
+	RTK_Leader={
+		name= "Military Administration of Turkestan"
+		portraits={
+			civilian={
+				large=GFX_Portrait_GER_AFRIKA
+			}
+		}
+		country_leader={
+			ideology=nazism
+			expire="1965.1.1.1"
+			id=-1
+		}
+	}
+}

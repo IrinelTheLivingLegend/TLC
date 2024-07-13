@@ -1,0 +1,128 @@
+ideas = {
+
+     is_population_growth = {
+        law = yes
+        use_list_view = yes
+
+        encourage_growth = {
+
+            available = {
+
+            }
+
+            level = 2
+
+            modifier = {
+                political_power_factor = -0.05
+                monthly_population = 0.30
+                #stability_factor #= #-0.05
+            }
+            
+            ai_will_do = {
+                base = 10
+
+                modifier = {
+                    is_major = no
+                    add = 20
+                }
+            }
+
+            cancel_if_invalid = no
+        }
+
+        standard_growth = {
+
+            available = {
+
+            }
+
+            level = 1
+
+            modifier = {
+                monthly_population = 0.15
+            }
+
+            ai_will_do = {
+                base = 40
+
+                modifier = {
+                    has_government = democratic 
+                    add = 20
+                }
+            }
+
+            cancel_if_invalid = no
+        }
+
+        controlled_birth_rates = {
+            
+            available = {
+                NOT = {
+                    has_government = democratic
+                }
+            }
+
+            level = 2
+
+            modifier = {
+                political_power_factor = +0.05
+                monthly_population = 0.10
+                stability_factor = -0.05
+            }
+
+            ai_will_do = {
+                base = 10
+
+                modifier = {
+                    has_government = fascism
+                    add = 10
+                }
+
+                modifier = {
+                    has_idea = chairman
+                    add = 20
+                }
+            }   
+
+            cancel_if_invalid = yes
+        }
+
+        national_purity = {
+
+            available = {
+                has_government = fascism
+            }
+
+            level = 3
+
+            modifier = {
+                political_power_factor = -0.05
+                monthly_population = 0.10
+                stability_factor = 0.05
+                war_support_factor = 0.05
+                drift_defence_factor = 0.05
+            }
+
+            ai_will_do = {
+                base = 0
+
+                modifier = {
+                    has_government = fascism
+                    add = 60
+                }
+
+                modifier = {
+                    has_government = fascism
+                    OR = {
+                        tag = GER 
+                        tag = JAP 
+                    }
+                    add = 100
+                }
+
+            }
+
+            cancel_if_invalid = yes
+        }
+     }
+}

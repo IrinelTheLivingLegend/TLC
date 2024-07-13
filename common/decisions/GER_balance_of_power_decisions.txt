@@ -1,0 +1,1114 @@
+GER_balance_of_power_category = {
+
+
+	GER_Visit_Graf_Zeppelin = { #Graf Zeppelin
+		priority = 90
+		icon = GFX_decision_generic_merge_plant_ship
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_political_power < 150
+			}
+			modifier = {
+				factor = 100
+				has_war = no
+			}
+		}
+
+	}
+
+	GER_Visit_Bismarck_Ship = { #Bismarck Ship
+		priority = 88
+		icon = GFX_decision_generic_merge_plant_ship
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_political_power < 150
+			}
+			modifier = {
+				factor = 100
+				has_war = no
+			}
+		}
+
+		visible = { has_completed_focus = GER_Bismarck }
+
+	}
+
+	GER_low_increase_effect = { #Paris
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_political_power < 150
+			}
+			modifier = {
+				factor = 100
+				has_war = no
+			}
+		}
+
+		visible = { has_full_control_of_state = 16 }
+
+	}
+
+	GER_low_increase_effect_1 = { #London
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_political_power < 150
+			}
+			modifier = {
+				factor = 100
+				has_war = no
+			}
+		}
+
+		visible = { has_full_control_of_state = 126 }
+
+	}
+
+	GER_low_increase_effect_3 = {#Vienna
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_political_power < 150
+			}
+			modifier = {
+				factor = 100
+				has_war = no
+			}
+		}
+
+		visible = { has_full_control_of_state = 4 }
+
+	}
+
+	GER_low_increase_effect_2 = {#Moscow
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_political_power < 150
+			}
+			modifier = {
+				factor = 100
+				has_war = no
+			}
+		}
+
+		visible = { has_full_control_of_state = 219 }
+
+	}
+
+	GER_low_increase_effect_4 = {#Stalingrad
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		visible = { has_full_control_of_state = 217 }
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_political_power < 150
+			}
+			modifier = {
+				factor = 100
+				has_war = no
+			}
+		}
+
+	}
+
+	GER_low_increase_effect_5 = {#Leningrad
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		visible = { has_full_control_of_state = 195 }
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				has_political_power < 150
+			}
+			modifier = {
+				factor = 100
+				has_war = no
+			}
+		}
+
+	}
+
+	GER_low_increase_effect_6 = { # Historical Talks - Mussolini / Visit Mussolini in-game
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 0
+
+		days_re_enable = 90
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+			ITA = { ITA_bop_very_low_increase_effect = yes }
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			2 = { is_fully_controlled_by = ITA }
+			is_in_faction_with = ITA
+			ITA = {
+				has_country_leader = { character = ITA_benito_mussolini }
+			}
+		}
+
+	}
+
+	GER_low_increase_effect_8 = {#Roma
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 10
+		}
+
+		visible = {
+			2 = { is_fully_controlled_by = ITA }
+			is_in_faction_with = ITA
+			ITA = {
+				NOT = { has_country_leader = { character = ITA_benito_mussolini } }
+			}
+		}
+
+	}
+
+	GER_low_increase_effect_7 = { #Madrid
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 10
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_low_increase_effect = yes
+		}
+
+		visible = {
+			SPR = { NOT = { has_country_leader = { character = SPA_francisco_franco } } }
+			OR = {
+				has_completed_focus = GER_nationalist_spain_ally
+				is_in_faction_with = SPR
+			}
+			41 = { is_fully_controlled_by = SPR }
+			SPR = { has_government = fascism }
+		}
+	}
+
+	GER_low_increase_effect_9 = { # Historical Talks - Franco / Visit Franco in-game
+		priority = 90
+		icon = GFX_decision_eng_blackshirt_speech
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 30
+
+		days_re_enable = 60
+
+		fire_only_once = no
+
+		complete_effect = {
+			random_list = {
+				60 = {
+					GER_bop_low_increase_effect = yes
+				}
+				20 = {
+					country_event = { id = GER_spain_talks.1 hours = 6 }
+				}
+				20 = {
+					country_event = { id = GER_spain_talks.2 hours = 6 }
+				}
+			}
+		}
+
+		visible = {
+			NOT = { has_country_flag = GER_MAD_TO_SPAIN }
+			SPR = { has_country_leader = { character = SPA_francisco_franco } }
+			OR = {
+				has_completed_focus = GER_nationalist_spain_ally
+				is_in_faction_with = SPR
+			}
+			41 = { is_fully_controlled_by = SPR }
+			SPR = { has_government = fascism }
+		}
+	}
+
+	GER_very_low_increase_effect_3 = { # General Meeting - ALL Mojor Ch. is here. nice for coup..
+
+		icon = GFX_decision_generic_operation
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+
+		visible = {
+			has_completed_focus = GER_Fuhrer 
+			has_war_with_major = yes 
+		}
+
+		available = {
+			has_country_flag = GER_TALK_WITH_WEHRMACHT
+			has_country_flag = GER_TALK_WITH_LUFTWAFFE
+			has_country_flag = GER_TALK_WITH_KRIEGSMARINE
+			if = {
+				limit = {
+					has_completed_focus = GER_SS
+				}
+				has_country_flag = GER_TALK_WITH_SS
+			}
+		}
+
+		cost = 25
+
+		days_re_enable = 180
+
+		complete_effect = {
+			effect_tooltip = {
+				GER_bop_very_low_increase_effect = yes
+			}
+			hidden_effect = {
+				GER_general_meeting = yes
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 10
+				power_balance_value = {
+					id = GER_power_balance
+					value < -0.11
+				}
+			}
+		}
+	}
+
+	GER_very_low_increase_effect_4 = { #Promote Generals
+
+		icon = GFX_decision_ger_reichskommissariats
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+
+		fire_only_once = yes
+
+		visible = {
+			16 = { is_controlled_by_ROOT_or_ally = yes }
+			FRA = { has_capitulated = yes }
+		}
+
+		custom_cost_trigger = {
+			command_power > 19
+		}
+		custom_cost_text = decision_cost_CP_20
+
+		complete_effect = {
+			if = {
+				limit = {
+					GER_fedor_von_bock = {
+						is_field_marshal = no
+					}
+				}
+				GER_fedor_von_bock = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					GER_gunther_von_kluge = {
+						is_field_marshal = no
+					}
+				}
+				GER_gunther_von_kluge = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					GER_wilhelm_list = {
+						is_field_marshal = no
+					}
+				}
+				GER_wilhelm_list = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					GER_walter_von_reichenau = {
+						is_field_marshal = no
+					}
+				}
+				GER_walter_von_reichenau = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					GER_gerd_von_rundstedt = {
+						is_field_marshal = no
+					}
+				}
+				GER_gerd_von_rundstedt = {
+					promote_leader = yes
+				}
+			}
+			if = {
+				limit = {
+					GER_erwin_von_witzleben = {
+						is_field_marshal = no
+					}
+				}
+				GER_erwin_von_witzleben = {
+					promote_leader = yes
+				}
+			}
+			GER_bop_very_low_increase_effect = yes
+			
+			hidden_effect = {
+				add_command_power = -20
+			}
+		}
+
+		ai_will_do = {
+			base = 100
+		}
+
+		visible = { has_completed_focus = GER_Fuhrer has_war_with_major = yes }
+
+	}	
+
+	GER_very_low_increase_effect = { #Wehrmacht
+
+		icon = GFX_decision_generic_army_support
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = GER_TALK_WITH_WEHRMACHT
+			}
+		}
+
+		cost = 10
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GER_bop_very_low_increase_effect = yes
+			hidden_effect = {
+				set_country_flag = GER_TALK_WITH_WEHRMACHT
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 10
+				power_balance_value = {
+					id = GER_power_balance
+					value < -0.11
+				}
+			}
+			modifier = {
+				factor = -10
+				power_balance_value = {
+					id = GER_power_balance
+					value > 0.50
+				}
+			}
+		}
+
+		visible = { has_completed_focus = GER_Fuhrer has_war_with_major = yes }
+
+	}
+
+	GER_very_low_increase_effect_1 = {#Luftwaffe
+
+		icon = GFX_decision_generic_air
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = GER_TALK_WITH_LUFTWAFFE
+			}	
+		}
+
+		cost = 10
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GER_bop_very_low_increase_effect = yes
+			hidden_effect = {
+				set_country_flag = GER_TALK_WITH_LUFTWAFFE
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 10
+				power_balance_value = {
+					id = GER_power_balance
+					value < -0.11
+				}
+			}
+			modifier = {
+				factor = -10
+				power_balance_value = {
+					id = GER_power_balance
+					value > 0.50
+				}
+			}
+		}
+
+		visible = { has_completed_focus = GER_Fuhrer has_war_with_major = yes }
+
+	}
+
+	GER_very_low_increase_effect_2 = {#Kriegsmarine
+
+		icon = GFX_decision_generic_naval
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = {
+				has_country_flag = GER_TALK_WITH_KRIEGSMARINE
+			}
+		}
+
+		cost = 10
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GER_bop_very_low_increase_effect = yes
+			hidden_effect = {
+				set_country_flag = GER_TALK_WITH_KRIEGSMARINE
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 10
+				power_balance_value = {
+					id = GER_power_balance
+					value < -0.11
+				}
+			}
+			modifier = {
+				factor = -10
+				power_balance_value = {
+					id = GER_power_balance
+					value > 0.50
+				}
+			}
+		}
+
+		visible = { has_completed_focus = GER_Fuhrer has_war_with_major = yes }
+
+	}
+
+	GER_very_low_decrease_effect = {#SS
+		priority = 90
+		icon = GFX_decision_generic_army_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = { has_country_flag = GER_TALK_WITH_SS }
+		}
+
+		cost = 10
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GER_bop_very_low_decrease_effect = yes
+			hidden_effect = {
+				set_country_flag = GER_TALK_WITH_SS
+			}
+		}
+
+		visible = { has_completed_focus = GER_SS has_war_with_major = yes }
+
+	}
+
+	GER_very_low_decrease_effect_1 = { # Wehrmacht Loyalty
+		priority = 90
+		icon = GFX_decision_ger_test_loyalty
+
+		available = {
+			check_variable = {
+				wehrmacht_anger < 15
+			}
+			check_variable = {
+				wehrmacht_anger > -15
+			}
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 100
+				check_variable = { var = wehrmacht_anger value = 10 compare = greater_than_or_equals }
+			}
+		}
+
+		cost = 10
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GER_bop_very_low_decrease_effect = yes
+			add_to_variable = { var = wehrmacht_anger value = -10 }
+			custom_effect_tooltip = GER_gain_loyalty
+		}
+
+		visible = { has_completed_focus = GER_SS_Trops }
+
+	}	
+
+	GER_very_low_decrease_effect_2 = { #SS Loyalty
+		priority = 88
+		icon = GFX_decision_ger_ss_test_loyalty
+
+		available = {
+			check_variable = {
+				ss_anger < 15
+			}
+			check_variable = {
+				ss_anger > -15
+			}
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 100
+				check_variable = { var = SS_anger value = 20 compare = greater_than_or_equals }
+			}
+		}
+
+		cost = 10
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GER_bop_very_low_decrease_effect = yes
+			add_to_variable = { var = SS_anger value = -10 }
+			custom_effect_tooltip = GER_gain_loyalty
+		}
+
+		visible = { has_completed_focus = GER_SS_Trops }
+
+	}
+
+	GER_very_low_decrease_effect_a = {#Panzer Ace
+		priority = 86
+		icon = GFX_decision_ger_grant_medal_tank
+
+		allowed = {
+			original_tag = GER
+		}
+
+		visible = {
+			date > 1940.01.01
+			has_completed_focus = GER_Lighting_Strike
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 10
+				has_political_power < 110
+			}
+			modifier = {
+				factor = 100
+				GER = {
+					any_country_division = {
+						division_has_majority_template = medium_armor
+					}
+				}
+			}
+		}
+
+		cost = 10
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_very_low_decrease_effect = yes
+			custom_effect_tooltip = GER_Panzer_Ace
+			random_country_division = {
+				limit = {
+					OR = {
+						division_has_battalion_in_template = medium_armor
+					}
+					division_has_battalion_in_template = motorized
+					is_unit_template_reserves = no
+					unit_strength > 0.5
+				}
+				add_history_entry = {
+					key = "This Unit has Been Recognised as an Elite Panzer Division."
+					subject = "Division Honor"
+					allow = yes
+				}
+				hidden_effect = {
+					add_unit_medal_to_latest_entry = {
+						unit_medals = knights_cross_oak_leaves
+					}
+				}
+			}
+		}
+
+	}
+
+	GER_very_low_decrease_effect_b = { # Panzer Ace
+		priority = 86
+		icon = GFX_decision_ger_grant_medal_tank
+
+		allowed = {
+			original_tag = GER
+		}
+
+		visible = {
+			date > 1940.01.01
+			has_completed_focus = GER_Lighting_Strike
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 100
+				GER = {
+					any_country_division = {
+						division_has_majority_template = medium_armor
+					}
+				}
+			}
+		}
+
+		cost = 10
+
+		fire_only_once = yes
+
+		complete_effect = {
+			GER_bop_very_low_decrease_effect = yes
+			custom_effect_tooltip = GER_Panzer_Ace
+			random_country_division = {
+				limit = {
+					OR = {
+						division_has_battalion_in_template = medium_armor
+					}
+					division_has_battalion_in_template = motorized
+					is_unit_template_reserves = no
+					unit_strength > 0.5
+				}
+				add_history_entry = {
+					key = "This Unit has Been Recognised as an Elite Panzer Division."
+					subject = "Division Honor 1"
+					allow = yes
+				}
+				hidden_effect = {
+					add_unit_medal_to_latest_entry = {
+						unit_medals = knights_cross_oak_leaves
+					}
+				}
+			}
+		}
+
+	}
+}
+
+GER_Karl_Donitz_BOP_category = {
+	GER_Wehrmacht_very_low_increase_effect = {
+		icon = GFX_decision_generic_army_support
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+		cost = 10
+		days_re_enable = 10
+		complete_effect = {
+			GER_bop_very_low_increase_effect = yes
+		}
+		visible = {
+			has_completed_focus = GER_Power_Karl_Donitz
+		}
+	}
+
+	GER_Luftwaffe_very_low_increase_effect_1 = {
+
+		icon = GFX_decision_generic_air
+		priority = 90
+
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 10
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GER_bop_very_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 10
+				power_balance_value = {
+					id = GER_power_balance
+					value < -0.11
+				}
+			}
+			modifier = {
+				factor = -10
+				power_balance_value = {
+					id = GER_power_balance
+					value > 0.50
+				}
+			}
+		}
+
+		visible = {
+			has_completed_focus = GER_Power_Karl_Donitz
+		}
+
+	}
+
+	GER_Kriegsmarine_very_low_increase_effect_2 = {
+
+		icon = GFX_decision_generic_naval
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+
+		cost = 10
+
+		days_re_enable = 120
+
+		complete_effect = {
+			GER_bop_very_low_increase_effect = yes
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				factor = 10
+				power_balance_value = {
+					id = GER_power_balance
+					value < -0.11
+				}
+			}
+			modifier = {
+				factor = -10
+				power_balance_value = {
+					id = GER_power_balance
+					value > 0.50
+				}
+			}
+		}
+
+		visible = {
+			has_completed_focus = GER_Power_Karl_Donitz
+		}
+
+	}
+
+	GER_SS_advice_very_low_decrease_effect = {
+		icon = GFX_decision_generic_army_support
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+		cost = 10
+		days_re_enable = 10
+		complete_effect = {
+			GER_bop_very_low_decrease_effect = yes
+		}
+		visible = {
+			has_completed_focus = GER_Power_Karl_Donitz
+		}
+	}
+
+	GER_Seize_low_decrease_effect = {
+		icon = GFX_decision_generic_construction
+		priority = 90
+		allowed = {
+			original_tag = GER
+		}
+		cost = 50
+		days_re_enable = 365
+		complete_effect = {
+			custom_effect_tooltip = add_building_slot
+			GER_bop_low_decrease_effect = yes
+			random_core_state = {
+				add_extra_state_shared_building_slots = 2
+			}
+		}
+		visible = {
+			has_completed_focus = GER_Power_Karl_Donitz
+		}
+	}
+
+	blackout_tactics = {
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		available = {
+		}
+
+		visible = {
+		}
+
+		days_remove = 365
+
+		cost = 50
+
+		modifier = {
+			industry_air_damage_factor = -0.15
+		}
+
+		remove_effect = {
+		}
+
+		complete_effect = {
+			GER_bop_medium_increase_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	no_time_for_warrules = {
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		available = {
+		}
+
+		days_remove = 365
+
+		cost = 50
+
+		modifier = {
+			army_breakthrough_against_major_factor = 0.05
+			army_attack_against_major_factor = 0.05
+		}
+
+		remove_effect = {
+		}
+
+		complete_effect = {
+			GER_bop_medium_decrease_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	case_black = {
+
+		icon = GFX_decision_eng_trade_unions_support
+
+		available = {
+		}
+
+		days_remove = 365
+
+		cost = 50
+
+		modifier = {
+			resistance_activity = -0.15
+			industry_free_repair_factor = -0.1
+		}
+
+		remove_effect = {
+		}
+
+		complete_effect = {
+			GER_bop_medium_decrease_effect = yes
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}

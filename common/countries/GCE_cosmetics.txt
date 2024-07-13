@@ -1,0 +1,25 @@
+GR_FIN = {
+    color = rgb { 158 166 186 }
+    color_ui = rgb { 158 166 186 }
+}
+
+NA_SCO = {
+    color = rgb { 130 181 216 }
+    color_ui = rgb { 78 143 189 }
+}
+
+NA_ENG = {
+    color = rgb { 130 181 216 }
+    color_ui = rgb { 78 143 189 }
+}
+
+NA_BRI = {
+    color = rgb { 130 181 216 }
+    color_ui = rgb { 78 143 189 }
+}
+
+IM_ITA = {
+    color = rgb { 158 166 186 }
+    color_ui = rgb { 158 166 186 }
+}
+

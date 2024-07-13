@@ -1,0 +1,62 @@
+birmingham_trials_category = {
+	icon = "GFX_decision_category_usa_congress"
+	picture = decision_birmingham_trials
+	visible = {
+		OR = {
+			has_global_flag = GER_WORLD_WAR_II_WIN
+			has_global_flag = GCE_london_surrender
+		}
+	}
+}
+
+birmingham_trials_USA_category = {
+	icon = "GFX_decision_category_usa_congress"
+	picture = decision_birmingham_trials
+	visible = {
+		OR = {
+			has_global_flag = GCE_USA_surrender
+			USA = {
+				is_puppet_of = GER
+			}
+		}
+	}
+}
+
+operation_wksa_category = {
+	icon = GFX_decision_category_GER_mission
+	picture = decision_GFX_operation_wksa
+	visible = {
+		has_completed_focus = GER_crossing_the_atlantic_a
+	}
+}
+
+operation_wksa_north_category = {
+	icon = "GFX_decision_category_military_operation"
+	picture = decision_GFX_operation_wksa_north
+	visible = {
+		has_completed_focus = GER_crossing_the_atlantic_a
+	}
+}
+
+operation_wksa_middle_category = {
+	icon = "GFX_decision_category_military_operation"
+	picture = decision_GFX_operation_wksa_middle
+	visible = {
+		has_completed_focus = GER_crossing_the_atlantic_a
+	}
+}
+
+operation_wksa_south_category = {
+	icon = "GFX_decision_category_military_operation"
+	picture = decision_GFX_operation_wksa_south
+	visible = {
+		has_completed_focus = GER_crossing_the_atlantic_a
+	}
+}
+
+operation_wksa_secret_category = {
+	icon = "GFX_decision_spr_political_assassination"
+	visible = {
+		has_completed_focus = GER_crossing_the_atlantic_a
+	}
+}

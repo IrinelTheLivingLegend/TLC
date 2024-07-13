@@ -1,0 +1,6 @@
+MLA = "countries/MLA - Mittelafrika.txt"
+RMK = "countries/RMK - Moskowien.txt"
+RTK = "countries/RTK - Turkestan.txt"
+RKS = "countries/RKS - Kaukasien.txt"
+RBM = "countries/RBM - Böhmen und Mähren.txt"
+RGV = "countries/RGV - Generalgouvernement.txt"

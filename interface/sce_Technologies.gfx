@@ -1,0 +1,247 @@
+spriteTypes = {	
+
+	SpriteType = {
+		name = "GFX_tech_sniper7_medium"
+		texturefile = "gfx/interface/technologies/Sniper7.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_sniper6_medium"
+		texturefile = "gfx/interface/technologies/Sniper6.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_sniper5_medium"
+		texturefile = "gfx/interface/technologies/Sniper5.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_sniper4_medium"
+		texturefile = "gfx/interface/technologies/sniper4.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_sniper3_medium"
+		texturefile = "gfx/interface/technologies/sniper3.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_sniper2_medium"
+		texturefile = "gfx/interface/technologies/sniper2.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_sniper_medium"
+		texturefile = "gfx/interface/technologies/sniper.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_flamethrower_sppt7_medium"
+		texturefile = "gfx/interface/technologies/flamethrower_sppt7.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_flamethrower_sppt6_medium"
+		texturefile = "gfx/interface/technologies/flamethrower_sppt6.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_flamethrower_sppt5_medium"
+		texturefile = "gfx/interface/technologies/flamethrower_sppt5.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_flamethrower_sppt4_medium"
+		texturefile = "gfx/interface/technologies/flamethrower_sppt4.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_flamethrower_sppt3_medium"
+		texturefile = "gfx/interface/technologies/flamethrower_sppt3.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_flamethrower_sppt2_medium"
+		texturefile = "gfx/interface/technologies/flamethrower_sppt2.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_flamethrower_sppt_medium"
+		texturefile = "gfx/interface/technologies/flamethrower_sppt.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_mortar7_medium"
+		texturefile = "gfx/interface/technologies/mortar7.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_mortar6_medium"
+		texturefile = "gfx/interface/technologies/mortar6.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_mortar5_medium"
+		texturefile = "gfx/interface/technologies/mortar5.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_mortar4_medium"
+		texturefile = "gfx/interface/technologies/mortar4.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_mortar3_medium"
+		texturefile = "gfx/interface/technologies/mortar3.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_mortar2_medium"
+		texturefile = "gfx/interface/technologies/mortar2.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_mortar_medium"
+		texturefile = "gfx/interface/technologies/mortar.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_wardog7_medium"
+		texturefile = "gfx/interface/technologies/wardog7.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_wardog6_medium"
+		texturefile = "gfx/interface/technologies/wardog6.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_wardog5_medium"
+		texturefile = "gfx/interface/technologies/wardog5.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_wardog4_medium"
+		texturefile = "gfx/interface/technologies/wardog4.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_wardog3_medium"
+		texturefile = "gfx/interface/technologies/wardog3.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_wardog2_medium"
+		texturefile = "gfx/interface/technologies/wardog2.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_wardog_medium"
+		texturefile = "gfx/interface/technologies/wardog.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_command7_medium"
+		texturefile = "gfx/interface/technologies/command7.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_command6_medium"
+		texturefile = "gfx/interface/technologies/command6.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_command5_medium"
+		texturefile = "gfx/interface/technologies/command5.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_command4_medium"
+		texturefile = "gfx/interface/technologies/command4.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_command3_medium"
+		texturefile = "gfx/interface/technologies/command3.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_command2_medium"
+		texturefile = "gfx/interface/technologies/command2.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_command_medium"
+		texturefile = "gfx/interface/technologies/command.dds"
+	}
+
+	SpriteType = {
+		name = "GFX_tech_gunner7_medium"
+		texturefile = "gfx/interface/technologies/gunner7.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_gunner6_medium"
+		texturefile = "gfx/interface/technologies/gunner6.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_gunner5_medium"
+		texturefile = "gfx/interface/technologies/gunner5.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_gunner4_medium"
+		texturefile = "gfx/interface/technologies/gunner4.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_gunner3_medium"
+		texturefile = "gfx/interface/technologies/gunner3.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_gunner2_medium"
+		texturefile = "gfx/interface/technologies/gunner2.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_gunner_medium"
+		texturefile = "gfx/interface/technologies/gunner.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_raider7_medium"
+		texturefile = "gfx/interface/technologies/raider7.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_raider6_medium"
+		texturefile = "gfx/interface/technologies/raider6.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_raider5_medium"
+		texturefile = "gfx/interface/technologies/raider5.dds"
+	}	
+
+	SpriteType = {
+		name = "GFX_tech_raider4_medium"
+		texturefile = "gfx/interface/technologies/raider4.dds"
+	}
+	
+	SpriteType = {
+		name = "GFX_tech_raider3_medium"
+		texturefile = "gfx/interface/technologies/raider3.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_raider2_medium"
+		texturefile = "gfx/interface/technologies/raider2.dds"
+	}	
+	
+	SpriteType = {
+		name = "GFX_tech_raider_medium"
+		texturefile = "gfx/interface/technologies/raider.dds"
+	}	
+}

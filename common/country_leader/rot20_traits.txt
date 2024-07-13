@@ -1,0 +1,60 @@
+@tier1 = 30
+@tier2 = 20
+@tier3 = 10
+
+leader_traits = {
+
+	mobilization_staff = {
+		sprite = 14	
+		mobilization_speed = 0.15
+		land_doctrine_cost_factor = -0.1
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+
+# Traits of Phoenixes (Temp)
+	person_of_phoenix = {
+		random = no
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	man_of_phoenix = {
+		random = no
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	woman_of_phoenix = {
+		random = no
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	phoenix = {
+		random = no
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+	tough = {
+		random = no
+		
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	
+
+
+}

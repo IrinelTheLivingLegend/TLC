@@ -1,0 +1,6280 @@
+GER_vanilla_look = {
+	
+	GER_vanilla_reminder = {
+
+		icon = GFX_decision_generic_political_discourse
+		priority = 100
+	
+		available = {
+			always = no
+		}
+	
+		fire_only_once = yes
+		days_mission_timeout = 3
+		is_good = yes
+	
+		visible = {
+			NOT = { has_global_flag = GER_END_OF_VANILLA_LOOK }
+		}
+	
+		complete_effect = {
+		}
+
+		timeout_effect = {
+			set_global_flag = GER_END_OF_VANILLA_LOOK
+		}
+	}
+
+	GER_revert_to_vanilla_germany = {
+		icon = GFX_decision_generic_political_rally
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = { has_global_flag = GER_END_OF_VANILLA_LOOK }
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_CALLED_AS_Vanilla
+			hidden_effect = {
+				drop_cosmetic_tag = yes
+				set_cosmetic_tag = GER_vanilla
+			}
+		}
+	}
+}
+
+GER_last_stand_of_germany = {
+	GER_hold_berlin = {
+
+		icon = GFX_decision_ger_berlin
+
+		allowed = {
+			original_tag = GER
+		}
+
+		#Fail trigger
+		available = {
+			NOT = { controls_state = 64 }
+		}
+
+		cancel_trigger = {
+		}
+
+		cancel_effect = {
+		}
+
+		days_mission_timeout = 180
+
+		fire_only_once = yes
+
+		is_good = no
+
+		activation = {
+			has_government = fascism
+			has_war = yes
+			has_civil_war = no
+			64 = {
+				is_controlled_by = ROOT
+				OR = {
+					any_neighbor_state = {
+						CONTROLLER = {
+							has_war_with = ROOT
+						}
+						OWNER = { tag = ROOT }
+					}
+					NOT = { is_fully_controlled_by = ROOT }
+				}
+			}
+		}
+
+		#Success
+		timeout_effect = {
+			add_stability = 0.05
+			add_war_support = 0.1
+		}
+
+		#Fail
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_leader = {
+						character = GER_adolf_hitler
+						ruling_only = yes
+					}
+				}
+				country_event = GER_health_adolf.3
+			}
+			else = {
+				add_war_support = -0.1
+			}
+		}
+	}
+}
+
+GER_Rhineland_demilitarized = {
+
+	GER_Rhineland_demilitarized_a = {
+		icon = GFX_decision_ger_troops_march
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			51 = { is_demilitarized_zone = no }
+			972 = { is_demilitarized_zone = no }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 51 #Rhineland
+				state = 972
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = no
+		selectable_mission = no
+		days_mission_timeout = ger_rhi_timeout #140
+		priority = 100
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			hidden_effect = {
+				complete_national_focus = GER_rhineland_demilitarized
+			}
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+		}
+
+		complete_effect = {
+		}
+	}
+
+	GER_Rhineland_demilitarized_b = {
+		icon = GFX_decision_ger_troops_march
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			42 = { is_demilitarized_zone = no }
+			971 = { is_demilitarized_zone = no }
+			974 = { is_demilitarized_zone = no }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 42 #Moselland
+				state = 971
+				state = 974
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = no
+		selectable_mission = no
+		days_mission_timeout = ger_rhi_timeout #140
+		priority = 90
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+		}
+
+		complete_effect = {
+		}
+	}
+
+	GER_Rhineland_demilitarized_e = {
+		icon = GFX_decision_ger_troops_march
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			50 = { is_demilitarized_zone = no }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 50 #Baden
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = no
+		selectable_mission = no
+		days_mission_timeout = ger_rhi_timeout #140
+		priority = 89
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			add_popularity = {
+				ideology = fascism
+				popularity = -0.05
+			}
+		}
+
+		complete_effect = {
+		}
+	}
+
+	GER_Rhineland_demilitarized_d = {
+		icon = GFX_decision_eng_blackshirt_march
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			42 = { is_demilitarized_zone = yes }
+			51 = { is_demilitarized_zone = yes }
+			50 = { is_demilitarized_zone = yes }
+		}
+
+		cost = 35
+		priority = 80
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 95
+				has_idea = hjalmar_schacht
+			}
+		}
+
+		visible = {
+			has_active_mission = GER_Rhineland_demilitarized_b
+		}
+
+		complete_effect = {
+			FRA = {
+				country_event = { id = GER_rhineland_n.1 hours = 3 }
+				custom_effect_tooltip = may_provoke_hostility
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						is_ai = yes
+					}
+					set_technology = { mobile_warfare = 1 popup = no }
+					set_technology = { formation_flying = 1 popup = no }
+					add_ideas = i_dont_use_wargoal
+				}
+			}
+		}
+	}
+
+	GER_Rhineland_demilitarized_c = {
+		icon = GFX_decision_SWI_consolidate_council_power
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			42 = { is_demilitarized_zone = yes }
+			51 = { is_demilitarized_zone = yes }
+			50 = { is_demilitarized_zone = yes }
+		}
+
+		cost = 35
+		priority = 80
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+			modifier = {
+				factor = 95
+				has_idea = hjalmar_schacht
+			}
+		}
+
+		visible = {
+			has_global_flag = GER_RH_N_NP
+		}
+
+		complete_effect = {
+			set_global_flag = rhineland_remilitarized
+			set_country_flag = GER_RHINELAND_SIDE_REMI
+			custom_effect_tooltip = GER_rhineland_ultimatum
+			if = {
+				limit = { FRA = { is_subject = no } }
+				FRA = {
+					country_event = { id = GER_rhineland.1 }
+					custom_effect_tooltip = may_provoke_hostility
+				}
+			}
+			hidden_effect = {
+				news_event = { id = ger_f_news.8 days = 15 }
+				add_days_mission_timeout = {
+					mission = GER_Rhineland_demilitarized_e
+					days = 14
+				}
+				add_days_mission_timeout = {
+					mission = GER_Rhineland_demilitarized_a
+					days = 14
+				}
+				add_days_mission_timeout = {
+					mission = GER_Rhineland_demilitarized_b
+					days = 14
+				}
+			}
+		}
+	}
+
+	GER_Rhineland_demilitarized_back = {
+		icon = GFX_decision_generic_political_rally
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			42 = { is_demilitarized_zone = yes }
+			51 = { is_demilitarized_zone = yes }
+			50 = { is_demilitarized_zone = yes }
+		}
+
+		cost = 10
+		priority = 75
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			has_active_mission = GER_Rhineland_demilitarized_b
+			NOT = { has_country_flag = GER_RHINELAND_SIDE_REMIL }
+		}
+
+		complete_effect = {
+			complete_national_focus = GER_rhineland_demilitarized
+			hidden_effect = {
+				news_event = { id = ger_f_news.8 days = 7 }
+			}
+		}
+	}
+
+}
+
+health_of_adolf_category = {
+
+	Adolf_Hitler_Yearly_Check_ups = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		cost = 25
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = no
+		selectable_mission = yes
+		days_mission_timeout = Adolf_Health_Year_TIME # 365
+
+		cancel_effect = {
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		timeout_effect = {
+			ROOT = { country_event = { id = GER_health_adolf.1 hours = 4 } }
+		}
+
+		complete_effect = {
+			ROOT = { country_event = { id = GER_health_adolf.1 hours = 4 } }
+		}
+	}
+
+	GER_hitler_purge_leaders = {
+		icon = GFX_decision_generic_police_action
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			always = no
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 3
+		timeout_effect = {
+			random_army_leader = {
+				limit = {
+					NOT = { has_trait = purged_by_hitler }
+					NOT = { has_unit_leader_flag = recently_purged_by_hitler }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				add_timed_unit_leader_trait = {
+					trait = purged_by_hitler
+					days = 60
+				}
+				set_unit_leader_flag = {
+					flag = recently_purged_by_hitler
+					value = 1
+					days = 180
+				}
+			}
+			random_army_leader = {
+				limit = {
+					NOT = { has_trait = purged_by_hitler }
+					NOT = { has_unit_leader_flag = recently_purged_by_hitler }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				add_timed_unit_leader_trait = {
+					trait = purged_by_hitler
+					days = 60
+				}
+				set_unit_leader_flag = {
+					flag = recently_purged_by_hitler
+					value = 1
+					days = 180
+				}
+			}
+			random_army_leader = {
+				limit = {
+					NOT = { has_trait = purged_by_hitler }
+					NOT = { has_unit_leader_flag = recently_purged_by_hitler }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				add_timed_unit_leader_trait = {
+					trait = purged_by_hitler
+					days = 60
+				}
+				set_unit_leader_flag = {
+					flag = recently_purged_by_hitler
+					value = 1
+					days = 180
+				}
+			}
+			random_army_leader = {
+				limit = {
+					NOT = { has_trait = purged_by_hitler }
+					NOT = { has_unit_leader_flag = recently_purged_by_hitler }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				add_timed_unit_leader_trait = {
+					trait = purged_by_hitler
+					days = 60
+				}
+				set_unit_leader_flag = {
+					flag = recently_purged_by_hitler
+					value = 1
+					days = 180
+				}
+			}
+			random_army_leader = {
+				limit = {
+					NOT = { has_trait = purged_by_hitler }
+					NOT = { has_unit_leader_flag = recently_purged_by_hitler }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				add_timed_unit_leader_trait = {
+					trait = purged_by_hitler
+					days = 60
+				}
+				set_unit_leader_flag = {
+					flag = recently_purged_by_hitler
+					value = 1
+					days = 180
+				}
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	GER_eliminate_traitor = {
+		icon = GFX_decision_generic_police_action
+		
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			always = no
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 3
+		
+		timeout_effect = {
+			random_army_leader = {
+				limit = {
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				retire = yes
+			}
+			random_army_leader = {
+				limit = {
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				retire = yes
+			}
+			random_army_leader = {
+				limit = {
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				retire = yes
+			}
+			random_army_leader = {
+				limit = {
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				retire = yes
+			}
+			random_army_leader = {
+				limit = {
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE }
+					NOT = { has_unit_leader_flag = GER_NOT_PURGE_WILHELM }
+				}
+				retire = yes
+			}
+			add_manpower = -15000
+		}
+
+		complete_effect = {
+		}
+	}
+
+}
+
+New_Laws_fuhrer_category = {
+
+	New_Laws_fuhrer_Eco = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = recently_signed_law
+				has_country_flag = New_Law_Eco_wilhelm
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = New_Law_Eco_Fuhrer
+			set_country_flag = {
+				flag = recently_signed_law
+				value = 1
+				days = 90
+			}
+		}
+	}
+
+	New_Laws_fuhrer_civilian = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = recently_signed_law
+				has_country_flag = New_Law_civilian_wilhelm
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = New_Law_civilian_Fuhrer
+			set_country_flag = {
+				flag = recently_signed_law
+				value = 1
+				days = 90
+			}
+		}
+	}
+
+	New_Laws_fuhrer_health = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = recently_signed_law
+				has_country_flag = New_Law_health_wilhelm
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = New_Law_health_Fuhrer
+			set_country_flag = {
+				flag = recently_signed_law
+				value = 1
+				days = 90
+			}
+		}
+	}
+
+	New_Laws_fuhrer_arms = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = recently_signed_law
+				has_country_flag = New_Law_arms_wilhelm
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = New_Law_arms_Fuhrer
+			set_country_flag = {
+				flag = recently_signed_law
+				value = 1
+				days = 90
+			}
+		}
+	}
+
+}
+
+New_Laws_wilhelm_category = {
+
+	New_Laws_wilhelm_Eco = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = recently_signed_law
+				has_country_flag = New_Law_Eco_Fuhrer
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = New_Law_Eco_wilhelm
+			set_country_flag = {
+				flag = recently_signed_law
+				value = 1
+				days = 90
+			}
+		}
+	}
+
+	New_Laws_wilhelm_civilian = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = recently_signed_law
+				has_country_flag = New_Law_civilian_Fuhrer
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = New_Law_civilian_wilhelm
+			set_country_flag = {
+				flag = recently_signed_law
+				value = 1
+				days = 90
+			}
+		}
+	}
+
+	New_Laws_wilhelm_health = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = recently_signed_law
+				has_country_flag = New_Law_health_Fuhrer
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = New_Law_health_wilhelm
+			set_country_flag = {
+				flag = recently_signed_law
+				value = 1
+				days = 90
+			}
+		}
+	}
+
+	New_Laws_wilhelm_arms = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			NOT = {
+				has_country_flag = recently_signed_law
+				has_country_flag = New_Law_arms_Fuhrer
+			}
+		}
+
+		complete_effect = {
+			set_country_flag = New_Law_arms_wilhelm
+			set_country_flag = {
+				flag = recently_signed_law
+				value = 1
+				days = 90
+			}
+		}
+	}
+
+}
+
+Holy_Roman_Empire_mng_category = {
+
+	imperial_mng = {
+		icon = GFX_decision_eng_ally_imperialist_coup
+		cost = 0
+		targets = { HOL LUX FRA SWI SLO ITA SPM OCC }
+		target_trigger = {
+			FROM = {
+				OR = {
+					tag = HOL	
+					tag = FRA 
+					tag = SWI
+					tag = ITA 
+					tag = SPM
+					tag = OCC
+				} 
+			}
+		}
+		target_non_existing = yes
+
+		available = {
+			FROM = {
+				OR = {
+					is_puppet_of = GER
+					exists = no
+				}
+				NOT = { has_autonomy_state = autonomy_loyal_state }
+			}
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					FROM = { is_puppet_of = GER }
+				}
+				set_autonomy = {
+					target = FROM
+					autonomy_state = autonomy_loyal_state
+					end_wars = no
+					end_civil_wars = no
+				}
+			}
+			else_if = {
+				limit = {
+					FROM = { exists = no }
+				}
+				release_on_controlled = FROM
+				GER = {
+					set_autonomy = {
+						target = FROM
+						autonomy_state = autonomy_loyal_state
+						end_wars = no
+						end_civil_wars = no
+					}
+				}
+				hidden_effect = {
+					FROM = {
+						every_state = {
+							limit = {
+								is_core_of = GER
+							}
+							transfer_state_to = GER
+						}
+					}
+				}
+			}
+		}
+	}
+
+	Empire_plan_civil_inds = {
+		icon = GFX_decision_generic_construction
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = { has_global_flag = empire_working_on_project }
+		}
+
+		visible = {
+			has_completed_focus = GER_expand_civilian_industry
+		}
+
+		cost = 75
+
+		fire_only_once = no
+
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			set_global_flag = empire_working_on_project
+			every_country = {
+				limit = {
+					is_puppet_of = GER
+					has_autonomy_state = autonomy_loyal_state
+				}
+				add_timed_idea = {
+					idea = GER_empire_focus_on_civil
+					days = 365
+				}
+			}
+		}
+	}
+
+	Empire_plan_army_inds = {
+		icon = GFX_decision_generic_construction
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = { has_global_flag = empire_working_on_project }
+		}
+
+		visible = {
+			has_completed_focus = GER_expand_arms_industry
+		}
+
+		cost = 75
+
+		fire_only_once = no
+
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			set_global_flag = empire_working_on_project
+			every_country = {
+				limit = {
+					is_puppet_of = GER
+					has_autonomy_state = autonomy_loyal_state
+				}
+				add_timed_idea = {
+					idea = GER_empire_focus_on_mil
+					days = 365
+				}
+			}
+		}
+	}
+
+	Empire_plan_army = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = { has_global_flag = empire_working_on_project }
+		}
+
+		visible = {
+			has_completed_focus = GER_expand_armed_forces
+		}
+
+		cost = 75
+
+		fire_only_once = no
+
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			set_global_flag = empire_working_on_project
+			every_country = {
+				limit = {
+					is_puppet_of = GER
+					has_autonomy_state = autonomy_loyal_state
+				}
+				add_timed_idea = {
+					idea = GER_empire_focus_on_army
+					days = 365
+				}
+			}
+		}
+	}
+
+}
+
+eva_braun_category = {
+
+	eva_braun_work_as_health_care = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = { has_country_flag = eva_braun_has_job }
+		}
+
+		cost = 75
+
+		fire_only_once = no
+
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			set_country_flag = eva_braun_has_job
+			set_country_flag = eva_braun_health
+			hidden_effect = {
+				remove_trait = {
+					character = GER_eva_braun
+					slot = political_advisor
+					trait = eva_braun_trait
+				}
+			}
+			add_trait = {
+				character = GER_eva_braun
+				slot = political_advisor
+				trait = "eva_braun_trait_health"
+			}
+		}
+	}
+
+	eva_braun_work_as_eco = {
+		icon = GFX_decision_ger_mefo_bills
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = { has_country_flag = eva_braun_has_job }
+		}
+
+		cost = 75
+
+		fire_only_once = no
+
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			set_country_flag = eva_braun_has_job
+			set_country_flag = eva_braun_eco
+			hidden_effect = {
+				remove_trait = {
+					character = GER_eva_braun
+					slot = political_advisor
+					trait = eva_braun_trait
+				}
+			}
+			add_trait = {
+				character = GER_eva_braun
+				slot = political_advisor
+				trait = "eva_braun_trait_eco"
+			}
+		}
+	}
+
+	eva_braun_asign_women_fasicm_moment = {
+		icon = GFX_decision_generic_military
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			NOT = { 
+				has_country_flag = eva_braun_has_job
+				has_idea = kinder_kuche_kirche 
+			}
+		}
+
+		cost = 150
+
+		fire_only_once = no
+
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			set_country_flag = eva_braun_has_job
+			set_country_flag = eva_braun_women_fasicm
+			hidden_effect = {
+				remove_trait = {
+					character = GER_eva_braun
+					slot = political_advisor
+					trait = eva_braun_trait
+				}
+			}
+			add_trait = {
+				character = GER_eva_braun
+				slot = political_advisor
+				trait = "eva_braun_trait_fasicm_moment"
+			}
+		}
+	}
+
+	eva_braun_remove_from_job = {
+		icon = GFX_decision_generic_break_treaty
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			has_country_flag = eva_braun_has_job
+		}
+
+		cost = 150
+
+		fire_only_once = no
+
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					has_country_flag = eva_braun_women_fasicm
+				}
+				add_war_support = -0.1
+			}
+			if = {
+				limit = {
+					has_country_flag = eva_braun_health
+				}
+				add_stability = -0.1
+			}
+			if = {
+				limit = {
+					has_country_flag = eva_braun_eco
+				}
+				add_timed_idea = {
+					idea = ger_temp_debuff
+					days = 90
+				}
+			}
+			clr_country_flag = eva_braun_women_fasicm
+			clr_country_flag = eva_braun_health
+			clr_country_flag = eva_braun_eco
+			clr_country_flag = eva_braun_has_job
+			hidden_effect = {
+				remove_trait = {
+					character = GER_eva_braun
+					slot = political_advisor
+					trait = eva_braun_trait_health
+				}
+				remove_trait = {
+					character = GER_eva_braun
+					slot = political_advisor
+					trait = eva_braun_trait_eco
+				}
+				remove_trait = {
+					character = GER_eva_braun
+					slot = political_advisor
+					trait = eva_braun_trait_fasicm_moment
+				}
+			}
+			add_trait = {
+				character = GER_eva_braun
+				slot = political_advisor
+				trait = eva_braun_trait
+			}
+		}
+	}
+}
+
+GER_expand_support = {
+
+	GER_conquer_hamburg = {
+		icon = GFX_decision_SOV_place_hq
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			58 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			NOT = { has_global_flag = GER_civil_war_end }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 58 #Hamburg
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 365
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			add_stability = -0.05
+			add_war_support = -0.05
+		}
+
+		complete_effect = {
+			add_war_support = 0.1
+			add_stability = 0.1
+			random_country = {
+				limit = {
+					original_tag = GER
+					has_government = fascism
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = GER
+				}
+			}
+		}
+	}
+
+	GER_conquer_berlin = {
+		icon = GFX_decision_ger_berlin
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			64 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			NOT = { has_global_flag = GER_civil_war_end }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 64 #Berlin
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 365
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			add_stability = -0.05
+			add_war_support = -0.05
+		}
+
+		complete_effect = {
+			add_war_support = 0.1
+			add_stability = 0.1
+			random_country = {
+				limit = {
+					original_tag = GER
+					has_government = fascism
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = GER
+				}
+			}
+		}
+	}
+
+	GER_conquer_munich = {
+		icon = GFX_decision_SOV_place_hq
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			52 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			NOT = { has_global_flag = GER_civil_war_end }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 52 #Munich
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 365
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			add_stability = -0.05
+			add_war_support = -0.05
+		}
+
+		complete_effect = {
+			add_war_support = 0.1
+			add_stability = 0.1
+			random_country = {
+				limit = {
+					original_tag = GER
+					has_government = fascism
+				}
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = GER
+				}
+			}
+		}
+	}
+}
+
+GER_mefo_bills_category_r = {
+
+	GER_Four_Year_Plan = {
+		icon = GFX_decision_generic_factory
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			always = no
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 1460
+		priority = 100
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			effect_tooltip = {
+				remove_dynamic_modifier = { modifier = GER_Four_Year_Plan_dynamic_modifier }
+			}
+			set_country_flag = GER_FOUR_YEAR_PLAN_END
+			hidden_effect = {
+				if = {
+					limit = {
+						has_idea = hjalmar_schacht
+					}
+					country_event = gerb.81
+				}
+				set_variable = {
+					GER_FR_production_speed_arms_factory_factor = 0.15
+				}
+				set_variable = {
+					GER_FR_production_speed_dockyard_factor = 0.15
+				}
+				set_variable = {
+					GER_FR_production_speed_industrial_complex_factor = 0.15
+				}
+				set_variable = {
+					GER_FR_production_speed_naval_base_factor = 0.05
+				}
+				set_variable = {
+					GER_FR_production_speed_radar_station_factor = 0.05
+				}
+				set_variable = {
+					GER_FR_production_speed_air_base_factor = 0.05
+				}
+				set_variable = {
+					GER_FR_production_speed_anti_air_building_factor = 0.05
+				}
+				set_variable = {
+					GER_FR_production_speed_bunker_factor = 0.05
+				}
+				set_variable = {
+					GER_FR_production_speed_coastal_bunker_factor = 0.05
+				}
+				set_variable = {
+					GER_FR_production_speed_infrastructure_factor = 0
+				}
+				set_variable = {
+					GER_FR_production_speed_rail_way_factor = 0
+				}
+			}
+		}
+
+		complete_effect = {
+		}
+	}	
+
+	GER_mefo_bills_mission = {
+
+		allowed = { always = no }
+
+		icon = ger_mefo_bills
+
+		available = {
+			NOT = { has_government = democratic }
+			has_political_power > 0
+			hidden_trigger = { always = no }
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					has_country_flag = mefo_bills_removed_through_war
+					has_idea = GER_mefo_bills_ended
+				}
+			}
+		}
+
+		days_mission_timeout = 180
+		is_good = yes
+		fire_only_once = yes
+		priority = 80
+
+		days_remove = GER_extend_mefo_bills_days?0
+		remove_effect = {
+		}
+
+		complete_effect = {
+		}
+
+		timeout_effect = {
+			if = {
+				limit = {
+					OR = {
+						has_country_flag = GER_mefo_bills_ended
+						has_country_flag = ger_has_cancelled_mefo 
+					}
+				}
+				#1
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 15 compare = less_than }
+					}
+					add_political_power = -20
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 60 }
+				}
+				#2
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 20 compare = equals }
+					}
+					add_political_power = -40
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 80 }
+				}
+				#3
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 30 compare = equals }
+					}
+					add_political_power = -60
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 100 }
+				}
+				#4
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 40 compare = equals }
+					}
+					add_political_power = -80
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 120 }
+				}
+				#5
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 50 compare = equals }
+					}
+					add_political_power = -100
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 140 }
+				}
+				#6
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 60 compare = equals }
+					}
+					add_political_power = -120
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 160 }
+				}
+				#7
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 70 compare = equals }
+					}
+					add_political_power = -140
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 180 }
+				}
+				#8
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 80 compare = equals }
+					}
+					add_political_power = -160
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 200 }
+				}
+				#9
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 90 compare = equals }
+					}
+					add_political_power = -180
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 220 }
+				}
+				#10
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 100 compare = equals }
+					}
+					add_political_power = -200
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 240 }
+				}
+				#11
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 110 compare = equals }
+					}
+					add_political_power = -220
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 260 }
+				}
+				#12
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 120 compare = equals }
+					}
+					add_political_power = -240
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 280 }
+				}
+				#13
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 130 compare = equals }
+					}
+					add_political_power = -260
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 300 }
+				}
+				#14
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 140 compare = equals }
+					}
+					add_political_power = -280
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 320 }
+				}
+				#15
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 150 compare = equals }
+					}
+					add_political_power = -300
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 340 }
+				}
+				#16
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 160 compare = equals }
+					}
+					add_political_power = -320
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 360 }
+				}
+				#17
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 170 compare = equals }
+					}
+					add_political_power = -340
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 380 }
+				}
+				#18
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 180 compare = equals }
+					}
+					add_political_power = -360
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 400 }
+				}
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 180 compare = greater_than }
+					}
+					add_political_power = -380
+					add_timed_idea = { idea = GER_mefo_bills_ended days = 420 }
+				}
+				GER_remove_mefo_bills = yes
+			}
+			else = {
+				custom_effect_tooltip = GER_mefo_bills_mission_tt
+				custom_effect_tooltip = GER_mefo_bills_effect_in_days
+				hidden_effect = {
+					set_variable = { GER_extend_mefo_bills_days = days_mission_timeout@GER_mefo_bills_mission }
+					set_country_flag = paid_for_mefo
+				}
+				GER_mefo_bills_level_up = yes
+				effect_tooltip = {
+					swap_ideas = {
+						remove_idea = Four_Year_Plan_1_Hide_FAKE
+						add_idea = Four_Year_Plan_1_Hide_FAKE_mefo
+					}
+				}
+				if = {
+					limit = {
+						check_variable = { var = GER_mefo_bill_counter value = 15 compare = less_than }
+					}
+					hidden_effect = { set_variable = { var = GER_mefo_bill_counter value = 10 } }
+				}
+				add_to_variable = { var = GER_mefo_bill_counter value = 10 }
+
+				hidden_effect = {
+					if = {
+						limit = {
+							has_war = yes
+						}
+						GER_remove_mefo_bills = yes
+					}
+					else = {
+						activate_mission = GER_mefo_bills_mission
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 200
+		}
+	}
+
+	GER_pay_mefo_fee = {
+		icon = GFX_decision_hol_attract_foreign_investors
+		days_remove = 30
+		priority = 78
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				OR = {
+					check_variable = {
+						var = GER_FR_political_power_gain
+						value = -0.6
+						compare = equals
+					}
+					check_variable = {
+						var = GER_FR_political_power_gain
+						value = -0.65
+						compare = equals
+					}
+					check_variable = {
+						var = GER_FR_political_power_gain
+						value = -0.75
+						compare = equals
+					}
+					check_variable = {
+						var = GER_FR_political_power_gain
+						value = -0.85
+						compare = equals
+					}
+				}
+			}
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available =  {
+			custom_trigger_tooltip = {
+				tooltip = GER_MEFO_cost_higher
+				check_variable = {
+					var = GER_FR_political_power_gain
+					value = -0.35
+					compare = less_than
+				}
+			}
+		}
+
+		cancel_trigger = {
+			hidden_trigger = {
+				OR = {
+					has_idea = GER_mefo_bills_ended
+					has_country_flag = mefo_bills_removed_through_war
+					has_idea = GER_mefo_bills_ended
+				}
+			}
+		}
+
+		visible = {
+			GER_has_mefo_bills = no
+		}
+
+		modifier = {
+			civilian_factory_use = 3
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			effect_tooltip = {
+				swap_ideas = {
+					remove_idea = Four_Year_Plan_1_Hide_FAKE_mefo
+					add_idea = Four_Year_Plan_1_Hide_FAKE_pp_mefo
+				}
+			}
+			add_to_variable = { var = GER_mefo_bill_counter value = -10 }
+			add_to_variable = { GER_FR_political_power_gain = 0.1 }
+		}
+	}	
+
+	GER_cancel_mefos = {
+
+		icon = GFX_decision_generic_break_treaty
+
+		available = {
+			hidden_trigger = {
+				NOT = { has_country_flag = ger_has_cancelled_mefo }
+				NOT = {
+					OR = {
+						has_country_flag = GER_mefo_bills_ended
+						has_country_flag = ger_has_cancelled_mefo
+						has_idea = GER_mefo_bills_ended
+					}
+				}
+			}
+		}
+
+		cost = 0
+
+		fire_only_once = no
+
+		priority = 10
+
+		visible = {
+			hidden_trigger = {
+				NOT = { has_country_flag = ger_has_cancelled_mefo }
+				GER_has_mefo_bills = no
+				NOT = {
+					has_idea = GER_mefo_bills_ended
+				}
+			}
+		}
+
+		cancel_if_not_visible = yes
+
+		remove_effect = {
+			set_country_flag = ger_has_cancelled_mefo
+			hidden_effect = {
+				GER_remove_mefo_bills = yes
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
+
+GER_training_program = {
+
+	GER_SOV_TRAINING = {
+		icon = GFX_decision_generic_air
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		cost = 25
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = yes
+		days_mission_timeout = 365
+
+		cancel_effect = {
+		}
+
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 1000
+				has_global_flag = spanish_civil_war
+			}
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = GER_end_of_training_program
+			hidden_effect = {
+				remove_ideas = GER_SOV_TRAINING
+				SOV = { remove_ideas = SOV_GER_TRAINING }
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_Cancel_Training_Program
+			hidden_effect = {
+				remove_ideas = GER_SOV_TRAINING
+				SOV = { remove_ideas = SOV_GER_TRAINING }
+				remove_opinion_modifier = {
+					target = SOV
+					modifier = gertrainingprogram
+				}
+				SOV = {
+					remove_opinion_modifier = {
+						target = GER
+						modifier = gertrainingprogram
+					}
+				}
+			}
+		}
+	}
+
+	GER_ITA_TRAINING = {
+		icon = GFX_decision_generic_naval
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+		}
+
+		cost = 25
+		cancel_if_not_visible = yes
+		is_good = yes
+		fire_only_once = yes
+		selectable_mission = yes
+		days_mission_timeout = 365
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			custom_effect_tooltip = GER_end_of_training_program
+			hidden_effect = {
+				remove_ideas = GER_ITA_TRAINING
+				ITA = { remove_ideas = ITA_GER_TRAINING }
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_Cancel_Training_Program
+			hidden_effect = {
+				remove_ideas = GER_ITA_TRAINING
+				ITA = { remove_ideas = ITA_GER_TRAINING }
+				remove_opinion_modifier = {
+					target = ITA
+					modifier = gertrainingprogram
+				}
+				ITA = {
+					remove_opinion_modifier = {
+						target = GER
+						modifier = gertrainingprogram
+					}
+				}
+			}
+		}
+	}
+
+}
+
+GER_Volkssturm_category = {
+
+	GER_raise_volksstrum_units = {
+		priority = 10
+
+		icon = POL_organize_strike_two
+
+		state_target = yes
+
+		target_trigger = {
+			FROM = {
+				is_controlled_by = ROOT
+				is_core_of = ROOT
+				OR = {
+					has_state_category = megalopolis
+					state = 55
+					state = 52
+					state = 50
+				}
+			}
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 15
+				FROM = {
+					OR = {
+						state = 64 #Berlin
+						state = 52 #Oberbayern
+						state = 55 #Hessen
+						state = 50 #Wurttemberg
+					}
+				}
+				#ROOT = { manpower_per_military_factory > 15000 } #Don't waste if we need better manpower laws
+			}
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		visible = {
+		}
+
+		cost = 25
+
+		days_remove = GER_DEPLOY_TIME_OF_VOLKSSTURM
+
+		cancel_if_not_visible = yes
+
+		cancel_trigger = {
+			FROM = {
+				OR = {
+					NOT = { is_controlled_by = ROOT }
+				}
+			}
+		}
+
+		cancel_effect = { #DO Nothing
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			FROM = {
+				if = {
+					limit = {
+						NOT = {
+							has_country_flag = VOLKSSTURM_LESS_TRAINING
+						}
+					}
+					create_unit = {
+						division = "division_template = \"Volkssturm\" start_experience_factor = 0.2 start_equipment_factor = 1.0"
+						owner = ROOT
+						count = 2
+					}
+				}
+				if = {
+					limit = {
+						has_country_flag = VOLKSSTURM_LESS_TRAINING
+					}
+					create_unit = {
+						division = "division_template = \"Volkssturm\" start_experience_factor = 0.1 start_equipment_factor = 1.0"
+						owner = ROOT
+						count = 2
+					}
+				}
+			}
+		}
+	}
+
+}
+
+GER_colonial_management_category = {
+	transfer_state_to_MLA = {
+
+		cost = 10
+
+		days_re_enable = 1
+
+		icon = GFX_decision_infiltrate_state
+
+		allowed = {
+		}
+
+		available = {
+			MLA = {
+				exists = yes
+			}
+			GER = {
+				any_controlled_state = {
+					OR = {
+						is_claimed_by = MLA
+						is_core_of = MLA
+					}
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			every_state = {
+				limit = {
+					OR = {
+						is_core_of = MLA
+						is_claimed_by = MLA
+					}
+					is_controlled_by = GER
+				}
+				transfer_state_to = MLA
+			}
+		}
+
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
+	sent_rommel_to_mla = {
+
+		cost = 30
+
+		days_re_enable = 30
+
+		icon = GFX_decision_ETH_chitet
+
+		allowed = {
+		}
+
+		available = {
+			MLA = {
+				exists = yes
+			}
+		}
+
+		visible = {
+			NOT = { has_country_flag = GER_SENT_ROMMEL_MLA }
+		}
+
+		complete_effect = {
+			GER_erwin_rommel = { set_nationality = MLA }
+			hidden_effect = {
+				set_country_flag = GER_SENT_ROMMEL_MLA
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	recall_rommel_to_ger = {
+
+		cost = 30
+
+		days_re_enable = 30
+
+		icon = GFX_decision_generic_army_support
+
+		allowed = {
+		}
+
+		available = {
+			MLA = {
+				exists = yes
+			}
+		}
+
+		visible = {
+			has_country_flag = GER_SENT_ROMMEL_MLA
+		}
+
+		complete_effect = {
+			GER_erwin_rommel = { set_nationality = GER }
+			hidden_effect = {
+				clr_country_flag = GER_SENT_ROMMEL_MLA
+			}
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+
+	sent_troops_to_mla = {
+
+		cost = 10
+
+		days_re_enable = 30
+
+		icon = GFX_decision_generic_reorganize_irregulars
+
+		allowed = {
+		}
+
+		available = {
+			MLA = {
+				exists = yes
+			}
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			MLA = {
+				random_controlled_state = {
+					limit = {
+						is_core_of = MLA
+					}
+					create_unit = {
+						division = "name = \"Colonial Division\" division_template = \"Colonial Division\" start_experience_factor = 0.5"
+						owner = MLA
+					}
+				}
+			}
+		}
+
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	send_more_men_to_the_MLA = {
+
+		cost = 10
+
+		days_re_enable = 91
+
+		icon = GFX_decision_eng_blackshirt_march
+
+		allowed = {
+		}
+
+		available = {
+			MLA = {
+				exists = yes
+			}
+			GER = {
+				has_manpower > 10000
+			}
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+
+			GER = {
+				add_manpower = -10000
+			}
+
+			MLA = {
+				add_manpower = 10000
+				army_experience = 15
+			}
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = MLA
+					NOT = {
+						is_core_of = MLA
+					}
+				}
+				add_resistance = -5
+			}
+
+			hidden_effect = {
+			}
+		}
+
+		ai_will_do = {
+			factor = 20
+		}
+	}
+
+	send_more_weapons_to_the_MLA = {
+
+		cost = 10
+
+		days_re_enable = 91
+
+		icon = GFX_decision_generic_prepare_civil_war
+
+		allowed = {
+		}
+
+		available = {
+			MLA = {
+				exists = yes
+			}
+			OR = {
+				GER = {
+					has_equipment = {
+						infantry_equipment_1 > 2000
+					}
+				}
+				GER = {
+					has_equipment = {
+						infantry_equipment_0 > 2000
+					}
+				}
+				GER = {
+					has_equipment = {
+						infantry_equipment_2 > 2000
+					}
+				}
+			}
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			GER = {
+				send_equipment = {
+					equipment = infantry_equipment
+					amount = 2000
+					target = MLA
+				}
+			}
+
+			every_state = {
+				limit = {
+					is_owned_and_controlled_by = MLA
+					NOT = { is_core_of = MLA }
+				}
+				add_resistance = -5
+			}
+
+			hidden_effect = {
+
+			}
+		}
+
+		ai_will_do = {
+			base = 1
+			modifier = {
+				factor = 10
+				OR = {
+					GER = {
+						has_equipment = {
+							infantry_equipment_1 > 5000
+						}
+					}
+					GER = {
+						has_equipment = {
+							infantry_equipment_0 > 5000
+						}
+					}
+					GER = {
+						has_equipment = {
+							infantry_equipment_2 > 5000
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+GER_Operation_Sealion_ph_2 = {
+
+	GER_conquer_Birmigham = {
+		icon = GFX_decision_SOV_place_hq
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			128 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			has_global_flag = GER_Operation_Sealion_ph2_running
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 128 #Birmigham
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 120
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			ROOT = { add_war_support = -0.05 }
+		}
+
+		complete_effect = {
+			ENG = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+				add_war_support = -0.05
+				add_stability = -0.05
+			}
+			complete_national_focus = GER_battle_of_Birmingham
+			add_power_balance_value = {
+				id = GER_power_balance
+				value = -0.05
+			}
+		}
+	}
+
+	GER_conquer_Landon = {
+		icon = GFX_decision_london
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			126 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			has_global_flag = GER_Operation_Sealion_ph2_running
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 126 #London
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 120
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			ROOT = { add_war_support = -0.05 }
+			add_power_balance_value = {
+				id = GER_power_balance
+				value = -0.1
+			}
+		}
+
+		complete_effect = {
+			ENG = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+				add_war_support = -0.05
+				add_stability = -0.05
+			}
+			complete_national_focus = GER_battle_of_landon
+		}
+	}
+
+	GER_conquer_Liverpool = {
+		icon = GFX_decision_SOV_place_hq
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			132 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			has_global_flag = GER_Operation_Sealion_ph2_running
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 132 #Liverpool
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 120
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			ROOT = { add_war_support = -0.05 }
+			add_power_balance_value = {
+				id = GER_power_balance
+				value = -0.05
+			}
+		}
+
+		complete_effect = {
+			ENG = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+				add_war_support = -0.05
+				add_stability = -0.05
+			}
+			complete_national_focus = GER_battle_of_liverpool
+		}
+	}
+
+	GER_end_of_operation_sea_lion = {
+		icon = GFX_decision_generic_intelligence_operation
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			NOT = {
+				has_active_mission = GER_conquer_Liverpool
+				has_active_mission = GER_conquer_Landon
+				has_active_mission = GER_conquer_Birmigham
+			}
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			has_global_flag = GER_Operation_Sealion_ph2_running
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 120
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			GER = { country_event = { id = GER_health_adolf.2 hours = 12 } }
+		}
+
+		complete_effect = {
+		}
+	}
+}
+
+GER_Operation_Sealion_ph_1 = {
+
+	GER_plan_working_fine_or_not = {
+		icon = GFX_decision_generic_operation
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			has_global_flag = dover_portsmouth_subtraction
+			has_global_flag = plymouth_subtraction
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			has_global_flag = GER_Operation_Sealion_ph1_running
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 120
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			GER = { country_event = { id = GER_health_adolf.2 hours = 6 } }
+		}
+
+		complete_effect = {
+			add_timed_idea = { idea = GER_sealion days = 240 }
+			clr_global_flag = GER_Operation_Sealion_ph1_running
+			set_global_flag = GER_Operation_Sealion_ph2_running
+			hidden_effect = {
+				activate_mission = GER_conquer_Birmigham
+				activate_mission = GER_conquer_Landon
+				activate_mission = GER_conquer_Liverpool
+				activate_mission = GER_end_of_operation_sea_lion
+			}
+		}
+	}
+
+	GER_dover_portsmouth_subtraction = {
+		icon = GFX_decision_generic_operation
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			127 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			has_global_flag = GER_Operation_Sealion_ph1_running
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 127 #Sussex
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 120
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			ROOT = { add_war_support = -0.05 }
+		}
+
+		complete_effect = {
+			ENG = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+				add_war_support = -0.05
+				add_stability = -0.05
+			}
+			set_global_flag = dover_portsmouth_subtraction
+		}
+	}
+
+	GER_plymouth_subtraction = {
+		icon = GFX_decision_generic_operation
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			123 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		activation = {
+			always = no
+		}
+
+		visible = {
+			has_global_flag = GER_Operation_Sealion_ph1_running
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 123 #South-West England
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 120
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			ROOT = { add_war_support = -0.05 }
+		}
+
+		complete_effect = {
+			ENG = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+				add_war_support = -0.05
+				add_stability = -0.05
+			}
+			set_global_flag = plymouth_subtraction
+		}
+	}
+}
+
+GER_Africa_Operations = {
+
+	GER_Supply_for_Africa = {
+		icon = GFX_decision_ger_military_buildup
+		priority = 100
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			always = no
+		}
+
+		activation = {
+			has_idea = GER_Afrika_Korps
+			has_completed_focus = GER_Set_HQ_in_Libya
+			NOT = { has_global_flag = NO_MORE_SUPPLY_REQ_LIB }
+		}
+
+		visible = {
+			has_idea = GER_Afrika_Korps
+			has_completed_focus = GER_Set_HQ_in_Libya
+			NOT = { has_global_flag = NO_MORE_SUPPLY_REQ_LIB }
+		}
+		is_good = no
+		selectable_mission = no
+		days_mission_timeout = 30
+		timeout_effect = {
+			if = {
+				limit = {
+					LIB = {
+						is_puppet_of = ITA
+					}
+				}
+				if = { # At Peace No Supply Problems!
+					limit = {
+						LIB = { is_at_peace_exiled_countries_excluded = yes }
+					}
+					LIB = { GER_normal_supply_for_libya_effect = yes }
+				}
+				else_if = {
+					limit = { # No Ships No Supply
+						NOT = { has_global_flag = extra_supply_to_africa }
+						ITA = { ships_in_area = { area = 29 size < 1 }  }
+					}
+					LIB = { GER_lower_supply_for_libya_effect = yes }
+				}
+				else_if = { #Small Amount of Ships Escorted Convoys
+					limit = {
+						NOT = { has_global_flag = extra_supply_to_africa }
+						ITA = { ships_in_area = { area = 29 size > 32 }  }
+						ITA = { ships_in_area = { area = 29 size < 64 }  }
+					}
+					LIB = { GER_low_supply_for_libya_effect = yes }
+				}
+				else_if = { #Fine Amount of Ships Escorted Convoys
+					limit = {
+						NOT = { has_global_flag = extra_supply_to_africa }
+						ITA = { ships_in_area = { area = 29 size > 64 }  }
+					}
+					LIB = { GER_normal_supply_for_libya_effect = yes }
+				}
+				else_if = { #Extra Supply
+					limit = {
+						has_global_flag = extra_supply_to_africa
+					}
+					LIB = { GER_normal_supply_for_libya_effect = yes }
+				}
+			}
+			else_if = {
+				if = { # At Peace No Supply Problems!
+					limit = {
+						ITA = { is_at_peace_exiled_countries_excluded = yes }
+					}
+					ITA = { GER_normal_supply_for_libya_effect = yes }
+				}
+				else_if = {
+					limit = {
+						NOT = { has_global_flag = extra_supply_to_africa }
+						ITA = { ships_in_area = { area = 29 size < 1 }  }
+					}
+					ITA = { GER_lower_supply_for_libya_effect = yes }
+				}
+				else_if = { #Small Amount of Ships Escorted Convoys
+					limit = {
+						NOT = { has_global_flag = extra_supply_to_africa }
+						ITA = { ships_in_area = { area = 29 size > 32 }  }
+						ITA = { ships_in_area = { area = 29 size < 64 }  }
+					}
+					ITA = { GER_low_supply_for_libya_effect = yes }
+				}
+				else_if = { #Fine Amount of Ships Escorted Convoys
+					limit = {
+						NOT = { has_global_flag = extra_supply_to_africa }
+						ITA = { ships_in_area = { area = 29 size > 64 }  }
+					}
+					ITA = { GER_normal_supply_for_libya_effect = yes }
+				}
+				else_if = { #Extra Supply
+					limit = {
+						has_global_flag = extra_supply_to_africa
+					}
+					ITA = { GER_normal_supply_for_libya_effect = yes }
+				}
+			}
+			hidden_effect = {
+				GER_supply_for_libya_effect = yes
+			}
+		}
+		complete_effect = {
+		}
+	}
+
+	GER_Battle_of_El_Alamein_decision = {
+		icon = GFX_decision_generic_operation
+		on_map_mode = map_and_decisions_view
+		priority = 95
+
+		allowed = {
+			tag = GER
+		}
+
+		available = {
+			447 = { is_controlled_by_ROOT_or_ally = yes }
+		}
+
+		highlight_states = {
+			highlight_state_targets = {
+				state = 447 #El-Alamein
+			}
+			highlight_color_while_active = 3
+			highlight_color_before_active = 2
+		}
+
+		cancel_if_not_visible = yes
+		is_good = no
+		fire_only_once = yes
+		selectable_mission = no
+		days_mission_timeout = 90
+
+		cancel_effect = {
+		}
+
+		timeout_effect = {
+			ROOT = { add_war_support = -0.05 }
+			GER = { country_event = { id = GER_health_adolf.2 hours = 6 } }
+		}
+
+		complete_effect = {
+			complete_national_focus = GER_Battle_of_El_Alamein
+			ENG = {
+				add_popularity = {
+					ideology = fascism
+					popularity = 0.05
+				}
+				add_war_support = -0.05
+			}
+			GER_erwin_rommel = {
+				add_unit_leader_trait = media_personality
+				add_unit_leader_trait = desert_fox
+			}
+		}
+	}
+
+	GER_extra_Supply_for_Africa = {
+		icon = GFX_decision_eng_trade_unions_support
+		priority = 90
+
+		available = {
+			has_completed_focus = GER_Libya_war_logistics
+		}
+
+		custom_cost_trigger = {
+			command_power > 24
+			has_political_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		fire_only_once = no
+
+		days_re_enable = 60
+
+		visible = {
+		}
+		ai_will_do = {
+		}
+		complete_effect = {
+			set_global_flag = {
+				flag = extra_supply_to_africa
+				value = 1
+				days = 31
+			}
+		}
+	}
+
+	GER_start_Battle_of_El_Alamein = {
+		icon = GFX_decision_gre_faction_management
+		priority = 80
+
+		available = {
+			has_idea = GER_Afrika_Korps
+			452 = {
+				is_controlled_by_ROOT_or_ally = yes
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+
+		visible = {
+		}
+		ai_will_do = {
+		}
+		complete_effect = {
+			activate_mission = GER_Battle_of_El_Alamein_decision
+			GER_erwin_rommel = {
+				add_logistics = 1
+			}
+			every_state = {
+				limit = {
+					OR = {
+						state = 447
+						state = 907
+					}
+				}
+				add_dynamic_modifier = {
+					modifier = El_Alamein_Atack_dynamic_modifier
+					scope = GER
+					days = 90
+				}
+				if = {
+					limit = {
+						ITA = {
+							is_in_faction_with = GER
+						}
+					}
+					add_dynamic_modifier = {
+						modifier = El_Alamein_Atack_dynamic_modifier
+						scope = ITA
+						days = 90
+					}
+				}
+			}
+			452 = {
+				add_building_construction = {
+					type = naval_base
+					level = 1
+					instant_build = yes
+					province = 10061
+				}
+			}
+			build_railway = {
+				level = 1
+				start_province = 1130
+				target_province = 10061
+			}
+		}
+	}
+
+}
+
+GER_raise_penal_battalions = {
+
+	GER_raise_penal_battalion = {
+		icon = GFX_decision_generic_arrest
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			has_government = fascism
+		}
+
+		visible = {
+			has_global_flag = GER_CAN_RISE_PENAL_BATTALIONS
+		}
+
+		cost = 5
+		days_re_enable = 365
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		complete_effect = {
+			GER_spawn_penal_divisions_effect = yes
+		}
+	}
+
+}
+
+GER_case_anton_category = {
+
+	GER_case_anton = {
+
+		icon = generic_operation
+
+		available = {
+			original_tag = GER
+			has_war = yes
+			has_government = fascism
+			any_country_with_original_tag = {
+				original_tag_to_check = FRA
+				has_government = fascism
+				OR = {
+					is_subject_of = GER
+					has_focus_tree = vichy_french_focus
+				}
+				NOT = { has_war_with = GER }
+				NOT = { has_country_flag = case_anton }
+				custom_trigger_tooltip = {
+					tooltip = GER_case_anton_tt2
+					count_triggers = {
+						amount = 3 # lost control of ca half french north africa
+						458 = { CONTROLLER = { has_war_with = ROOT } }
+						459 = { CONTROLLER = { has_war_with = ROOT } }
+						460 = { CONTROLLER = { has_war_with = ROOT } }
+						461 = { CONTROLLER = { has_war_with = ROOT } }
+						462 = { CONTROLLER = { has_war_with = ROOT } }
+						513 = { CONTROLLER = { has_war_with = ROOT } }
+						665 = { CONTROLLER = { has_war_with = ROOT } }
+					}
+				}
+			}
+			divisions_in_state = { state = 31 size < 1 }
+			divisions_in_state = { state = 25 size < 1 }
+			divisions_in_state = { state = 22 size < 1 }
+			divisions_in_state = { state = 21 size < 1 }
+			divisions_in_state = { state = 851 size < 1 }
+			divisions_in_state = { state = 32 size < 1 }
+			divisions_in_state = { state = 22 size < 1 }
+			divisions_in_state = { state = 26 size < 1 }
+			divisions_in_state = { state = 33 size < 1 }
+			divisions_in_state = { state = 20 size < 1 }
+			OR = {
+				ITA = { owns_state = 735 }
+				divisions_in_state = { state = 735 size < 1 }
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+
+		visible = {
+			original_tag = GER
+			has_government = fascism
+			any_country_with_original_tag = {
+				original_tag_to_check = FRA
+				has_government = fascism
+				OR = {
+					is_subject_of = GER
+					has_focus_tree = vichy_french_focus
+				}
+				NOT = { has_war_with = GER }
+			}
+		}
+		ai_will_do = {
+			factor = 25
+
+			modifier = {
+				factor = 0
+				VIC = { is_ai = no }
+			}
+		}
+		complete_effect = {
+			custom_effect_tooltip = GER_case_anton_tt
+			hidden_effect = {
+				GER_Vichy_state_modifier_remove = yes
+				random_other_country = {
+					limit = {
+						original_tag = FRA
+						has_government = fascism
+						OR = {
+							is_subject_of = GER
+							has_focus_tree = vichy_french_focus
+						}
+					}
+					set_country_flag = case_anton
+					activate_mission = FRA_case_anton_mission
+				}
+			}
+		}
+	}
+}
+
+GER_plan_z_category = {
+	GER_plan_z = {
+
+		icon = generic_naval
+		priority = 100
+	
+		available = {
+			has_navy_size = {
+				unit = battleship
+				size > 9
+			}
+			has_navy_size = {
+				unit = battle_cruiser
+				size > 2
+			}
+			has_navy_size = {
+				unit = carrier
+				size > 3
+			}
+			has_navy_size = {
+				unit = heavy_cruiser
+				size > 19
+			}
+			has_navy_size = {
+				unit = light_cruiser
+				size > 19
+			}
+			has_navy_size = {
+				unit = destroyer
+				size > 99
+			}
+		}
+	
+		fire_only_once = yes
+		days_mission_timeout = 1800
+		is_good = yes
+		activation = {
+			has_completed_focus = GER_plan_z_a
+		}
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				add = 10
+				num_of_civilian_factories > 99
+			}
+		}
+	
+		visible = {
+			has_completed_focus = GER_plan_z_a
+		}
+	
+		complete_effect = {
+			add_war_support = 0.05
+			navy_experience = 150
+		}
+	
+	
+	}
+}
+
+GER_rebuild_the_high_seas_fleet_project = {
+
+	GER_offer_job_Ernest_Cox = {
+		icon = GFX_decision_hol_exchange_intelligence_data
+		priority = 100
+		fire_only_once = yes
+		days_remove = 14
+		cost = 25
+
+		ai_will_do = {
+			factor = 100 # Good and Free Ship Thanks.
+		}
+
+		available = {
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+		}
+
+		complete_effect = {
+		}
+
+		remove_effect = {
+			hidden_effect = {
+				set_country_flag = Ernest_Cox_Fired
+				GER = { country_event = { id = GER_Ernest_Cox.1 days = 3 } }
+			}
+			custom_effect_tooltip = available_designer
+			show_ideas_tooltip = Cox_and_Danks
+		}
+
+		ai_will_do = {
+			factor = 10
+		}
+	}
+
+	GER_buy_ship_SMS_Friedrich_der_GrosseE = {
+		icon = GFX_decision_generic_buy_ship
+		priority = 100
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+		}
+
+		modifier = {
+			civilian_factory_use = 3 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = GER_Kaiser_1 }
+				}
+				create_equipment_variant = {
+					name = "Kaiser Class"
+					type = ship_hull_pre_dreadnought
+					name_group = GER_BB_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_heavy_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = heavy_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_2
+						fixed_ship_armor_slot = ship_armor_bb_1
+						front_1_custom_slot = ship_anti_air_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = empty
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+				set_country_flag = GER_Kaiser_1
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Friedrich der Grosse"
+							requested_factories = 1
+							progress = 0.5
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Friedrich der Grosse"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Friedrich der Grosse"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Friedrich der Grosse"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Grosser_Kurfurst = {
+		icon = GFX_decision_generic_buy_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+		}
+
+		modifier = {
+			civilian_factory_use = 3 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+		remove_effect = {
+			if = { # Just Create König Class
+				limit = {
+					NOT = { has_country_flag = GER_Konig_1 }
+				}
+				set_country_flag = GER_Konig_1
+				create_equipment_variant = {
+					name = "König Class"
+					type = ship_hull_pre_dreadnought
+					name_group = GER_BB_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_heavy_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = heavy_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_2
+						fixed_ship_armor_slot = ship_armor_bb_1
+						front_1_custom_slot = ship_anti_air_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = empty
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Grosser Kurfürst"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Grosser Kurfürst"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Grosser Kurfürst"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Grosser Kurfürst"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Kaiser = {
+		icon = GFX_decision_generic_buy_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+		}
+
+		modifier = {
+			civilian_factory_use = 3 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = GER_Kaiser_1 }
+				}
+				create_equipment_variant = {
+					name = "Kaiser Class"
+					type = ship_hull_pre_dreadnought
+					name_group = GER_BB_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_heavy_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = heavy_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_2
+						fixed_ship_armor_slot = ship_armor_bb_1
+						front_1_custom_slot = ship_anti_air_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = empty
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+				set_country_flag = GER_Kaiser_1
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Kaiser"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Kaiser"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Kaiser"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Kaiser"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Derfflinger = {
+		icon = GFX_decision_generic_buy_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+		}
+
+		modifier = {
+			civilian_factory_use = 3 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+		remove_effect = {
+			create_equipment_variant = {
+				name = "Derfflinger Class"
+				type = ship_hull_pre_dreadnought
+				name_group = GER_BB_IMPERIAL
+				parent_version = 0
+				allow_without_tech = yes
+				obsolete = yes
+				modules = {
+					fixed_ship_battery_slot = ship_heavy_battery_1
+					fixed_ship_anti_air_slot = ship_anti_air_1
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = heavy_ship_engine_1
+					fixed_ship_secondaries_slot = ship_secondaries_2
+					fixed_ship_armor_slot = ship_armor_bc_1
+					front_1_custom_slot = ship_anti_air_1
+					mid_1_custom_slot = empty
+					mid_2_custom_slot = ship_secondaries_2
+					rear_1_custom_slot = empty
+				}
+				design_team = mio:Cox_and_Danks_organization
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Derfflinger Class"
+							}
+							name = "SMS Derfflinger"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Derfflinger Class"
+							}
+							name = "SMS Derfflinger"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Derfflinger Class"
+							}
+							name = "SMS Derfflinger"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Derfflinger Class"
+							}
+							name = "SMS Derfflinger"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Kaiserin = {
+		icon = GFX_decision_generic_buy_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+		}
+
+		modifier = {
+			civilian_factory_use = 3 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					NOT = { has_country_flag = GER_Kaiser_1 }
+				}
+				create_equipment_variant = {
+					name = "Kaiser Class"
+					type = ship_hull_pre_dreadnought
+					name_group = GER_BB_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_heavy_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = heavy_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_2
+						fixed_ship_armor_slot = ship_armor_bb_1
+						front_1_custom_slot = ship_anti_air_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = empty
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+				set_country_flag = GER_Kaiser_1
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Kaiserin"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Kaiserin"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Kaiserin"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Kaiser Class"
+							}
+							name = "SMS Kaiserin"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Brummer = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+		}
+
+		modifier = {
+			civilian_factory_use = 2 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+        complete_effect = {
+            GER_add_cost_of_ship_search = yes
+        }
+
+		remove_effect = {
+            GER_add_refund_of_ship_search = yes
+			create_equipment_variant = {
+				name = "Brummer Class"
+				type = ship_hull_cruiser_1
+				name_group = GER_CA_IMPERIAL
+				parent_version = 0
+				allow_without_tech = yes
+				obsolete = yes
+				modules = {
+					fixed_ship_battery_slot = ship_light_battery_1
+					fixed_ship_anti_air_slot = empty
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = cruiser_ship_engine_1
+					fixed_ship_secondaries_slot = ship_secondaries_1
+					fixed_ship_armor_slot = ship_armor_cruiser_1
+					mid_1_custom_slot = ship_mine_layer_1
+					mid_2_custom_slot = ship_torpedo_1
+					rear_1_custom_slot = ship_mine_layer_1
+				}
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Brummer Class"
+							}
+							name = "SMS Brummer"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Brummer Class"
+							}
+							name = "SMS Brummer"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Brummer Class"
+							}
+							name = "SMS Brummer"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Brummer Class"
+							}
+							name = "SMS Brummer"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Konig = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+            has_manpower > 1500
+            has_equipment = {
+                convoy > 100
+            }
+		}
+
+		modifier = {
+			civilian_factory_use = 3 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+        complete_effect = {
+            GER_add_cost_of_ship_search = yes
+        }
+
+		remove_effect = {
+            GER_add_refund_of_ship_search = yes
+			if = { # Just Create König Class
+				limit = {
+					NOT = { has_country_flag = GER_Konig_1 }
+				}
+				set_country_flag = GER_Konig_1
+				create_equipment_variant = {
+					name = "König Class"
+					type = ship_hull_pre_dreadnought
+					name_group = GER_BB_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_heavy_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = heavy_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_2
+						fixed_ship_armor_slot = ship_armor_bb_1
+						front_1_custom_slot = ship_anti_air_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = empty
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS König"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Königsberg"
+							}
+							name = "SMS König"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Königsberg"
+							}
+							name = "SMS König"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "Königsberg"
+							}
+							name = "SMS König"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Kronprinz = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+            has_manpower > 1500
+            has_equipment = {
+                convoy > 100
+            }
+		}
+
+		modifier = {
+			civilian_factory_use = 3 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+        complete_effect = {
+            GER_add_cost_of_ship_search = yes
+        }
+
+		remove_effect = {
+            GER_add_refund_of_ship_search = yes
+			if = { # Just Create König Class
+				limit = {
+					NOT = { has_country_flag = GER_Konig_1 }
+				}
+				set_country_flag = GER_Konig_1
+				create_equipment_variant = {
+					name = "König Class"
+					type = ship_hull_pre_dreadnought
+					name_group = GER_BB_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_heavy_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = heavy_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_2
+						fixed_ship_armor_slot = ship_armor_bb_1
+						front_1_custom_slot = ship_anti_air_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = empty
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Kronprinz"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Kronprinz"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Kronprinz"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Kronprinz"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Markgraf = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		available = {
+            has_manpower > 1500
+            has_equipment = {
+                convoy > 100
+            }
+		}
+
+		modifier = {
+			civilian_factory_use = 3 # Fine For Me
+		}
+
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+        complete_effect = {
+            GER_add_cost_of_ship_search = yes
+        }
+
+		remove_effect = {
+            GER_add_refund_of_ship_search = yes
+			if = { # Just Create König Class
+				limit = {
+					NOT = { has_country_flag = GER_Konig_1 }
+				}
+				set_country_flag = GER_Konig_1
+				create_equipment_variant = {
+					name = "König Class"
+					type = ship_hull_pre_dreadnought
+					name_group = GER_BB_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_heavy_battery_1
+						fixed_ship_anti_air_slot = ship_anti_air_1
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = heavy_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_2
+						fixed_ship_armor_slot = ship_armor_bb_1
+						front_1_custom_slot = ship_anti_air_1
+						mid_1_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = empty
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Markgraf"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Markgraf"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Markgraf"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_pre_dreadnought
+								creator = "GER"
+								version_name = "König Class"
+							}
+							name = "SMS Markgraf"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Coln = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+	
+		ai_will_do = {
+			factor = 2
+		}
+	
+		available = {
+            has_manpower > 1500
+            has_equipment = {
+                convoy > 100
+            }
+		}
+	
+		modifier = {
+			civilian_factory_use = 2 # Fine For Me
+		}
+	
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+        complete_effect = {
+            GER_add_cost_of_ship_search = yes
+        }
+	
+		remove_effect = {
+            GER_add_refund_of_ship_search = yes
+			if = { # Just Create Cöln Class
+				limit = {
+					NOT = { has_country_flag = GER_Coln_1 }
+				}
+				create_equipment_variant = {
+					name = "Cöln Class"
+					type = ship_hull_cruiser_1
+					name_group = GER_CA_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_light_battery_1
+						fixed_ship_anti_air_slot = empty
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = cruiser_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_1
+						fixed_ship_armor_slot = ship_armor_cruiser_2
+						mid_1_custom_slot = ship_mine_layer_1
+						mid_2_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = ship_light_battery_1
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+				set_country_flag = GER_Coln_1
+			}	
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Cöln Class"
+							}
+							name = "SMS Coln"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Cöln Class"
+							}
+							name = "SMS Coln"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Cöln Class"
+							}
+							name = "SMS Coln"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Cöln Class"
+							}
+							name = "SMS Coln"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Dresden = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+	
+		ai_will_do = {
+			factor = 2
+		}
+	
+		available = {
+            has_manpower > 1500
+            has_equipment = {
+                convoy > 100
+            }
+		}
+	
+		modifier = {
+			civilian_factory_use = 2 # Fine For Me
+		}
+	
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+        complete_effect = {
+            GER_add_cost_of_ship_search = yes
+        }
+	
+		remove_effect = {
+            GER_add_refund_of_ship_search = yes
+			if = { # Just Create Cöln Class
+				limit = {
+					NOT = { has_country_flag = GER_Coln_1 }
+				}
+				create_equipment_variant = {
+					name = "Cöln Class"
+					type = ship_hull_cruiser_1
+					name_group = GER_CA_IMPERIAL
+					parent_version = 0
+					allow_without_tech = yes
+					obsolete = yes
+					modules = {
+						fixed_ship_battery_slot = ship_light_battery_1
+						fixed_ship_anti_air_slot = empty
+						fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+						fixed_ship_radar_slot = empty
+						fixed_ship_engine_slot = cruiser_ship_engine_1
+						fixed_ship_secondaries_slot = ship_secondaries_1
+						fixed_ship_armor_slot = ship_armor_cruiser_2
+						mid_1_custom_slot = ship_mine_layer_1
+						mid_2_custom_slot = ship_torpedo_1
+						rear_1_custom_slot = ship_light_battery_1
+					}
+					design_team = mio:Cox_and_Danks_organization
+				}
+				set_country_flag = GER_Coln_1
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Cöln Class"
+							}
+							name = "SMS Dresden"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Cöln Class"
+							}
+							name = "SMS Dresden"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Cöln Class"
+							}
+							name = "SMS Dresden"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Cöln Class"
+							}
+							name = "SMS Dresden"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+				}
+			}
+		}
+	}
+
+	GER_buy_ship_SMS_Karlsruhe = {
+		icon = GFX_decision_generic_merge_plant_ship
+		fire_only_once = yes
+		days_remove = 40
+		cost = 25
+	
+		ai_will_do = {
+			factor = 2
+		}
+	
+		available = {
+            has_manpower > 1500
+            has_equipment = {
+                convoy > 100
+            }
+		}
+	
+		modifier = {
+			civilian_factory_use = 2 # Fine For Me
+		}
+	
+		visible = {
+			has_completed_focus = GER_rebuild_the_high_seas_fleet_a
+			has_country_flag = Ernest_Cox_Fired
+		}
+
+		complete_effect = {
+			GER_add_cost_of_ship_search = yes
+		}
+	
+		remove_effect = {
+			GER_add_refund_of_ship_search = yes
+			create_equipment_variant = {
+				name = "Karlsruhe"
+				type = ship_hull_cruiser_1
+				name_group = GER_CA_IMPERIAL
+				parent_version = 0
+				allow_without_tech = yes
+				obsolete = yes
+				modules = {
+					fixed_ship_battery_slot = ship_light_battery_2
+					fixed_ship_anti_air_slot = empty
+					fixed_ship_fire_control_system_slot = ship_fire_control_system_0
+					fixed_ship_radar_slot = empty
+					fixed_ship_engine_slot = cruiser_ship_engine_1
+					fixed_ship_secondaries_slot = ship_secondaries_1
+					fixed_ship_armor_slot = ship_armor_cruiser_2
+					mid_1_custom_slot = ship_mine_layer_1
+					mid_2_custom_slot = ship_torpedo_1
+					rear_1_custom_slot = ship_light_battery_2
+				}
+				design_team = mio:Cox_and_Danks_organization
+			}
+			custom_effect_tooltip = GER_progress_chanced_by_luck
+			hidden_effect = {
+				random_list = {
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Karlsruhe"
+							}
+							name = "SMS Karlsruhe"
+							requested_factories = 1
+							progress = 0.3
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Karlsruhe"
+							}
+							name = "SMS Karlsruhe"
+							requested_factories = 1
+							progress = 0.25
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Karlsruhe"
+							}
+							name = "SMS Karlsruhe"
+							requested_factories = 1
+							progress = 0.05
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+					25 = {
+						add_equipment_production = {
+							equipment = {
+								type = ship_hull_cruiser_1
+								creator = "GER"
+								version_name = "Karlsruhe"
+							}
+							name = "SMS Karlsruhe"
+							requested_factories = 1
+							progress = 0
+							amount = 1
+							industrial_manufacturer = mio:Cox_and_Danks_organization
+						}
+					}
+				}
+			}
+		}
+	}
+
+}
+
+GER_military_buildup = {
+
+	GER_jaegernotprogramm = {
+
+		icon = generic_air
+		priority = 95
+
+		available = {
+			has_war = yes
+			AND = {
+				has_deployed_air_force_size = {
+					type = fighter
+					size < 750
+				}
+				has_equipment = {
+					small_plane_airframe < 250
+				}
+			}
+			NOT = {
+				has_idea = GER_jaegernotprogramm
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+
+		visible = {
+			has_war = yes
+			AND = {
+				has_deployed_air_force_size = {
+					type = fighter
+					size < 750
+				}
+				has_equipment = {
+					small_plane_airframe < 250
+				}
+			}
+			NOT = {
+				has_idea = GER_jaegernotprogramm
+			}
+		}
+
+		complete_effect = {
+			add_stability = -0.05
+			add_war_support = -0.05
+			add_timed_idea = { idea = GER_jaegernotprogramm days = 90 }
+		}
+	}
+
+	GER_plan_z_build = {
+		icon = GFX_decision_generic_construction
+		state_target = yes
+		on_map_mode = map_and_decisions_view
+
+		cost = 25
+		days_remove = 365
+		priority = 80
+
+		ai_will_do = {
+			base = 0
+		}
+
+		target_trigger = {
+			FROM = {
+				NOT = { has_state_flag = GER_PLAN_Z_DEVELOPED_2 }
+				is_core_of = GER
+				is_coastal = yes
+				is_fully_controlled_by = ROOT
+				dockyard < 4
+			}
+		}
+
+		target_root_trigger = {
+			has_active_mission = GER_plan_z
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		modifier = {
+			production_speed_buildings_factor = -0.05
+		}
+
+		available = {
+			FROM = {
+				is_core_of = GER
+				is_coastal = yes
+			}
+		}
+
+		remove_effect = {
+			FROM = {
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				if = {
+					limit = {
+						has_state_flag = GER_PLAN_Z_DEVELOPED_1
+					}
+					set_state_flag = GER_PLAN_Z_DEVELOPED_2
+				}
+				if = {
+					limit = {
+						NOT = { has_state_flag = GER_PLAN_Z_DEVELOPED_1 }
+					}
+					set_state_flag = GER_PLAN_Z_DEVELOPED_1
+				}
+			}
+		}
+
+	}
+}
+
+### VANILLA FILE
+
+special_projects = {
+
+	rebuild_warsaw = {
+
+		icon = GFX_decision_generic_merge_plant_materiel
+
+		available = {
+			has_full_control_of_state = 10
+			NOT = {
+				any_enemy_country = {
+					controls_state = 10
+				}
+			}
+			num_of_civilian_factories > 20
+		}
+
+		visible = {
+			has_global_flag = GER_destroyed_warsaw
+		}
+
+		fire_only_once = yes
+
+		days_remove = 180
+
+		cost = 200
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_full_control_of_state = 10
+					NOT = {
+						any_enemy_country = {
+							controls_state = 10
+						}
+					}
+				}
+				clr_global_flag = GER_destroyed_warsaw
+				random_controlled_state = {
+					limit = {
+						state = 10
+					}
+					remove_dynamic_modifier = { modifier = Ger_warsaw_state_dynamic_modifier }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 10
+				tag = POL
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
+
+	rebuild_paris = {
+
+		icon = GFX_decision_generic_merge_plant_materiel
+
+		available = {
+			has_full_control_of_state = 16
+			NOT = {
+				any_enemy_country = {
+					controls_state = 16
+				}
+			}
+			num_of_civilian_factories > 20
+		}
+
+		visible = {
+			has_global_flag = GER_destroyed_eiffel
+		}
+
+		fire_only_once = yes
+
+		days_remove = 180
+
+		cost = 200
+
+		modifier = {
+			civilian_factory_use = 20
+		}
+
+		remove_effect = {
+			if = {
+				limit = {
+					has_full_control_of_state = 16
+					NOT = {
+						any_enemy_country = {
+							controls_state = 16
+						}
+					}
+				}
+				clr_global_flag = GER_destroyed_eiffel
+				random_controlled_state = {
+					limit = {
+						state = 16
+					}
+					remove_dynamic_modifier = { modifier = Ger_warsaw_state_dynamic_modifier }
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				factor = 10
+				tag = FRA
+			}
+			modifier = {
+				factor = 10 # Prioritize if not at war
+				has_war = no
+			}
+		}
+	}
+
+	GER_begin_heavy_water_production = {
+		allowed = {
+			original_tag = GER
+			has_dlc = "La Resistance"
+		}
+		available = {
+			110 = {
+				CONTROLLER = {
+					OR = {
+						tag = ROOT
+						is_subject_of = ROOT
+					}
+				}
+			}
+		}
+		visible = { has_tech = atomic_research }
+		cost = 0
+		ai_will_do = {
+			factor = 5
+		}
+		cancel_trigger = { NOT = { has_global_flag = GER_heavy_water_production_underway } } #can be removed via intelligence ops
+		days_remove = 365
+		remove_effect = {
+			add_tech_bonus = {
+				name = GER_heavy_water
+				category = nuclear
+				uses = 2
+				bonus = 2
+			}
+		}
+		complete_effect = { set_global_flag = GER_heavy_water_production_underway }
+	}
+
+	GER_dismantle_maginot = {
+
+		icon = generic_construction
+
+		available = {
+			#has_war = yes
+			controls_state = 28
+			if = {
+				limit = {
+					FRA = { has_completed_focus = FRA_extend_the_maginot_line }
+				}
+				controls_state = 18
+				controls_state = 29
+			}
+		}
+
+		cost = 50
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		visible = {
+			#has_war = yes
+			controls_state = 28
+			if = {
+				limit = {
+					FRA = { has_completed_focus = FRA_extend_the_maginot_line }
+				}
+				controls_state = 18
+				controls_state = 29
+			}
+		}
+		days_remove = 180
+		modifier = {
+			civilian_factory_use = 5
+		}
+		remove_effect = {
+			28 = {
+				set_building_level = {
+					type = bunker
+					level = 2
+					province = {
+						all_provinces = yes
+						limit_to_border = no
+						level > 2
+					}
+				}
+			}
+			if = {
+				limit = {
+					FRA = { has_completed_focus = FRA_extend_the_maginot_line }
+				}
+				18 = {
+					set_building_level = {
+						type = bunker
+						level = 2
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 2
+						}
+					}
+				}
+				29 = {
+					set_building_level = {
+						type = bunker
+						level = 2
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 2
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					has_idea = FRA_protected_by_the_maginot_line
+				}
+				remove_ideas = FRA_protected_by_the_maginot_line
+			}
+		}
+		complete_effect = {
+			if = {
+				limit = { FRA = { has_completed_focus = FRA_extend_the_maginot_line } }
+				add_timed_idea = { idea = GER_dismantle_maginot days = 270 }
+				else = {
+					add_timed_idea = { idea = GER_dismantle_maginot days = 180 }
+				}
+			}
+		}
+	}
+
+	GER_dismantle_czechoslovakian_forts = {
+
+		icon = generic_construction
+
+		available = {
+			#has_war = yes
+			controls_state = 69 # Sudetenland
+			controls_state = 74 # Eastern Sudetenland
+			controls_state = 9 # Bohemia
+			controls_state = 75 # Moravia
+		}
+
+		cost = 50
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+		visible = {
+			#has_war = yes
+			controls_state = 69 # Sudetenland
+			controls_state = 74 # Eastern Sudetenland
+			controls_state = 9 # Bohemia
+			controls_state = 75 # Moravia
+		}
+		days_remove = 180
+		modifier = {
+			civilian_factory_use = 3
+		}
+		remove_effect = {
+			69 = {
+				set_building_level = {
+					type = bunker
+					level = 1
+					province = {
+						all_provinces = yes
+						limit_to_border = no
+						level > 1
+					}
+				}
+			}
+			74 = {
+				set_building_level = {
+					type = bunker
+					level = 1
+					province = {
+						all_provinces = yes
+						limit_to_border = no
+						level > 1
+					}
+				}
+			}
+			9 = {
+				set_building_level = {
+					type = bunker
+					level = 1
+					province = {
+						all_provinces = yes
+						limit_to_border = no
+						level > 1
+					}
+				}
+			}
+			75 = {
+				set_building_level = {
+					type = bunker
+					level = 1
+					province = {
+						all_provinces = yes
+						limit_to_border = no
+						level > 1
+					}
+				}
+			}
+			if = {
+				limit = {
+					72 = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
+					}
+					71 = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
+					}
+				}
+				72 = {
+					set_building_level = {
+						type = bunker
+						level = 1
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 1
+						}
+					}
+				}
+				71 = {
+					set_building_level = {
+						type = bunker
+						level = 1
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					70 = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
+					}
+				}
+				70 = {
+					set_building_level = {
+						type = bunker
+						level = 1
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 1
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					73 = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
+					}
+					664 = {
+						controller = {
+							OR = {
+								tag = ROOT
+								is_subject_of = ROOT
+							}
+						}
+					}
+				}
+				73 = {
+					set_building_level = {
+						type = bunker
+						level = 1
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 1
+						}
+					}
+				}
+				664 = {
+					set_building_level = {
+						type = bunker
+						level = 1
+						province = {
+							all_provinces = yes
+							limit_to_border = no
+							level > 1
+						}
+					}
+				}
+			}
+		}
+		complete_effect = {
+			add_timed_idea = { idea = GER_dismantle_czechoslovakian_forts days = 180 }
+		}
+	}
+}
+
+operations = {
+
+	Operation_Rheinubung = {
+		priority = 100
+
+		icon = GFX_decision_generic_naval
+
+		ai_will_do = {
+			base = 0
+			modifier = {
+				is_historical_focus_on = yes
+				date > 1941.05.01
+			}
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available =  {
+			has_war = yes
+		}
+
+		visible = {
+			has_completed_focus = GER_Bismarck
+		}
+
+		days_remove = 60
+
+		fire_only_once = yes
+
+		ai_hint_pp_cost = 25
+		custom_cost_trigger = {
+			command_power > 24
+			has_political_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		modifier = {
+			naval_speed_factor = 0.15
+			navy_visibility = -0.1
+			critical_receive_chance = -0.1
+			naval_retreat_chance = -1.0
+			naval_enemy_retreat_chance = -0.5
+		}
+
+		remove_effect = {
+		}
+	}
+
+	Operation_Alexandria = {
+		priority = 98
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available =  {
+			any_enemy_country = {
+				controls_state = 446
+			}
+			has_war = yes
+		}
+
+		visible = {
+			has_completed_focus = GER_stratejic_operations
+			NOT = { has_global_flag = SUEZ_CANAL_BLOCKED }
+		}
+
+		days_remove = 60
+
+		fire_only_once = yes
+
+		ai_hint_pp_cost = 25
+		custom_cost_trigger = {
+			command_power > 24
+			has_political_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		modifier = {
+			naval_speed_factor = 0.15
+			navy_visibility = -0.1
+		}
+
+		remove_effect = {
+			random_list = {
+				50 = {
+					country_event = { id = ger_f_news.10 hours = 15 }
+					hidden_effect = {
+						set_country_flag = blew_up_suez
+						set_global_flag = SUEZ_CANAL_BLOCKED
+					}
+				}
+				50 = {
+				}
+			}
+		}
+	}
+
+	Operation_Colon = {
+		priority = 96
+
+		icon = GFX_decision_generic_ignite_civil_war
+
+		ai_will_do = {
+			base = 0
+		}
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available =  {
+			any_enemy_country = {
+				any_controlled_state = {
+					OR = {
+						region = 34
+						region = 124
+					}
+				}
+			}
+			has_war = yes
+		}
+
+		visible = {
+			has_completed_focus = GER_stratejic_operations
+			NOT = { has_global_flag = PANAMA_CANAL_BLOCKED }
+		}
+
+		days_remove = 60
+
+		fire_only_once = yes
+
+		ai_hint_pp_cost = 25
+		custom_cost_trigger = {
+			command_power > 24
+			has_political_power > 24
+		}
+		custom_cost_text = decision_cost_CP_25_pp_25
+
+		modifier = {
+			naval_speed_factor = 0.15
+			navy_visibility = -0.1
+		}
+
+		remove_effect = {
+			random_list = {
+				50 = {
+					country_event = { id = ger_f_news.11 hours = 24 }
+					hidden_effect = {
+						set_country_flag = blew_up_panama
+						set_global_flag = PANAMA_CANAL_BLOCKED
+					}	
+				}
+				50 = {
+				}
+			}
+		}
+	}
+}
+
+political_actions = {
+
+	# Reinstate Wilhelm IV into the line of succession
+	reinstate_wilhelm_iv_succession_rights = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+
+		}
+
+		cost = 100
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			has_war = no
+			has_government = neutrality
+			has_country_flag = backed_down_netherlands_kaiser
+		}
+
+		complete_effect = {
+			add_stability = -0.10
+			add_popularity = { ideology = neutrality popularity = -0.05 }
+			custom_effect_tooltip = reinstate_wilhelm_iv_succession_rights_tt
+			hidden_effect = {
+				set_country_flag = reinstated_wilhelm_iv_succession_rights
+			}
+		}
+	}
+
+	# Agnatic-Cognatic Primogeniture
+	modernize_the_succession_laws = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			has_war = no
+			has_government = neutrality
+			has_country_flag = reinstated_wilhelm_iv_succession_rights
+		}
+
+		complete_effect = {
+			add_stability = 0.05
+			custom_effect_tooltip = modernize_the_succession_laws_tt
+			hidden_effect = {
+				set_country_flag = modernized_succession_laws
+			}
+		}
+	}
+
+	recall_von_lettow_vorbeck = {
+		icon = GFX_decision_generic_army_support
+
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_civil_war = no
+		}
+		visible = {
+			NOT = { has_global_flag = Paul_von_lettow_vorbeck_recalled }
+			OR = {
+				has_country_leader = { ruling_only = yes character = GER_wilhelm_ii }
+				has_country_leader = { ruling_only = yes character = GER_wilhelm_iii }
+				has_country_leader = { ruling_only = yes character = GER_victoria }
+			}
+		}
+		cost = 25
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 1
+		}
+		complete_effect = {
+			create_corps_commander = {
+				name = "Paul von Lettow-Vorbeck"
+				gfx = GFX_portrait_ger_von_lettow_vorbeck
+				traits = { trickster war_hero media_personality jungle_rat}
+				skill = 4
+				id = 499
+				attack_skill = 3
+				defense_skill = 3
+				planning_skill = 2
+				logistics_skill = 5
+			}
+		}
+	}
+
+	# Safety regulations
+	GER_sharpen_air_safety_regulations = {
+
+		allowed = {
+			original_tag = GER
+			has_dlc = "Waking the Tiger"
+		}
+
+		available = {
+
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			has_government = neutrality
+		}
+
+		complete_effect = {
+			add_timed_idea = { idea = GER_air_safety_regulations days = 1095 }
+			set_global_flag = GER_air_safety_regulations_flag
+		}
+	}
+
+	GER_end_policy_kinder_kuche_kirche = {
+		icon = GFX_decision_eng_trade_unions_support
+		
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			has_government = fascism
+			has_idea = kinder_kuche_kirche
+		}
+
+		complete_effect = {
+			add_stability = -0.15
+			add_popularity = { ideology = fascism popularity = -0.05 }
+			remove_ideas = kinder_kuche_kirche
+		}
+	}
+
+}
+
+foreign_politics = {
+
+	# Titles Deprivation Act 1917
+	request_restoration_of_british_titles = {
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			ENG = { has_opinion = { target = GER value > 99 } }
+			custom_trigger_tooltip = {
+				tooltip = hindenburg_destroyed_tt
+				NOT = { has_global_flag = hindenburg_destroyed }
+			}
+		}
+
+		cost = 150
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 0
+		}
+
+		visible = {
+			has_war = no
+			has_government = neutrality
+			has_completed_focus = GER_ally_the_shade
+			has_country_flag = modernized_succession_laws
+		}
+
+		complete_effect = {
+			ENG = { country_event = { id = wtt_germany.999 days = 1 } }
+			custom_effect_tooltip = request_restoration_of_british_titles_tt
+			hidden_effect = { set_global_flag = hindenburg_event_in_progress }
+		}
+	}
+
+	# Demand for Netherlands
+	GER_demand_netherlands_puppet = {
+		icon = GFX_decision_eng_trade_unions_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			HOL = {
+				has_completed_focus = HOL_the_only_man_in_the_dutch_government
+			}
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 5
+		}
+
+		visible = {
+			has_completed_focus = GER_New_Laws
+		}
+
+		complete_effect = {
+			hidden_effect = {
+				if = {
+					limit = {
+						INS = {
+							is_puppet_of = HOL
+						}
+					}
+					set_country_flag = HOL_INS_PUPPET
+				}
+			}
+			set_autonomy = {
+				target = HOL
+				 autonomy_state = autonomy_loyal_state
+				end_wars = no
+				end_civil_wars = no
+			}
+			hidden_effect = {
+				if = {
+					limit = {
+						INS = {
+							has_country_flag = HOL_INS_PUPPET
+						}
+					}
+					HOL = { puppet = INS }
+				}
+				if = {
+					limit = {
+						HOL = {
+							has_government = fascism
+						}
+					}
+					HOL = {
+						set_politics = {
+							ruling_party = neutrality
+						}
+					}
+				}
+			}
+		}
+	}	
+
+	GER_request_polish_war_participation = {
+
+		icon = generic_prepare_civil_war
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			has_war_with = SOV
+			NOT = { is_in_faction_with = POL }
+		}
+
+		cost = 50
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		visible = {
+			has_country_flag = poland_traded_danzig
+			has_completed_focus = GER_tackle_the_communist_threat
+		}
+
+		complete_effect = {
+			POL = { country_event = { id = wtt_germany.65 hours = 6 } }
+		}
+
+	}
+
+	GER_recall_generals_advisors = {
+
+		icon = GFX_decision_generic_army_support
+
+		allowed = {
+			original_tag = GER
+		}
+
+		available = {
+			OR = {
+				AND = {
+					TUR = { 
+						has_completed_focus = TUR_invite_german_officers_to_izmir
+						OR = {
+							has_war_with = ROOT
+							has_wargoal_against = ROOT
+						}
+					}
+				}
+				AND = {
+					USA = {
+						has_country_flag = USA_fritz_kuhn
+						OR = {
+							has_war_with = ROOT
+							has_wargoal_against = ROOT
+						}
+					}
+				}
+				AND = {
+					SPA = {
+						has_completed_focus = SPA_the_condor_legion
+						OR = {
+							has_war_with = ROOT
+							has_wargoal_against = ROOT
+						}
+					}
+				}
+			}
+		}
+
+		cost = 25
+
+		ai_will_do = {
+			factor = 5
+		}
+
+		visible = {
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					TUR = { 
+						has_completed_focus = TUR_invite_german_officers_to_izmir 
+						OR = {
+							has_war_with = ROOT
+							has_wargoal_against = ROOT
+						}
+					}
+				}
+				every_possible_country = {
+					limit = { has_character = GER_hans_von_luck }
+					random_character = {
+						limit = { is_character = GER_hans_von_luck }
+						set_nationality = GER
+					}
+				}
+				TUR = {
+					remove_advisor_role = {
+						character = GER_hans_von_luck
+						slot = theorist
+					}
+					remove_advisor_role = {
+						character = GER_hans_von_luck
+						slot = air_chief
+					}
+					remove_advisor_role = {
+						character = GER_hans_von_luck
+						slot = navy_chief
+					}
+					remove_advisor_role = {
+						character = GER_hans_von_luck
+						slot = army_chief
+					}
+					remove_advisor_role = {
+						character = GER_hans_von_luck
+						slot = high_command
+					}
+				}
+				if = {
+					limit = {
+						SPA = {
+							NOT = { has_completed_focus = SPA_the_condor_legion }
+						}
+					}
+					every_possible_country = {
+						limit = { has_character = GER_wilhelm_ritter_von_thoma }
+						random_character = {
+							limit = { is_character = GER_wilhelm_ritter_von_thoma }
+							set_nationality = GER
+						}
+					}
+					SPA = {
+						remove_advisor_role = {
+							character = GER_wilhelm_ritter_von_thoma
+							slot = theorist
+						}
+						remove_advisor_role = {
+							character = GER_wilhelm_ritter_von_thoma
+							slot = air_chief
+						}
+						remove_advisor_role = {
+							character = GER_wilhelm_ritter_von_thoma
+							slot = navy_chief
+						}
+						remove_advisor_role = {
+							character = GER_wilhelm_ritter_von_thoma
+							slot = army_chief
+						}
+						remove_advisor_role = {
+							character = GER_wilhelm_ritter_von_thoma
+							slot = high_command
+						}
+					}
+				}
+			}
+			if = {
+				limit = {
+					USA = {
+						has_country_flag = USA_fritz_kuhn
+						OR = {
+							has_war_with = ROOT
+							has_wargoal_against = ROOT
+						}
+					}
+				}
+				every_possible_country = {
+					limit = { has_character = USA_fritz_kuhn }
+					random_character = {
+						limit = { is_character = USA_fritz_kuhn }
+						set_nationality = GER
+					}
+				}
+				USA = {
+					remove_advisor_role = {
+						character = USA_fritz_kuhn
+						slot = theorist
+					}
+					remove_advisor_role = {
+						character = USA_fritz_kuhn
+						slot = air_chief
+					}
+					remove_advisor_role = {
+						character = USA_fritz_kuhn
+						slot = navy_chief
+					}
+					remove_advisor_role = {
+						character = USA_fritz_kuhn
+						slot = army_chief
+					}
+					remove_advisor_role = {
+						character = USA_fritz_kuhn
+						slot = high_command
+					}
+				}
+			}
+			if = {
+				limit = {
+					SPA = {
+						has_completed_focus = SPA_the_condor_legion
+						OR = {
+							has_war_with = ROOT
+							has_wargoal_against = ROOT
+						}
+					}
+				}
+				every_possible_country = {
+					limit = { has_character = SPA_wilhelm_ritter_von_thoma }
+					random_character = {
+						limit = { is_character = SPA_wilhelm_ritter_von_thoma }
+						set_nationality = GER
+					}
+				}
+				SPA = {
+					remove_advisor_role = {
+						character = SPA_wilhelm_ritter_von_thoma
+						slot = high_command
+					}	
+				}
+			}
+		}
+
+	}
+
+	annex_free_city_of_danzig = {
+	
+		icon = GFX_decision_eng_trade_unions_support
+
+		available = {
+			POL = { 
+				OR = {
+					has_capitulated = yes 
+					exists = no
+				}
+			}
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 100
+		}
+
+		visible = {
+			DNZ = { exists = yes }
+			is_subject = no
+			NOT = { 
+				has_government = democratic 
+			}
+		}
+
+		complete_effect = {
+			GER = {
+				annex_country = {
+					target = DNZ
+				}
+			}
+		}
+	}	
+
+	# Ultimatum to Lithuania
+	send_ultimatum_to_lithuania = {
+	
+		icon = hol_war_on_pacifism
+
+		available = {
+			NOT = {
+				has_war_with = LIT
+				is_in_faction_with = LIT
+			}
+		}
+
+		cost = 25
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		visible = {	
+			has_global_flag = end_of_hostilities_in_pol
+			POL = { has_capitulated = yes }
+			is_subject = no
+			has_civil_war = no
+			LIT = {
+				has_country_flag = mr_pact_into_german_sphere_of_influence
+				has_civil_war = no
+				has_war = no
+				is_subject = no
+				NOT = {
+					is_in_faction_with = SOV
+				}
+			}
+		}
+
+		complete_effect = {
+			GER = { 
+				country_event = ger_lithuania.1
+			}
+		}
+	}
+
+	offer_vilnius_to_lithuania = {
+	
+		icon = hol_draw_up_staff_plans
+
+		available = {
+			OR = {
+				owns_state = 784
+				controls_state = 784
+			}
+			NOT = {
+				has_war_with = LIT
+			}
+		}
+
+		cost = 0
+
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 2
+		}
+
+		visible = {
+			POL = { has_capitulated = yes }
+			is_subject = no
+			has_civil_war = no
+			LIT = {
+				has_country_flag = mr_pact_into_german_sphere_of_influence
+				has_civil_war = no
+				has_war = no
+				is_subject = no
+				exists = yes
+				NOT = {
+					is_in_faction_with = SOV
+				}
+			}
+		}
+
+		complete_effect = {
+			LIT = { 
+				country_event = ger_lithuania.7
+			}
+		}
+	}
+}
+
+GER_aid_hun_rom_democratic_civil_war = {
+
+	GER_aid_hun_democratic_civil_war = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			HUN = {
+				NOT = { has_government = democratic }
+				NOT = { has_war_with = GER }
+				has_civil_war = yes
+				exists = yes
+				any_enemy_country = {
+					original_tag = HUN
+					has_government = democratic
+				}
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		#Available if democratic civil war
+		visible = {
+			has_completed_focus = GER_align_hungary
+			GER = { has_government = democratic }
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					HUN = { is_in_faction_with = GER }
+				}
+				remove_from_faction = HUN
+				random_country = {
+					limit = {
+						original_tag = HUN
+						has_government = democratic
+						has_war_with = HUN
+					}
+					GER = { add_to_faction = PREV }
+				}
+			}
+			random_country = {
+				limit = {
+					original_tag = HUN
+					has_government = democratic
+					has_war_with = HUN
+				}
+				GER = { add_to_war = { targeted_alliance = PREV enemy = HUN hostility_reason = asked_to_join } }
+			}
+		}
+	}
+
+	GER_aid_rom_democratic_civil_war = {
+
+		icon = generic_prepare_civil_war
+
+		available = {
+			ROM = {
+				NOT = { has_government = democratic }
+				NOT = { has_war_with = GER }
+				has_civil_war = yes
+				exists = yes
+				any_enemy_country = {
+					original_tag = ROM
+					has_government = democratic
+				}
+			}
+		}
+
+		cost = 0
+
+		ai_will_do = {
+			factor = 200
+		}
+
+		#Available if democratic civil war
+		visible = {
+			has_completed_focus = GER_align_romania
+			GER = { has_government = democratic }
+		}
+
+		complete_effect = {
+			if = {
+				limit = {
+					ROM = { is_in_faction_with = GER }
+				}
+				remove_from_faction = ROM
+				random_country = {
+					limit = {
+						original_tag = ROM
+						has_government = democratic
+						has_war_with = ROM
+					}
+					GER = { add_to_faction = PREV }
+				}
+			}
+			random_country = {
+				limit = {
+					original_tag = ROM
+					has_government = democratic
+					has_war_with = ROM
+				}
+				GER = { add_to_war = { targeted_alliance = PREV enemy = ROM hostility_reason = asked_to_join } }
+			}
+		}
+	}
+
+}
+
+GER_austro_hungarian_empire = {
+
+	GER_reform_austro_hungarian_empire = {
+
+		allowed = {
+			OR = {
+				original_tag = AUS
+				original_tag = HUN
+				original_tag = CZE
+			}
+		}
+
+		available = {
+			AUS = {
+				OR = {
+					has_government = neutrality
+					neutrality > 0.4
+				}
+			}
+			HUN = {
+				OR = {
+					has_government = neutrality
+					neutrality > 0.4
+				}
+			}
+			CZE = {
+				OR = {
+					has_government = neutrality
+					neutrality > 0.4
+				}
+			}
+		}
+
+		visible = {
+			GER = {
+				has_completed_focus = GER_rekindle_imperial_sentiment
+				has_government = neutrality
+			}
+			AUS = {
+				exists = yes
+			}
+			HUN = {
+				exists = yes
+			}
+			CZE = {
+				exists = yes
+			}
+			NOT = { has_global_flag = GER_reformed_austro_hungarian_empire }
+		}
+
+		cost = 0
+		fire_only_once = yes
+
+		ai_will_do = {
+			factor = 200
+			modifier = {
+				factor = 0
+				tag = HUN
+			}
+			modifier = {
+				factor = 0
+				tag = CZE
+			}
+		}
+
+		complete_effect = {
+			custom_effect_tooltip = GER_reform_austro_hungarian_empire_tt
+			hidden_effect = { set_global_flag = GER_reformed_austro_hungarian_empire }
+			if = {
+				limit = {
+					tag = AUS
+				}
+				HUN = { country_event = { id = wtt_germany.68 hours = 1 } }
+				CZE = { country_event = { id = wtt_germany.68 hours = 3 } }
+			}
+			if = {
+				limit = {
+					tag = HUN
+				}
+				AUS = { country_event = { id = wtt_germany.68 hours = 1 } }
+				CZE = { country_event = { id = wtt_germany.68 hours = 3 } }
+			}
+			if = {
+				limit = {
+					tag = CZE
+				}
+				HUN = { country_event = { id = wtt_germany.68 hours = 1 } }
+				AUS = { country_event = { id = wtt_germany.68 hours = 3 } }
+			}
+		}
+	}
+}

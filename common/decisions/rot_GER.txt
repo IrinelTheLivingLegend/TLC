@@ -1,0 +1,646 @@
+communism_on_the_rise = {
+	GER_kill_thalmann = {
+		icon = generic_civil_support
+		available = {
+		}
+		visible = {
+			tag = GER
+			has_completed_focus = GER_against_fuhrer
+			NOT = {
+				OR = {
+					has_completed_focus = GER_expatriate_the_communists
+					has_completed_focus = GER_bulwark_against_bolshevism
+					has_completed_focus = GER_a_shadow_of_past
+				}
+			}
+			NOT = {
+				OR = {
+					has_country_flag = WILHELM_CIVILWAR
+					has_country_flag = thalmann_killed
+				}
+			}
+		}
+		remove_trigger = {
+			hidden_trigger = {
+				has_government = communism
+				has_country_flag = thalmann_killed
+				has_completed_focus = GER_expatriate_the_communists
+				has_completed_focus = GER_bulwark_against_bolshevism
+			}
+		}
+		days_remove = 0
+		complete_effect = {
+			custom_effect_tooltip = GER_thalmann_will_be_removed_tt
+			GER_remove_thalmann_kpdmod = yes
+			custom_effect_tooltip = GER_no_thalmann_for_wings_tt
+		}
+		ai_will_do = {
+			factor = 0
+			modifier = {
+				add = 5
+				communism < 0.05
+			}
+			modifier = {
+				add = 10
+				surrender_progress > 0.15
+			}
+		}
+	}
+}
+
+GER_weltrepublic_decision = {
+	GER_weltrepublik = {
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_government = communism
+			has_completed_focus = GER_weltrepublic
+			custom_trigger_tooltip = {
+				tooltip = GER_controls_london_tt
+				OR = {
+					GER = {
+						controls_state = 126
+					}
+					any_other_country = {
+						is_in_faction_with = GER
+						controls_state = 126
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_controls_paris_tt
+				OR = {
+					GER = {
+						controls_state = 16
+					}
+					any_other_country = {
+						is_in_faction_with = GER
+						controls_state = 16
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_controls_rome_tt
+				OR = {
+					GER = {
+						controls_state = 2
+					}
+					any_other_country = {
+						is_in_faction_with = GER
+						controls_state = 2
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_controls_moscow_tt
+				OR = {
+					GER = {
+						controls_state = 219
+					}
+					any_other_country = {
+						is_in_faction_with = GER
+						controls_state = 219
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_controls_leningrad_tt
+				OR = {
+					GER = {
+						controls_state = 195
+					}
+					any_other_country = {
+						is_in_faction_with = GER
+						controls_state = 195
+					}
+				}
+			}
+			custom_trigger_tooltip = {
+				tooltip = GER_controls_washington_tt
+				OR = {
+					GER = {
+						controls_state = 361
+					}
+					any_other_country = {
+						is_in_faction_with = GER
+						controls_state = 361
+					}
+				}
+			}
+		}
+		cost = 300
+		fire_only_once = yes
+		ai_will_do = {
+			factor = 0
+		}
+		visible = {
+			has_government = communism
+			OR = {
+				has_completed_focus = GER_establish_fifth_internationale
+				has_completed_focus = GER_join_fourth_internationale
+			}
+			NOT = {
+				has_country_flag = weltrepublic
+			}
+		}
+		complete_effect = {
+			every_state = {
+				add_core_of = GER
+			}
+			drop_cosmetic_tag = yes
+			set_cosmetic_tag = GER_united
+			unlock_decision_tooltip = GER_invite_new_republic
+			hidden_effect = {
+				set_country_flag = weltrepublic
+			}
+			if = {
+				limit = {
+					is_faction_leader = no
+				}
+				set_faction_leader = yes				#Fixed in KPD2.0 update
+			}
+			news_event = {
+				hours = 6
+				id = rot_news.17
+			}
+		}
+	}
+	GER_invite_new_republic = {
+		allowed = {
+			OR = {
+				#Being edited in KPD2.0 update to solve the error
+				original_tag = GER
+				AND = {
+					NOT = {
+						original_tag = GER
+					}
+					#					has_government = communism
+					#					OR = {
+					#						OVERLORD = { original_tag = GER }
+					#						faction_leader = { original_tag = GER }
+					#					}
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				OR = {
+					is_in_faction_with = GER
+					is_puppet_of = GER
+				}
+				has_government = communism
+				NOT = {
+					original_tag = GER
+				}
+			}
+		}
+		available = {
+			has_government = communism
+			has_completed_focus = GER_weltrepublic
+			any_country = {
+				NOT = {
+					original_tag = GER
+				}
+				has_government = communism
+				OR = {
+					is_puppet_of = GER
+					is_in_faction_with = GER
+				}
+			}
+		}
+		cost = 100
+		ai_will_do = {
+			factor = 0
+		}
+		visible = {
+			has_government = communism
+			OR = {
+				has_completed_focus = GER_establish_fifth_internationale
+				has_completed_focus = GER_join_fourth_internationale
+			}
+			country_exists = FROM
+			has_country_flag = weltrepublic
+			any_country = {
+				NOT = {
+					original_tag = GER
+				}
+				has_government = communism
+				OR = {
+					is_puppet_of = GER
+					is_in_faction_with = GER
+				}
+			}
+		}
+		complete_effect = {
+			FROM = {
+				country_event = rot_germany.16
+			}
+		}
+	}
+}
+
+special_projects = {
+	GER_train_new_scientists = {
+		icon = generic_research
+		available = {
+			OR = {
+				has_idea = GER_scientists_emigrated_1
+				has_idea = GER_scientists_emigrated_2
+				has_idea = GER_scientists_emigrated_3
+				has_idea = GER_scientists_purged_1
+				has_idea = GER_scientists_purged_2
+				has_idea = GER_scientists_purged_3
+				has_idea = GER_scientists_purged_4
+			}
+			has_completed_focus = GER_nationalisation
+		}
+		cost = 100
+		fire_only_once = no
+		ai_will_do = {
+			factor = 50
+		}
+		visible = {
+			OR = {
+				has_idea = GER_scientists_emigrated_1
+				has_idea = GER_scientists_emigrated_2
+				has_idea = GER_scientists_emigrated_3
+				has_idea = GER_scientists_purged_1
+				has_idea = GER_scientists_purged_2
+				has_idea = GER_scientists_purged_3
+				has_idea = GER_scientists_purged_4
+			}
+		}
+		days_remove = 120
+		modifier = {
+			civilian_factory_use = 10
+		}
+		remove_effect = {
+			IF = {
+				limit = {
+					has_idea = GER_scientists_emigrated_3
+				}
+				remove_ideas = GER_scientists_emigrated_3
+			}
+			IF = {
+				limit = {
+					has_idea = GER_scientists_emigrated_2
+				}
+				swap_ideas = {
+					remove_idea = GER_scientists_emigrated_2
+					add_idea = GER_scientists_emigrated_3
+				}
+			}
+			IF = {
+				limit = {
+					has_idea = GER_scientists_emigrated_1
+				}
+				swap_ideas = {
+					remove_idea = GER_scientists_emigrated_1
+					add_idea = GER_scientists_emigrated_2
+				}
+			}
+			IF = {
+				limit = {
+					has_idea = GER_scientists_purged_4
+				}
+				remove_ideas = GER_scientists_purged_4
+			}
+			IF = {
+				limit = {
+					has_idea = GER_scientists_purged_3
+				}
+				swap_ideas = {
+					remove_idea = GER_scientists_purged_3
+					add_idea = GER_scientists_purged_4
+				}
+			}
+			IF = {
+				limit = {
+					has_idea = GER_scientists_purged_2
+				}
+				swap_ideas = {
+					remove_idea = GER_scientists_purged_2
+					add_idea = GER_scientists_purged_3
+				}
+			}
+			IF = {
+				limit = {
+					has_idea = GER_scientists_purged_1
+				}
+				swap_ideas = {
+					remove_idea = GER_scientists_purged_1
+					add_idea = GER_scientists_purged_2
+				}
+			}
+			add_stability = 0.025
+		}
+		complete_effect = {
+		}
+	}
+}
+
+foreign_politics = {
+	GER_call_allies_against_italy_france = {
+		icon = generic_civil_support
+		available = {
+			tag = GER
+			has_completed_focus = GER_alliance_with_FRA_and_ENG
+			NOT = {
+				has_war_with = FRA
+			}
+			NOT = {
+				FRA = {
+					OR = {
+						has_government = fascism
+						is_in_faction_with = ITA
+					}
+				}
+			}
+			has_war_with = ITA
+			has_global_flag = FRA_accepted
+		}
+		visible = {
+			tag = GER
+			has_completed_focus = GER_alliance_with_FRA_and_ENG
+			has_global_flag = FRA_accepted
+		}
+		remove_trigger = {
+			OR = {
+				ITA = {
+					NOT = {
+						has_government = fascism
+					}
+				}
+				NOT = {
+					country_exists = ITA
+				}
+				FRA = {
+					has_war_with = ITA
+				}
+				FRA = {
+					has_war_with = GER
+				}
+			}
+		}
+		days_remove = 0
+		cost = 0
+		complete_effect = {
+			FRA = {
+				declare_war_on = {
+					target = ITA
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GER_call_allies_against_italy_england = {
+		icon = generic_civil_support
+		available = {
+			tag = GER
+			has_completed_focus = GER_alliance_with_FRA_and_ENG
+			NOT = {
+				has_war_with = ENG
+			}
+			NOT = {
+				ENG = {
+					OR = {
+						has_government = fascism
+						is_in_faction_with = ITA
+					}
+				}
+			}
+			has_war_with = ITA
+			has_global_flag = ENG_accepted
+		}
+		visible = {
+			tag = GER
+			has_completed_focus = GER_alliance_with_FRA_and_ENG
+			has_global_flag = ENG_accepted
+		}
+		remove_trigger = {
+			OR = {
+				ITA = {
+					NOT = {
+						has_government = fascism
+					}
+				}
+				NOT = {
+					country_exists = ITA
+				}
+				ENG = {
+					has_war_with = ITA
+				}
+				ENG = {
+					has_war_with = GER
+				}
+			}
+		}
+		days_remove = 0
+		cost = 0
+		complete_effect = {
+			ENG = {
+				declare_war_on = {
+					target = ITA
+					type = puppet_wargoal_focus
+				}
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GER_get_eurocommunism = {
+		icon = eng_propaganda_campaigns
+		available = {
+			tag = GER
+			has_completed_focus = GER_eurocommunism
+			FROM = {
+				is_in_faction_with = GER
+				has_government = communism
+				NOT = {
+					original_tag = GER
+					has_country_flag = GER_liberised
+				}
+			}
+		}
+		target_trigger = {
+			FROM = {
+				is_in_faction_with = GER
+			}
+		}
+		visible = {
+			tag = GER
+			has_completed_focus = GER_eurocommunism
+			any_country = {
+				is_in_faction_with = GER
+				has_government = communism
+				NOT = {
+					original_tag = GER
+					has_country_flag = GER_liberised
+				}
+			}
+		}
+		remove_trigger = {
+		}
+		days_remove = 0
+		cost = 50
+		complete_effect = {
+			FROM = {
+				set_rule = {
+					can_guarantee_other_ideologies = yes
+				}
+				set_rule = {
+					can_lower_tension = yes
+				}
+				set_politics = {
+					ruling_party = communism
+					elections_allowed = yes
+				}
+				set_country_flag = GER_liberised
+			}
+			add_stability = 0.02
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}
+
+operations = {
+	GER_war_USA = {
+		icon = generic_operation
+		visible = {
+			original_tag = GER
+			has_completed_focus = GER_prepare_for_war
+		}
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_completed_focus = GER_prepare_for_war
+			any_country = {
+				original_tag = USA
+				has_war_with = GER
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = GER_prepare_for_war_USA
+				days = 365
+			}
+		}
+		remove_trigger = {
+			any_country = {
+				original_tag = USA
+				is_in_faction_with = GER
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GER_war_ENG = {
+		icon = generic_operation
+		visible = {
+			original_tag = GER
+			has_completed_focus = GER_prepare_for_war
+		}
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_completed_focus = GER_prepare_for_war
+			any_country = {
+				original_tag = ENG
+				has_war_with = GER
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = GER_prepare_for_war_ENG
+				days = 365
+			}
+		}
+		remove_trigger = {
+			any_country = {
+				original_tag = ENG
+				is_in_faction_with = GER
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GER_war_FRA = {
+		icon = generic_operation
+		visible = {
+			original_tag = GER
+			has_completed_focus = GER_prepare_for_war
+		}
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_completed_focus = GER_prepare_for_war
+			any_country = {
+				original_tag = FRA
+				has_war_with = GER
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = GER_prepare_for_war_FRA
+				days = 365
+			}
+		}
+		remove_trigger = {
+			any_country = {
+				original_tag = FRA
+				is_in_faction_with = GER
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+	GER_war_JAP = {
+		icon = generic_operation
+		visible = {
+			original_tag = GER
+			has_completed_focus = GER_prepare_for_war
+		}
+		allowed = {
+			original_tag = GER
+		}
+		available = {
+			has_completed_focus = GER_prepare_for_war
+			any_country = {
+				original_tag = JAP
+				has_war_with = GER
+			}
+		}
+		fire_only_once = yes
+		complete_effect = {
+			add_timed_idea = {
+				idea = GER_prepare_for_war_JAP
+				days = 365
+			}
+		}
+		remove_trigger = {
+			any_country = {
+				original_tag = JAP
+				is_in_faction_with = GER
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

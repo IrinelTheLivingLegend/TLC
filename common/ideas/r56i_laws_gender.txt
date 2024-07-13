@@ -1,0 +1,214 @@
+#####---------------------------------------------------------------------> Road to '56, Gender Laws
+#####---------------------------------------------------------------------> by GreatExperiment
+
+ideas = {
+
+	r56i_laws_category_gender = { 
+
+		use_list_view = yes
+	
+		law = yes
+		
+		# Traditional Roles
+		r56i_laws_gender_traditional = {
+
+			available = {
+				NOT = {
+					hidden_trigger = {
+						has_global_flag = NATIONAL_CHARACTERS_BLOCKED
+					}
+					has_country_leader = {
+						name = "Anarchist Commune"
+						ruling_only = yes
+					}
+					has_idea_with_trait = womens_figurehead
+				}	
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.05
+				production_factory_efficiency_gain_factor = 0.05
+				conscription_factor = -0.1
+				hidden_modifier = { #Needs to hide for non DLC plebs
+					female_random_operative_chance = -1
+				}
+			}
+
+			cost = 100
+			
+			cancel_if_invalid = no
+
+			on_add = {
+				if = {
+					limit = { 
+						original_tag = AFG
+						has_active_mission = AFG_first_loya_jirga_mission 
+					}
+					effect_tooltip = {
+						add_power_balance_value = {
+							id = AFG_power_balance
+							value = 0.05
+							tooltip_side = AFG_tribal_side
+						}
+						add_stability = 0.025
+					}
+				}
+				else_if = {
+					limit = {
+						original_tag = AFG
+						NOT = {
+							has_active_mission = AFG_first_loya_jirga_mission 
+							has_country_flag = AFG_finished_first_loya_jirga
+							has_completed_focus = AFG_power_to_the_king
+							has_completed_focus = AFG_handle_the_king
+						}
+					}
+					custom_effect_tooltip = AFG_traditional_roles_tt
+					effect_tooltip = {
+						add_power_balance_value = {
+							id = AFG_power_balance
+							value = 0.05
+							tooltip_side = AFG_tribal_side
+						}
+						add_stability = 0.025
+					}
+				}
+			}
+
+			ai_will_do = {
+				factor = 0
+		 	}
+		}
+		
+		# Limited Rights
+		r56i_laws_gender_limited = {
+
+			available = {
+				NOT = {
+					hidden_trigger = {
+						has_global_flag = NATIONAL_CHARACTERS_BLOCKED
+					}
+					has_country_leader = {
+						name = "Anarchist Commune"
+						ruling_only = yes
+					}
+				}
+			}
+
+			modifier = {
+				industrial_capacity_factory = -0.05
+				production_factory_start_efficiency_factor = -0.05
+				weekly_manpower = 100 #Silly, but better for small nations who need the raw MP
+				conscription_factor = 0.10
+				#female_random_operative_chance = 3
+			}
+
+			cost = 100
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 0
+   			}
+		}
+		
+		# Enforced Patriarchy
+		r56i_laws_gender_patriarchy = {
+		
+			available = {
+				NOT = {
+					has_government = communism
+					hidden_trigger = {
+						has_global_flag = NATIONAL_CHARACTERS_BLOCKED
+					}
+					has_country_leader = {
+						name = "Anarchist Commune"
+						ruling_only = yes
+					}	
+					has_idea_with_trait = womens_figurehead				
+				}
+			}
+			
+			modifier = {
+				industrial_capacity_factory = 0.075
+				production_factory_efficiency_gain_factor = 0.10
+				conscription_factor = -0.20
+				hidden_modifier = { #Needs to hide for non DLC plebs
+					female_random_operative_chance = -2
+				}
+			}
+
+			cost = 150
+			
+			cancel_if_invalid = yes
+
+			ai_will_do = {
+   				factor = 0
+			}
+		}
+		
+		# Total Equality
+		r56i_laws_gender_equality = {
+		
+			available = {
+				if = {
+					limit = {
+						NOT = {
+							OR = {
+								any_owned_state = {
+									is_core_of = ROOT
+									OR = {
+										is_on_continent = europe
+										is_on_continent = north_america
+										is_on_continent = south_america
+									}		
+								}
+								original_tag = JAP
+								original_tag = PER #remove the veil 
+								original_tag = ETH #mainly gameplay reasons
+								original_tag = SAF
+								original_tag = AST
+								original_tag = NZL
+								original_tag = ARM
+								original_tag = GEO
+								original_tag = TUR
+								original_tag = CHI
+								original_tag = GXC
+								original_tag = SHX
+							}
+						}	
+					}
+					NOT = {
+						has_government = neutrality
+					}					
+				}
+				NOT = {
+					has_government = fascism
+					hidden_trigger = {
+						has_global_flag = NATIONAL_CHARACTERS_BLOCKED
+					}
+				}
+			}
+			
+			modifier = {
+				industrial_capacity_factory = -0.03
+				production_factory_start_efficiency_factor = -0.05
+				conscription_factor = 0.20 #from 0.10, 0.15
+				weekly_manpower = 200 #Silly, but better for small nations who need the raw MP
+				hidden_modifier = { #Needs to hide for non DLC plebs
+					female_random_operative_chance = 0.5
+				}
+			}
+
+			cost = 150
+			
+			cancel_if_invalid = Yes
+
+			ai_will_do = {
+   				factor = 0
+			}
+		}
+	}
+}
+
+#####---------------------------------------------------------------------> End

@@ -1,0 +1,257 @@
+ideas = {
+
+    wp_labour_laws = {
+        law = yes
+        use_list_view = yes
+
+        eight_hour_workday = {
+
+            available = {
+
+            }
+
+            level = 2
+
+            modifier =  {
+                consumer_goods_factor = 0.05
+                monthly_population = 0.05
+                line_change_production_efficiency_factor = 0.05
+                production_factory_efficiency_gain_factor = 0.05
+                industrial_capacity_factory = 0.10
+                drift_defence_factor = 0.05
+                stability_factor = 0.10
+
+            }
+
+            ai_will_do = {
+                base = 40
+
+                modifier = {
+                    has_idea = welfare_capitalism
+                    add = 100
+                }
+
+                modifier = {
+
+                    OR = {
+                        has_idea = syndicalist_markets
+                        has_idea = communal_economy
+                    }
+
+                    add = 100
+                }
+
+                modifier = {
+                    has_government = communism
+                    add = 20
+                }
+
+                modifier = {
+                    tag = ITA
+                    has_government = fascism
+                    add = 40
+                }
+
+                modifier = {
+                    has_government = democratic
+                    add = 100
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        twelve_hour_workday = {
+
+            available = {
+
+            }
+
+            level = 1
+
+            modifier = {
+                #local_resources #= #0.025
+                production_factory_start_efficiency_factor = 0.025
+                industrial_capacity_factory = 0.05
+                stability_factor = 0.05
+            }
+
+            ai_will_do = {
+                base = 40
+
+                modifier = {
+                    has_idea = mixed_market
+                    add = 10
+                }
+
+                modifier = {
+                    has_government = neutrality
+                    add = 10
+                }
+
+                modifier = {
+                    has_idea = state_capitalism
+                    add = 10
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        fourteen_hour_workday = {
+
+            available = {
+                
+            }
+
+            level = 3
+
+            modifier = {
+                consumer_goods_factor = -0.05
+                local_resources = 0.05
+                production_factory_start_efficiency_factor = 0.05
+                #industrial_capacity_factory # #-0.05
+                monthly_population = -0.05
+                recruitable_population_factor = -0.05
+            }
+
+            ai_will_do = {
+                base = 30
+                
+                modifier = {
+                    has_government = fascism
+                    NOT = { 
+                        
+                        OR = {
+                            tag = ITA 
+                            tag = GER 
+                        }
+                    }
+
+                    add = 40
+                }
+
+                modifier = {
+                    
+                    NOT = {
+                        has_government = democratic
+                    }
+                    OR = {
+                        has_idea = laisezz_faire
+                        has_idea = rentier_state
+                    }
+
+                    add = 60
+                }
+
+                modifier = {
+
+                    NOT = {
+
+                          has_government = democratic
+                          has_government = communism
+                        
+                    }
+
+                    OR = {
+
+                        has_idea = state_capitalism
+                        has_idea = mixed_market
+                    }
+
+                    add = 20
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        eighteen_hour_workday = {
+
+            available = {
+
+                NOT = {
+
+                    has_government = communism
+                    has_government = democratic
+                }
+            }
+
+            level = 4
+            
+            modifier = {
+                consumer_goods_factor = -0.10
+                local_resources = 0.075
+                production_factory_start_efficiency_factor = 0.10
+                #industrial_capacity_factory #= #-0.10
+                monthly_population = -0.10
+                recruitable_population_factor = -0.10
+                production_factory_max_efficiency_factor = 0.05
+            }
+
+            ai_will_do = {
+                base = 20
+
+                modifier = {
+                   has_government = fascism
+
+                OR = {
+                    has_idea = laisezz_faire
+                    has_idea = rentier_state
+                 }
+
+                  add = 40
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        no_work_hour_limits = {
+
+            available = {
+                
+                OR = {
+                    has_idea = laisezz_faire
+                    has_idea = rentier_state
+                    has_idea = planned_economy
+                    has_idea = state_capitalism
+                }
+                OR = {
+                    has_government = fascism
+                    has_government = neutrality
+                }
+            }
+
+            level = 5
+
+            modifier = {
+                consumer_goods_factor = -0.10
+                local_resources = 0.10
+                production_factory_start_efficiency_factor = 0.10
+                #industrial_capacity_factory #= #-0.15
+                monthly_population = -0.15
+                recruitable_population_factor = -0.15
+                production_factory_max_efficiency_factor = 0.05
+            }
+
+            ai_will_do = {
+                base = 10
+
+                modifier = {
+                    has_government = fascism
+
+                    OR = {
+                        has_idea = laisezz_faire
+                        has_idea = rentier_state
+                
+                    }
+
+                    add = 20
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+    }
+}

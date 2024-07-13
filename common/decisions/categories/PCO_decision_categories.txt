@@ -1,0 +1,17 @@
+
+SOV_coinvasion_of_poland_decision_category = {
+	
+	priority = 50
+
+	icon = decision_category_sov_great_patriotic_war
+
+	allowed = {
+		original_tag = SOV
+	}
+
+	visible = {
+	}
+	
+	visible_when_empty = no
+}
+

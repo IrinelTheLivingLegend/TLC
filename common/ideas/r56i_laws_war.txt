@@ -1,0 +1,156 @@
+#####---------------------------------------------------------------------> Mod by Sig "GreatExperiment" Altre
+
+ideas = {
+
+	r56i_laws_war = { 
+
+		use_list_view = yes
+		
+		law = yes
+		
+		#Lessons of History
+		r56i_laws_war_historical = {
+
+			cost = 100
+
+			available = {
+				if = {
+					limit = { 
+						has_government = democratic	
+					}
+					threat > 0.20
+				}
+				else = {
+					threat > 0.05
+				}
+				NOT = {
+					hidden_trigger = {
+						has_global_flag = NATIONAL_CHARACTERS_BLOCKED
+					}
+				}
+			}
+			
+			modifier = {
+				out_of_supply_factor = -0.10
+				max_dig_in_factor = 0.1
+				justify_war_goal_time = 0.25
+				political_power_cost = 0.05
+			}
+			
+			cancel_if_invalid = no
+			
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		#Ideological Struggle
+		r56i_laws_war_ideological = {
+
+			cost = 100
+
+			available = {
+				if = {
+					limit = { 
+						has_government = democratic	
+					}
+					threat > 0.20
+				}
+				else = {
+					threat > 0.05
+				}
+				NOT = {
+					hidden_trigger = {
+						has_global_flag = NATIONAL_CHARACTERS_BLOCKED
+					}
+				}
+			}
+			
+			modifier = {
+				weekly_bombing_war_support = 0.0025
+				mobilization_speed = 0.5
+				justify_war_goal_time = -0.5
+				political_power_cost = 0.05
+			}
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		#Brinksmanship
+		r56i_laws_war_brinkmanship = {
+
+			cost = 100
+
+			available = {
+				if = {
+					limit = { 
+						has_government = democratic	
+					}
+					threat > 0.20
+				}
+				else = {
+					threat > 0.05
+				}
+				NOT = {
+					hidden_trigger = {
+						has_global_flag = NATIONAL_CHARACTERS_BLOCKED
+					}
+				}
+			}
+			
+			modifier = {
+				trade_opinion_factor = 0.25
+				generate_wargoal_tension = -0.4
+				justify_war_goal_time = -0.4
+				political_power_cost = 0.05
+			}
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+		
+		#Diplomatic Efforts
+		r56i_laws_war_diplomacy = {
+
+			available = {
+				if = {
+					limit = { #Was a way to bypass war support limits in content
+						has_government = democratic	
+					}
+					threat > 0.20
+				}
+				else = {
+					threat > 0.05
+				}
+				NOT = {
+					hidden_trigger = {
+						has_global_flag = NATIONAL_CHARACTERS_BLOCKED
+					}
+				}
+			}
+			
+			cost = 100
+
+			modifier = {
+				send_volunteer_divisions_required = -0.9
+				lend_lease_tension = -0.9
+				send_volunteers_tension = -0.9
+			}
+			
+			cancel_if_invalid = no
+
+			ai_will_do = {
+				factor = 0
+			}
+		}
+	}
+}
+
+#####---------------------------------------------------------------------> End

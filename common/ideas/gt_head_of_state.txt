@@ -1,0 +1,465 @@
+ideas = {
+
+    gt_head_of_state = {
+        law = yes
+        use_list_view = yes
+
+        monarch = {
+
+            available = {
+                 
+                OR = {
+                    AND = {
+                       has_government = neutrality
+                        NOT = {
+                          tag = TUR 
+                        }
+                    
+                    }
+                    AND = {
+                        has_government = democratic
+                        OR = {
+                        tag = ENG
+                        tag = CAN
+                        tag = AST
+                        tag = NZL
+                        tag = SAF
+                        tag = IRE
+                        tag = BUL
+                        tag = ICE
+                        tag = YUG 
+                        tag = DEN
+                        tag = SWE 
+                        tag = NOR
+                        tag = BEL
+                        tag = HOL 
+                        tag = ROM
+                        tag = GER 
+                        tag = JAP
+                        }
+                        
+                    }
+                    AND = {
+                        has_government = fascism
+
+                        OR = {
+                            tag = JAP
+                            tag = MAN
+                            tag = TUR
+                        }
+                    }
+                }
+            }
+
+            cost = 100
+            removal_cost = -1
+
+            modifier = {
+                political_power_factor = 0.05
+                stability_factor = 0.05
+                war_support_factor = 0.05
+            }
+
+            ai_will_do = {
+
+                base = 20
+
+                modifier = {
+                    has_government = democratic
+                    tag = ENG
+                    add = 100
+                }
+
+                modifier = {
+                    has_government = neutrality 
+                    add = 40
+                }
+
+                modifier = {
+                    has_government = fascism
+                    tag = JAP
+                    add = 400
+                }
+
+                modifier = {
+                    has_government = fascism
+                    tag = MAN
+                    add = 400
+                }
+
+                modifier = {
+                    has_government = democratic
+                    
+                    OR = {
+                        tag = DEN
+                        tag = NOR
+                        tag = SWE
+                        tag = HOL
+                    }
+
+                    add = 100
+                }
+
+                modifier = {
+                    factor = 4
+                }
+            }
+
+            cancel_if_invalid = yes 
+        }
+
+        prime_minister = {
+
+            available = {
+               NOT = {
+                has_government = fascism
+               }
+            }
+
+            cost = 100
+            removal_cost = -1
+
+            modifier = {
+                political_power_factor = 0.15
+            }
+
+            ai_will_do = {
+
+                base = 40
+
+                modifier = {
+                    has_government = neutrality
+                    add = -40
+                }
+
+                modifier = {
+                    has_government = democratic
+
+                    OR = {
+                      
+                    tag = FRA
+                    tag = GER 
+                    tag = ITA 
+                    tag = POR 
+                    tag = SPR 
+                    tag = CZE 
+                    tag = AUS 
+                    tag = ROM 
+                    tag = BUL 
+                    tag = YUG 
+                    tag = ALB
+                    tag = GRE
+                    tag = POL
+                    tag = FIN
+                    tag = HUN
+
+                    }
+        
+                    #is_on_continent #= #europe
+                    add = 40
+                }
+
+                modifier = {
+                    has_idea = syndicalist_markets
+                    add = 20
+                }
+
+                modifier = {
+                    has_government = democratic
+                    add = 20
+                }
+
+                modifier = {
+                    factor = 4
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        president = {
+
+            available = {
+                OR = {
+                  tag = TUR
+                  NOT = {
+                    has_government = fascism
+                    has_government = communism
+                  }
+                }
+            }
+
+            cost = 100
+            removal_cost = -1
+
+            modifier = {
+                stability_factor = 0.10
+                war_support_factor = 0.10
+            }
+
+            ai_will_do = {
+                
+                base = 40
+
+                modifier = {
+                    has_government = democratic
+                    tag = USA
+                    add = 200
+                }
+
+                modifier = {
+                    has_government = neutrality
+                    add = 80
+                }
+
+                modifier = {
+                    has_government = democratic
+                    
+                    OR = {
+                        tag = BRA
+                        tag = ARG 
+                        tag = CHL
+                        tag = PRU 
+                        tag = MEX
+                        tag = URG
+                        tag = PAR 
+                        tag = BOL 
+                        tag = ECU 
+                        tag = COL 
+                        tag = VEN 
+                        tag = CUB 
+                    }
+                    add = 40
+                }
+
+                modifier = {
+                    has_government = neutrality
+                    tag = TUR 
+                    add = 100
+                }
+
+                modifier = {
+                    factor = 4
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        military_head = {
+
+            available = {
+                NOT = {
+                    has_government = democratic
+                }
+            }
+
+            cost = 150
+            removal_cost = -1
+
+            modifier = {
+                offensive_war_stability_factor = 0.10
+                defensive_war_stability_factor = 0.15
+                war_support_factor = 0.20
+                max_command_power_mult = 0.20
+                #max_command_power = 10
+                command_power_gain_mult = 0.20
+                #command_power_gain = 0.10
+                stability_factor = -0.10
+                political_power_factor = -0.05
+
+            }
+
+            ai_will_do = {
+                
+                base = 0
+
+                modifier = {
+                    has_government = fascism
+                    add = 80
+                }
+
+                modifier = {
+                    factor = 4
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        chairman = {
+
+            available = {
+                has_government = communism
+            }
+
+            cost = 100
+            removal_cost = -1
+
+            modifier = {
+                political_power_factor = 0.10
+                stability_factor = 0.05
+                drift_defence_factor = 0.20
+            }
+
+            ai_will_do = {
+
+                base = 40
+
+                modifier = {
+                    has_government = communism
+                    add = 80
+                }
+
+                modifier = {
+                    has_government = communism
+                    tag = SOV
+                    add = 400
+                }
+
+                modifier = {
+                    factor = 4
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        federal_council = {
+
+            available = {
+                has_idea = federated_state
+                NOT = {
+                     has_government = fascism
+                     #has_government #= #neutrality
+                }
+            }
+
+            cost = 100
+            removal_cost = -1
+
+            modifier = {
+                political_power_factor = -0.15
+                stability_factor = 0.05
+                war_support_factor = 0.10
+                defensive_war_stability_factor = 0.70
+                justify_war_goal_time = 0.30
+                stability_weekly = 0.0020
+            }
+
+            ai_will_do = {
+
+                 base = 0
+                 
+                 modifier = {
+                    NOT = {
+                        has_government = fascism
+                        has_government = neutrality
+                    }
+                    tag = SWI 
+                    factor = 4000
+                 }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        communal_council = {
+
+            available = {
+                has_idea = communal_state
+            }
+
+            cost = 100
+            removal_cost = -1
+
+            modifier = {
+                army_core_defence_factor = 0.10
+                political_power_factor = 0.10
+                stability_factor = 0.05
+                non_core_manpower = 0.50
+                war_support_factor = -0.30
+                compliance_growth = 0.20
+                #resistance_target = -0.05
+            }
+
+            ai_will_do = {
+
+                base = 10
+                
+                modifier = {
+                    has_country_leader_ideology = anarchism
+                    add = 200
+                }
+
+                modifier = {
+                    factor = 4
+                }
+
+            }
+            
+            cancel_if_invalid = yes
+        }
+
+        workers_council = {
+            
+            available = {
+                OR = {
+                    has_government = communism
+                    has_country_leader_ideology = socialism
+                } 
+            }
+
+            cost = 150
+            removal_cost = -1
+
+            modifier = {
+                political_power_factor = 0.05
+                war_support_factor = -0.20
+                stability_factor = 0.05
+                industrial_capacity_factory = 0.05
+                industrial_capacity_dockyard = 0.05
+                production_factory_start_efficiency_factor = 0.05
+                line_change_production_efficiency_factor = 0.05
+                production_factory_max_efficiency_factor = 0.05
+            }
+
+            ai_will_do = {
+
+                base = 0
+                
+                modifier = {
+                    has_government = communism
+                    add = 30
+                }
+
+                modifier = {
+                    has_government = communism
+                    has_idea = syndicalist_markets
+                    add = 60
+                }
+
+                modifier = {
+                    has_country_leader_ideology = anarchist_communism
+                    add = 60
+                }
+
+                modifier = {
+                    has_country_leader_ideology = marxism
+                    add = 40
+                }
+
+                modifier = {
+                    has_country_leader_ideology = socialism
+                    add = 20
+                }
+
+                modifier = {
+                    factor = 4
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+    }
+}

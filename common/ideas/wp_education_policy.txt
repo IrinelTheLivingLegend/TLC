@@ -1,0 +1,206 @@
+ideas = {
+    
+    wp_education_policy = {
+        law = yes
+        use_list_view = yes
+
+        subsidized_higher_education = {
+
+            available = {
+                
+            }
+
+            level = 5
+
+            modifier = {
+                consumer_goods_factor = 0.10
+                production_factory_max_efficiency_factor = 0.10
+                production_factory_efficiency_gain_factor = 0.10
+                research_speed_factor = 0.15
+                drift_defence_factor = -0.30
+                female_random_operative_chance = 0.5
+                army_leader_start_level = 1
+            }
+
+            ai_will_do = {
+                base = 20
+
+                modifier = {
+                    has_government = communism
+                    add = 100
+                }
+
+                modifier = {
+                    has_idea = welfare_capitalism
+                    add = 40
+                }
+
+                modifier = {
+                    has_government =  democratic
+                    add = 10
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        subsidized_basic_education = {
+
+            available = {
+
+            }
+
+            level = 4
+
+            modifier = {
+                consumer_goods_factor = 0.05
+                production_factory_max_efficiency_factor = 0.05
+                production_factory_efficiency_gain_factor = 0.05
+                research_speed_factor = 0.075
+                drift_defence_factor = -0.10
+                female_random_operative_chance = 0.30
+            }
+
+            ai_will_do = {
+                base = 30
+
+                modifier = {
+
+                    has_idea = welfare_capitalism
+                    add = 40
+                }
+
+                modifier = {
+                    has_government = democratic
+                    add = 20
+                }
+
+                modifier = {
+                    has_government = communism
+                    add = 50
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        basic_education_system = {
+
+            available = {
+
+            }
+            
+            cost = 50
+            level = 3
+
+            modifier = {
+                monthly_population = 0.05
+                research_speed_factor = 0.05
+                female_random_operative_chance = 0.10
+            }
+
+            ai_will_do = {
+                base = 40
+
+                modifier = {
+                    has_government = democratic
+                    add = -20
+                }
+
+                modifier = {
+                    
+                    OR = {
+                        has_idea = laisezz_faire
+                        has_idea = rentier_state
+                    }
+
+                    add = 30
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        no_official_education_system = {
+
+            available = {
+                
+                NOT = {
+                    has_government = communism
+                    has_government = democratic
+                    has_idea = welfare_capitalism
+                    has_idea = planned_economy
+                    has_idea = state_capitalism
+                }
+            }
+            
+            level = 2
+
+            modifier = {
+                consumer_goods_factor = -0.05
+                production_factory_max_efficiency_factor = -0.05
+                production_factory_efficiency_gain_factor = -0.05
+                monthly_population = 0.25
+                research_speed_factor = -0.10
+                drift_defence_factor = 0.30
+            }
+
+            ai_will_do = {
+                base = 1
+            }
+
+            cancel_if_invalid = yes
+        }
+
+        left_to_the_market = {
+
+            available = {
+
+                OR = {
+                    has_idea = rentier_state
+                    has_idea = laisezz_faire
+                    has_idea = welfare_capitalism
+                    has_idea = mixed_market
+                    has_idea = syndicalist_markets
+                }
+            }
+
+            level = 1
+
+            modifier = {
+                consumer_goods_factor = -0.10
+                research_speed_factor = 0.10
+                stability_factor = -0.05
+                industrial_capacity_factory = -0.05
+                female_random_operative_chance = 0.20
+                drift_defence_factor = -0.50
+            }
+
+            ai_will_do = {
+                base = 0
+
+                modifier = {
+                    has_idea = welfare_capitalism
+                    add = 5
+                }
+
+                modifier = {   
+                        has_idea = laisezz_faire
+                        add = 100
+                }
+
+                modifier = {
+                    has_idea = rentier_state
+                    add = 20
+                }
+
+                modifier = {
+                    has_idea = mixed_market
+                    add = 10
+                }
+            }
+
+            cancel_if_invalid = yes
+        }
+    }
+}

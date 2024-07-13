@@ -1,0 +1,14 @@
+
+GER_weltrepublic_decision = {
+	icon = generic_communism
+	
+	allowed = {
+		original_tag = GER
+	}
+	visible = {
+		OR = {
+			has_completed_focus = GER_establish_fifth_internationale
+			has_completed_focus = GER_join_fourth_internationale
+		}
+	}
+}
