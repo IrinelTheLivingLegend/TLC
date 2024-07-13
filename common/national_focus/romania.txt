@@ -5986,9 +5986,9 @@ focus_tree = {
 				add_war_support=0.07
 			}
 	
-			search_filters = { FOCUS_FILTER_RESEARCH }
+			
 		}
-		
+		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
 	focus = { 
 		id = Dictatorship_three_step
@@ -5999,40 +5999,24 @@ focus_tree = {
 		relative_position_id = Dictatorship_two_step
 		cost = 10
 		completion_reward = {
-			random_owned_controlled_state = {
-				prioritize = { 79 81 }
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-				}
-				add_extra_state_shared_building_slots = 3
+				ROOT={add_extra_state_shared_building_slots = 3
 				add_building_construction = {
 					type = arms_factory
 					level = 2
 					instant_build = yes
 				}
-			}
-			random_owned_controlled_state = {
-				prioritize = { 79 81 }
-				limit = {
-					free_building_slots = {
-						building = arms_factory
-						size > 0
-						include_locked = yes
-					}
-				}
+			
+				
 				add_extra_state_shared_building_slots = 2
 				add_building_construction = {
 					type = industrial_complex
 					level = 2
 					instant_build = yes
 				}
+				}
 			}
 		}
-	}
+	
 
 	focus = { 
 		id = separation_stage
