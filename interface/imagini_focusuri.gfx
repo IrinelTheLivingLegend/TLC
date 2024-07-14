@@ -1,0 +1,10 @@
+spriteTypes = {
+	SpriteType = {
+		name = "GFX_irinel"
+		texturefile = "gfx/interface/goals/irinel.tga"
+	}
+	SpriteType = {
+		name = "GFX_petrisor"
+		texturefile = "gfx/interface/goals/petrisor.tga"
+	}
+}

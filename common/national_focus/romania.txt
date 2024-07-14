@@ -6042,7 +6042,7 @@ focus_tree = {
 	}
 	focus = { 
 		id = Petrisors_dictatorship
-		icon = GFX_goal_generic_air_bomber
+		icon = GFX_petrisor
 		prerequisite = { focus = separation_stage}
 		mutually_exclusive = { focus = Irinels_dictatorship }
 		x=-2
@@ -6054,7 +6054,7 @@ focus_tree = {
 	}
 	focus = { 
 		id = Irinels_dictatorship
-		icon = GFX_goal_generic_air_bomber
+		icon = GFX_irinel
 		prerequisite = { focus = separation_stage}
 		mutually_exclusive = { focus = Petrisors_dictatorship }
 		x=2
