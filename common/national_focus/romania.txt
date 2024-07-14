@@ -5929,6 +5929,7 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
+	
 	focus = {
 		id = ROM_petrisorTEST
 		icon = GFX_goal_generic_air_bomber
@@ -5952,11 +5953,13 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
+
 	focus = {
 		id  = Dictatorship_one_step
 		icon = GFX_goal_generic_air_bomber
 		mutually_exclusive = { focus = ROM_institute_royal_dictatorship }
 		mutually_exclusive = { focus = ROM_codreanu_goga_cooperation }
+		#TODOrelative_position_id = ceva??????
 		y = 0
 		x = 37
 	
@@ -5973,7 +5976,6 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
-
 	focus = { 
 		id = Dictatorship_two_step
 		icon = GFX_goal_generic_air_bomber
@@ -5993,6 +5995,7 @@ focus_tree = {
 		}
 		search_filters = { FOCUS_FILTER_RESEARCH }
 	}
+
 	focus = { 
 		id = Dictatorship_three_step
 		icon = GFX_goal_generic_air_bomber
@@ -6026,8 +6029,6 @@ focus_tree = {
 			}
 		}
 	}
-	
-
 	focus = { 
 		id = separation_stage
 		icon = GFX_goal_generic_air_bomber
@@ -6037,46 +6038,39 @@ focus_tree = {
 		relative_position_id = Dictatorship_three_step
 		cost = 10
 		completion_reward = {
-
 		}
-
 	}
 	focus = { 
-		id = Petrisor's_dictatorship
+		id = Petrisors_dictatorship
 		icon = GFX_goal_generic_air_bomber
 		prerequisite = { focus = separation_stage}
-		mutually_exclusive = { focus = Irinel's_dictatorship }
+		mutually_exclusive = { focus = Irinels_dictatorship }
 		x=-2
 		y=1
 		relative_position_id = separation_stage
 		cost = 10
-		completion_reward = {
-			
+		completion_reward = {	
 		}
-
 	}
-
 	focus = { 
-		id = Irinel's_dictatorship
+		id = Irinels_dictatorship
 		icon = GFX_goal_generic_air_bomber
 		prerequisite = { focus = separation_stage}
-		mutually_exclusive = { focus = Petrisor's_dictatorship }
+		mutually_exclusive = { focus = Petrisors_dictatorship }
 		x=2
 		y=1
 		relative_position_id = separation_stage
 		cost = 10
-		completion_reward = {
-			
+		completion_reward = {	
 		}
-
 	}
 	focus = { 
 		id = arming_I
 		icon = GFX_goal_generic_air_bomber
-		prerequisite = { focus = Irinel's_dictatorship}
+		prerequisite = { focus = Irinels_dictatorship}
 		x=0
 		y=1
-		relative_position_id = Irinel's_dictatorship
+		relative_position_id = Irinels_dictatorship
 		cost = 10
 		completion_reward = {
 			
@@ -6086,10 +6080,10 @@ focus_tree = {
 	focus = { 
 		id = arming_P
 		icon = GFX_goal_generic_air_bomber
-		prerequisite = { focus = Petrisor's_dictatorship}
+		prerequisite = { focus = Petrisors_dictatorship}
 		x=0
 		y=1
-		relative_position_id = Petrisor's_dictatorship
+		relative_position_id = Petrisors_dictatorship
 		cost = 10
 		completion_reward = {
 			
@@ -6097,7 +6091,7 @@ focus_tree = {
 
 	}
 	focus = { 
-		id = propagandaor's_dictatorship
+		id = propagandaors_dictatorship
 		icon = GFX_goal_generic_air_bomber
 		prerequisite = { focus = arming_I}
 		x=0
@@ -6110,7 +6104,7 @@ focus_tree = {
 
 	}
 	focus = { 
-		id = propagandaor's_dictatorship_i
+		id = propagandaors_dictatorship_i
 		icon = GFX_goal_generic_air_bomber
 		prerequisite = { focus = arming_P}
 		x=0
@@ -6125,10 +6119,10 @@ focus_tree = {
 	focus = { 
 		id = industrie
 		icon = GFX_goal_generic_air_bomber
-		prerequisite = { focus = propagandaor's_dictatorship_i}
+		prerequisite = { focus = propagandaors_dictatorship_i}
 		x=0
 		y=1
-		relative_position_id = propagandaor's_dictatorship_i
+		relative_position_id = propagandaors_dictatorship_i
 		cost = 10
 		completion_reward = {
 			
@@ -6138,10 +6132,10 @@ focus_tree = {
 	focus = { 
 		id = industrie_i
 		icon = GFX_goal_generic_air_bomber
-		prerequisite = { focus = propagandaor's_dictatorship}
+		prerequisite = { focus = propagandaors_dictatorship}
 		x=0
 		y=1
-		relative_position_id = propagandaor's_dictatorship
+		relative_position_id = propagandaors_dictatorship
 		cost = 10
 		completion_reward = {
 			
@@ -6174,9 +6168,6 @@ focus_tree = {
 		}
 
 	}	
-
-
-
 
 
 
